@@ -1,0 +1,96 @@
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+  height: 100%;
+}
+
+p{
+  font-family: Roboto, sans-serif;
+  display: block;
+  margin-left:3em;
+  margin-bottom:1em;
+}
+h1 {
+  display:block;
+  width:100%;
+  text-align: left;
+}
+ol,ul{
+  display:block;
+  margin-left:150px;
+}
+
+h2{
+  display:block;
+  width:100%;
+  text-align: center;
+  margin-bottom:1em;
+}
+table{
+  margin-left: 100px;
+  padding:10px;
+}
+td{
+  border:1px solid;
+  padding:10px;
+}
+img{
+  border-color:green;
+  alignment: center;
+  margin-bottom:50px;
+  border-style: inset; border-style: solid; border-color: green;
+  border-width: 5px; display: block; margin-left: auto; margin-right: auto;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+.center{
+  width:100%;
+  text-align:center;
+}
+/* Hide visually and from screen readers, but maintain layout*/
+.invisible {
+  visibility: hidden;
+}
+
+pre{
+  background:#CCCCCC;
+  margin:50px;
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+
