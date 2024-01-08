@@ -4,19 +4,16 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../main.css">
 
     <title>Creating an Android Emulator</title>
 
-    <script src="https://kit.fontawesome.com/dc0167878f.js" crossorigin="anonymous"></script>
-
   </head>
   <body >
-<section class="section is-medium"><B><u><h2 class="title">Theory</h2></u></B></section>
+<section class="section is-medium"><B><u><h1 class="title">Theory</h1></u></B></section>
 
 
-    <h1>Android Devices</h1>
+    <h2>Android Devices</h2>
     <p>Android typically runs on devices that use an
       ARM processor. These processors are very energy efficient, although slower
       than normal desktop processors. Modern mobile devices have between 4 and 8
@@ -31,34 +28,19 @@
       simulating an Android device on your home computer (Laptop/Desktop). Your
       computers at home use a 64-bit architecture, so make sure to use the
       x86_64 version of Android, which we'll cover later today.</p>
-    <p>Apple has recently stopped using Intel
-      processors and have started using their own M1 processor, which uses the
-      ARM64 processor. It's a 64-bit version of an ARM processor,&nbsp; with
-      some customizations for Apple devices. It is possible to get an Apple
-      version of the emulator, but it's not officially supported yet.</p>
-    <p>You can also use your own Android device for
+    <p>Apple has recently stopped using Intel processors and have started using their own processors, called M1, M2 or M3, which uses the
+      ARM64 processor. They are a 64-bit version of an ARM processor,&nbsp; with some customizations for Apple devices. </p>
+
+<p>You can also use your own Android device for
       running your programs. You must enable Developer Options on your device,
       and then plug it in to your computer using a USB cable. Instructions to do
       this can be found here: <a href="https://www.getdroidtips.com/enable-usb-debugging/"
 
         target="_blank" rel="noopener">Android device instructions</a></p>
-    <p><em><strong>Summary</strong></em>: Android
-      runs on several processor architectures. You should use the x86_64
-      architecture for simulating Android devices on your computer. Actual
-      Android phones and tablets use the ARM64 architecture.</p>
-    <p></p>
-<h1>Android Versions</h1>
-<p>There are currently 33 different versions of
-  Android. Each version of Android adds some new features that are not
-  included in previous versions. If you want to use some feature that was
-  introduced in version 16, then your application will only work on phones
-  that have version or newer. In this course, we will use Android version 27
-  (called Oreo, or Android 8.1).</p>
-<section class="section is-medium"><B><u><h2 class="title">Practice - Lab Work</h2></u></B></section>
 
-    <p></p>
-    <h4><span style="color: #009e0f;">Lab Exercise Step 2: Create a virtual
-        device on your computer.</span></h4>
+
+
+    <h2> Creating an Android Emulator</h2>
     <p>On the Android Studio welcome window, click
       on the "Configure" button at the bottom right. Select the "Virtual Device Manager"
       option from the menu:</p>
@@ -67,7 +49,7 @@
       our computer to run the applications we will be making this semester. This
       will use your laptop to simulate a phone or tablet. Once you see this
       window, click "Create Virtual Device"</p>
-    <p><img src="images/img_p2_2.png" max-width: 100%; display: block; margin-left: auto; margin-right: auto;"></p>
+    <p><img src="images/img_p2_2.png"></p>
     <p></p>
     <p>The first step in creating a virtual device
       is choosing which hardware to simulate on your computer. Just pick one of

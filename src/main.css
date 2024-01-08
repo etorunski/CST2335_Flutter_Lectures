@@ -12,7 +12,12 @@ p{
   margin-left:3em;
   margin-bottom:1em;
 }
-h1 {
+h2 {
+  margin-top:3em;
+  margin-left:1em;
+  font-weight: bold;
+  font-size: large;
+  font-family: Roboto, sans-serif;
   display:block;
   width:100%;
   text-align: left;
@@ -22,7 +27,7 @@ ol,ul{
   margin-left:150px;
 }
 
-h2{
+h1{
   display:block;
   width:100%;
   text-align: center;
@@ -79,6 +84,7 @@ video {
 pre{
   background:#CCCCCC;
   margin:50px;
+  padding:50px;
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
@@ -88,9 +94,9 @@ pre{
    https://www.phpied.com/delay-loading-your-print-css/
    ========================================================================== */
 
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
+a,
+a:visited {
+  text-decoration: underline;
+}
 
 

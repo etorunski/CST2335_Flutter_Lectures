@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="../main.css">
+  <title>Updating the screen</title>
+</head>
+<body>
+<section>
+<h1 id="other-widgets">Updating the screen</h1>
+<p>Let's try replacing the Button widget with a Slider:
+<a href="https://api.flutter.dev/flutter/material/Slider-class.html">https://api.flutter.dev/flutter/material/Slider-class.html</a>
+<p>The Slider has several parameters
+  <ol>
+  <li><b>value: </b> followed by a variable that holds its current value. This should be a double</li>
+  <li><b>onChanged: </b> followed by the name of a function that handles a new double value when the slider is changed. You should
+  create a function that takes a double, and assigns your value variable to be the parameter passed in.</li>
+</ol>
+
+<p>Let's practice writing a function:
+  <pre>
+  void setNewValue(double value)
+  {
+    numClicks = value;
+  }
+  </pre>
+<p>
+  Then set the onChanged: parameter to the name of the function <b>setNewValue</b>. If you try running this, changing the slider won't change the text the way the button would do. This brings us to one of the main new concepts of Mobile Graphical Programming.
+</p>
+  <hr>
+<h1>Redraw on variable update </h1>
+<p>
+  In modern interfaces, the screen will only redraw when a variable has changed. If none of the variables have changed, then there is no need to redraw the screen.
+  In order to indicate that we are changing a variable and we want the screen to update, we use the <b>setState()</b> function.
+  <b><pre>
+    void setNewValue(double value)
+    {
+      setState(() {
+        numClicks = value;
+      });
+    }
+  </pre></b>
+  <p> Here, we are updating the <b>numClicks</b> variable. By doing this, Flutter will optimize the redraw so that it only updates widgets that actually use the <b>numClicks</b>
+variable. Any widget that uses numClicks will get updated.</p>
+</section>
+CircularProgressIndicator
+<h2 id="layouts">Layouts</h2>
+<p>To simplify layout management, you can only choose from Column, Row,
+or Box.
+  <ol><li>Column lays out elements from top to bottom. </li>
+  <li> Row lays out elements from left to right. </li>
+  <li> Stack lays out elements vertically, from first at the bottom, and then everything else is laid on top of the previous items.</li></p>
+</ol>
+More here: https://docs.flutter.dev/reference/widgets</li>
+<p>More here: https://docs.flutter.dev/ui/layout</p>
+</body>
+</html>
