@@ -11,17 +11,15 @@
 (Microsoft, Google, Apple) realized that JavaScript was not a good
 programming language. It doesn't have type checking, and it's purely an
 interpreted language. Microsoft proposed a new language called
-TypeScript, which is the same as JavaScript, except it enforces strong
-type checking. TypeScript just gets compiled to JavaScript before it
-gets run in the browser.</p>
-<p>Dart is similar to JavaScript except that it can be compiled to
-native code. It is also similar to Java so it should be easy to learn
-for those who already know it. Google has further developed the language
-as the basis for Flutter, which allows Dart to be transpiled to other
-languages.</p>
-<h2 id="variable-declaration">Variable declaration</h2>
-<p>Like with Java, you first write the variable type (int, float,
-double, boolean) followed by the variable name:
+TypeScript, which is a superset of JavaScript, meaning that it does everything JavaScript does,
+  but it can also enforce strong type checking. When publishing a web page in TypeScript, it just
+  gets compiled to JavaScript before it gets run in the browser.</p>
+<p>Dart is similar to JavaScript except that it can be compiled to native code. It is also similar to Java, so it should be easy to learn
+for those who already know it. Google has further developed the language as the basis for Flutter, which allows Dart to be compiled to other
+multiple platforms.</p>
+<hr>
+<h1 >Variable declaration</h1>
+<p>Like with Java, you first write the variable type <b>(int, float, double, boolean) </b> followed by the variable name:
   <pre>  int age;
   bool done = false; // In Dart, boolean is called bool
   float pi = 3.14;
@@ -32,19 +30,21 @@ value, then you can just write <strong>var</strong> and the compiler
 will make the variable type to be what it is first equal to:
   <pre>  var done = false; //false is bool
   var pi = 3.14; // This is a double
-  var age = 50; // This is an int</pre></p>
+  var age = 50; // This is an int
+  var name = "Eric" // This is String</pre></p>
 <p>If you don't want the variable to ever change, meaning that it will
-always be what it was first initialized to, then you can use
-<strong>const</strong> instead of var. <pre>  const PI = 3.14;
-  const URL = "http://www.google.com";</pre></p>
+always have what it was first initialized to, then you can use
+<strong>const</strong> instead of var. <pre>  const PI = 3.14; //Always double 3.14
+  const URL = "http://www.google.com"; //Always String "http://www.google.com </pre></p>
 <h2 id="nullable-objects">Nullable objects</h2>
-<p>Dart introduces a term called Nullable, meaning that the variable can
-be equal to null, meaning that it's not really an object. If an variable
+<p>Dart is one of several new languages that introduces a term called Nullable, meaning that the variable can
+be equal to null, or it can hold an object. If a variable
 is not nullable, then you can never set it to null:</p>
-<p><pre>String name = "";</pre></p>
-<p><pre>name = null;</pre></p>
+<p><pre>  String name = "";
+  name = null; //not possible! </pre></p>
 <p>To make a variable nullable, you add <b>?</b> after the object type:</p>
-<p><pre>String? name = "";</pre></p>
+<p><pre>  String? name = "";
+  name = null; // Ok</pre></p>
 <p>The reason to do this is to avoid writing explicit checks for
 null:</p>
 <p><pre>if(name != null) return name.length();</pre></p>
@@ -57,8 +57,8 @@ null:</p>
 3 parameters:</p>
 <p><pre>functionName( 44, 'a', false)</pre></p>
 <p>Dart introduces an idea of named parameters. Instead of relying on
-the position of the parameters, int a is first in the list, so 44 is the
-value, you can instead link the parameter to values:</p>
+the position of the parameters, <b>int a</b> is first in the list, so 44 is the
+value of a, you can instead link the parameter to values:</p>
 <p><pre>functionName( c:false, b:'a', a:44);</pre></p>
 <p>This way, false gets passed in as 'c', 'a' gets passed in for the
 parameter b, and 44 is for the parameter a.</p>
@@ -70,30 +70,28 @@ the parameters of the function:</p>
 <p>Now you can call the function but only pass in parameters that you
 want to change. If you only want to change the parameter
 <strong>name</strong>, then just pass in the new value</p>
-<pre>functionName ( name : "Eric, a:5 );</pre>
+<pre>functionName ( name : "Eric" );</pre><p>
+The parameter <b>a</b> will get the default value of <b>0</b> and parameter <b>b</b> gets the default value of <b>false</b>.
 <h2 id="when-to-use-this">When to use this?</h2>
-<p>In the code that was generated, find the file main.dart. You should
+<p>In the code that was generated for your first project, find the file main.dart. You should
 find the string 'You have pushed the button this many times:' somewhere
-in the code. It's in a <strong>Text()</strong> widget. If you look up
-the constructor for a Text widget, you find this: <img
+in the code. It's in a <strong>Text()</strong> widget.
+  If you right-click on the Text() constructor, then select "Go to" -> "Declaration or usages", you find this: <img
 src="images/TextWidget.png" alt="Text widget" /></p>
-<p>This means that everything in the { } is optional. If you want to
-change the look of the Text, you supply the <strong>style:</strong>
-parameter</p>
+<p>This means that everything in the { } is optional. There's only 1 parameter called <b>String this.data</b> which is outside the optional braces.
+  If you want to modify the Text widget, you can supply any of the optional parameters in any order as long as you supply the parameter names.
+  If we want to change the look of the Text, you supply the <strong>style:</strong> parameter</p>
 <pre>Text('You have pushed the button this many times:', style:TextStyle(  ))</pre>
 <p>Look at what the TextStyle() constructor is:</p>
-<figure>
-<img src="images/textStyleConstructor.png"
-alt="TextStyle constructor" />
-</figure>
+<img src="images/textStyleConstructor.png" alt="TextStyle constructor" />
 <p>If you want to change the size, pass in a new value for the parameter
 <strong>fontSize</strong>:</p>
 <pre>style:TextStyle( fontSize:30 )</pre></p>
 <p>If you want to change the font color, give a new value for the color
 parameter:</p>
-<p><code>style:TextStyle( fontSize:30, color:Colors.blue )</code></p>
+<p><pre>style:TextStyle( fontSize:30, color:Colors.blue )</pre></p>
 <p>You can reverse the order of fontSize and color parameters.</p>
-<p><code>style:TextStyle( color:Colors.blue, fontSize:30 )</code></p>
+<p><pre>style:TextStyle( color:Colors.blue, fontSize:30 )</pre></p>
 <h2 id="hot-swapping-of-code">Hot swapping of code</h2>
 <p>You're used to having to recompile the code in order to make changes
 and see what's changed. With hot-swapping, you just save the file and
@@ -102,7 +100,10 @@ the browser with the new TextStyle. When it's running, change the
 fontSize to something else and save the file. Watch as the GUI instantly
 updates without restarting.</p>
 
-<p>For more information, visit: <a href="https://www.adservio.fr/post/what-is-flutter-and-what-are-its-advantages">https://www.adservio.fr/post/what-is-flutter-and-what-are-its-advantages</a></p>
+
+<h1>Summary</h1>
+<p>Dart is similar to Java when it comes to declaring variables or functions. However, it also lets you write
+  that some parameters are optional and if they're left out then they will get their default values. You can also use <b>val</b> to declare a variable as long as you also supply the initial value.</p>
 </body>
 
 </html>
