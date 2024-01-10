@@ -12,18 +12,19 @@
 <p>Once you download it, run the installer process. Just choose the default options for installing it.</p>
 
 <p> Android Studio is a program like Eclipse or NetBeans. You can edit code, launch the debugger and inspect how your program is running. You can set
-    breakpoints and see what your variables are set to. You will also be able to choose to run your program in an Android device, in Chrome browser, or on
-    your desktop.</p>
+    breakpoints and see what your variables are set to. You will also be able to choose how to run your program, either on an Android device, in a web browser, or on your computer.</p>
 <br>
-<h1 id="install-flutter">Install Flutter</h1>
+<h1>Install Flutter</h1>
 <p>Once you have installed Android Studio, you must then install the Flutter SDK after:
 <ol >
     <li>Go to <a href="https://docs.flutter.dev/get-started/install" target="_blank">https://docs.flutter.dev/get-started/install</a></li>
-    <li>Choose your operating system version, and then select "Mobile" for your first type of app.</li>
-    <li>Look down the page and download the zip file of the Flutter SDK to your computer. Extract the contents and then move the "flutter" folder somewhere on
+    <li>Choose your operating system version, and then select "Mobile" for your first type of app.<img src="images/chooseMobile.png"> </li>
+    <li>Look down the page and download the zip file of the Flutter SDK to your computer.
+        <img src="images/downloadSDK.png">
+        Extract the contents and then move the "flutter" folder somewhere on
         your computer where the path doesn't have any spaces in the name (So not "Program Files").</li>
     <li>Add the <strong>flutter\bin</strong> folder to your operating system's PATH variable.</li>
-    <li>In Android Studio, open "File" -&gt; "Settings", and then find "plugins" in the list. Search for "Flutter" and install it.</li>
+    <li>Then open Android Studio.  On Windows, open "File" -&gt; "Settings", and then find "plugins" in the list. On Macintosh, select "AndroidStudio" -> "Settings". Search for "Flutter" and install it.</li>
 </ol>
 
 <img src="images/flutterPlugin.png" alt="Flutter Plugin" />
@@ -32,22 +33,23 @@
 <p>You will have to restart the IDE after so go ahead and do so.</p>
 <hr>
 <h1>Flutter</h1>
-<p>Flutter is a new generation of multiplatform frameworks that lets you write code in one language, but then compile it to another platform.
-    Flutter is similar to Electron and React Native. These frameworks used JavaScript or Typescript to
-    create the app, and then the native platforms were basically web
-    browsers embedded as an application.</p>
+<p>Flutter is a new generation of multiplatform frameworks that lets you write code in one language, but then compile it for many other platforms.
+    Flutter is similar to Electron and React Native, which uses JavaScript or Typescript to create the app, and then you can compile it for mobile, desktop or web.</p>
 <p>Flutter uses a language called Dart to write an application, and then the Dart code gets compiled to native code. Microsoft launched a similar
-    platform called MAUI (Multi-platform App UI) which uses C# and .NET to compile to machine code for different platforms.</p>
-<p> For now, your choice of platforms for running a Flutter app are: Windows, Linux, Macintosh, Android, iOS (iPhone and iPad), or Web browser (Chrome or Edge). Flutter
-also uses a new feature called Hot-Swapping of code, meaning that you don't need to restart your application to recompile your program.
+    platform called MAUI (Multi-platform App UI) which uses C# and .NET to compile to machine code for different platforms. <a href="https://dotnet.microsoft.com/en-us/apps/maui" target="_blank">https://dotnet.microsoft.com/en-us/apps/maui</a></p>
 
-<h1 id="create-a-flutter-project">Create a Flutter Project</h1>
+<p> For now, your choice of platforms for running a Flutter app are:
+    <ul><li>Windows</li><li> Linux</li><li> Macintosh</li><li> Android</li><li> iOS (iPhone and iPad)</li><li> Web browser (Chrome or Edge)</li>.
+</ul><p>Flutter
+also uses a new feature called <b>Hot-Swapping</b> of code, meaning that you don't need to restart your application to recompile your program.
+<hr>
+<h1 >Create a Flutter Project</h1>
 <ol type="1">
     <li>In Android Studio, select "File" -&gt; "New" -&gt; "New Flutter Project".  Make sure to select "Flutter" on the left side, and select the
         directory where you unzipped the Flutter SDK.<img src="images/createProject.png"
                                                           alt="Create project" /></li>
     <li>Give your project the name "test_flutter". For the Platforms, make
-        sure everything is selected. <img src="images/createProject2.png" alt="Create project" /></li>
+        sure everything is selected. <img src="images/createProjectAllPlatforms.png" alt="Create project" /></li>
 </ol>
 <p>This will take some time to create the project Once it has finished, you should see this:
 
