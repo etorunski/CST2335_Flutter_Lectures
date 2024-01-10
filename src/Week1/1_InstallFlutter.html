@@ -6,63 +6,52 @@
 </head>
 <body>
 
+<h1 >Introduction</h1><p>
+    In this course, we will use AndroidStudio for developing mobile graphical user interfaces. You can download it from:
+    <a href="https://developer.android.com/studio" target="_blank">https://developer.android.com/studio</a></p>
+<p>Once you download it, run the installer process. Just choose the default options for installing it.</p>
+
+<p> Android Studio is a program like Eclipse or NetBeans. You can edit code, launch the debugger and inspect how your program is running. You can set
+    breakpoints and see what your variables are set to. You will also be able to choose to run your program in an Android device, in Chrome browser, or on
+    your desktop.</p>
+<br>
 <h1 id="install-flutter">Install Flutter</h1>
-<ol type="1">
-    <li>Go to <a href="https://docs.flutter.dev/get-started/install" >https://docs.flutter.dev/get-started/install</a></li>
-    <li>Choose your operating system version.</li>
-    <li>Then download the zip file of the Flutter SDK to your computer.
-        Extract the contents and then move the "flutter" folder somewhere on
-        your computer where the path doesn't have any spaces in the name (So not
-        "Program Files").</li>
-    <li>Add the <strong>\flutter\bin</strong> folder to your operating
-        system's PATH variable.</li>
-    <li>In Android Studio, open "File" -&gt; "Settings", and then find
-        "plugins" in the list. Search for "Flutter" and install it.</li>
+<p>Once you have installed Android Studio, you must then install the Flutter SDK after:
+<ol >
+    <li>Go to <a href="https://docs.flutter.dev/get-started/install" target="_blank">https://docs.flutter.dev/get-started/install</a></li>
+    <li>Choose your operating system version, and then select "Mobile" for your first type of app.</li>
+    <li>Look down the page and download the zip file of the Flutter SDK to your computer. Extract the contents and then move the "flutter" folder somewhere on
+        your computer where the path doesn't have any spaces in the name (So not "Program Files").</li>
+    <li>Add the <strong>flutter\bin</strong> folder to your operating system's PATH variable.</li>
+    <li>In Android Studio, open "File" -&gt; "Settings", and then find "plugins" in the list. Search for "Flutter" and install it.</li>
 </ol>
 
-<img src="images/flutterPlugin.png" alt="FLutter Plugin" />
-<hr>
+<img src="images/flutterPlugin.png" alt="Flutter Plugin" />
+
 
 <p>You will have to restart the IDE after so go ahead and do so.</p>
+<hr>
+<h1>Flutter</h1>
+<p>Flutter is a new generation of multiplatform frameworks that lets you write code in one language, but then compile it to another platform.
+    Flutter is similar to Electron and React Native. These frameworks used JavaScript or Typescript to
+    create the app, and then the native platforms were basically web
+    browsers embedded as an application.</p>
+<p>Flutter uses a language called Dart to write an application, and then the Dart code gets compiled to native code. Microsoft launched a similar
+    platform called MAUI (Multi-platform App UI) which uses C# and .NET to compile to machine code for different platforms.</p>
+<p> For now, your choice of platforms for running a Flutter app are: Windows, Linux, Macintosh, Android, iOS (iPhone and iPad), or Web browser (Chrome or Edge). Flutter
+also uses a new feature called Hot-Swapping of code, meaning that you don't need to restart your application to recompile your program.
+
 <h1 id="create-a-flutter-project">Create a Flutter Project</h1>
 <ol type="1">
-    <li>In Android Studio, select "File" -&gt; "New" -&gt; "New Flutter Project" <img src="images/createProject.png"
-                                                                                      alt="Create project" /></li>
-    <li>Make sure to select "Flutter" on the left side, and select the
-        directory where you unzipped the Flutter SDK.</li>
+    <li>In Android Studio, select "File" -&gt; "New" -&gt; "New Flutter Project".  Make sure to select "Flutter" on the left side, and select the
+        directory where you unzipped the Flutter SDK.<img src="images/createProject.png"
+                                                          alt="Create project" /></li>
     <li>Give your project the name "test_flutter". For the Platforms, make
         sure everything is selected. <img src="images/createProject2.png" alt="Create project" /></li>
 </ol>
-<hr>
-<h1>Flutter</h1>
-<p>Flutter is a new generation of multiplatform frameworks that lets you
-    write code in one language, but then compile it to another platform.
-    Initially, there were frameworks like Titanium SDK
-    (https://titaniumsdk.com/), Electron (https://www.electronjs.org/) React
-    and React Native. These frameworks used JavaScript or Typescript to
-    create the app, and then the native platforms were basically web
-    browsers embedded as an application.</p>
-<p>Flutter is a next-generation of this concept that uses a language
-    called Dart to write an application, and then the Dart code gets
-    trans-compiled to other native languages (Trans-compiled means that it's
-    directly translated to another language like Java, C++ or Swift and then
-    that gets compiled to native code). Microsoft launched a similar
-    platform called MAUI (Multi-platform App UI) which uses C# to compile to
-    machine code for each platform. However, there is a new technology
-    called Web Assembly, which is a low-level set of assembly instructions
-    that browsers have all agreed to support by compiling to native code for
-    each processor. It's similar to the idea of Java, where high-level
-    programming languages are compiled to an intermediate machine bytecode,
-    however with Java, Oracle controls the design of the virtual machine and
-    you have to install it separately to run the code. With Web Assembly,
-    the major browsers (Safari, Firefox and Chrome) have agreed on the
-    language specification and they can each implement how Web Assembly will
-    be compiled to the processors. Also, the technology will be built in to
-    the browsers so there won't be any need to install a Virtual Machine.
-    You can expect that Flutter and MAUI will shift to produce Web Assembly
-    code in the near future.</p>
-<p>For now, you can select to run your Flutter program on your local
-    computer, on a web browser, or on an emulator:
+<p>This will take some time to create the project Once it has finished, you should see this:
+
+To test compiling your app for different platforms, try the following steps:</p>
 <ol>
     <li>From the compile target, select "Windows" and then Debug. <img src="images/compileWindows.png" alt="Compile Windows" />
         You should eventually see a Windows program running. <img src="images/windowsProgram.png" alt="Windows Program" /></li>
@@ -75,5 +64,7 @@
     <li>If you have a Macintosh computer, you should also be able to select
         an iPhone emulator to run it.</li>
 </ol>
+
+<p>The important thing to understand about Flutter is that you just write the code once and you can run it on many different platforms.</p>
 </body>
 </html>

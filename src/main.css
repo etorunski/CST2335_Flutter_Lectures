@@ -1,5 +1,5 @@
 
-html {
+html{
   color: #222;
   font-size: 1em;
   line-height: 1.4;
@@ -23,6 +23,8 @@ h2 {
   text-align: left;
 }
 ol,ul{
+  font-size: 1em;
+
   display:block;
   margin-left:150px;
 }
