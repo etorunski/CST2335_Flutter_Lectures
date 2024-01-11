@@ -51,23 +51,32 @@ also uses a new feature called <b>Hot-Swapping</b> of code, meaning that you don
     <li>Give your project the name "test_flutter". For the Platforms, make
         sure everything is selected. <img src="images/createProjectAllPlatforms.png" alt="Create project" /></li>
 </ol>
-<p>This will take some time to create the project Once it has finished, you should see this:
+<p>This will take some time to create the project Once it has finished, you should see this at the top of your screen:
+<img src="images/platformChoice.png" width="1000">
 
-To test compiling your app for different platforms, try the following steps:</p>
+If you open the menu, you can see what platforms you can run your app on.
+<img src="images/selectPlatform.png"> </p>
 <ol>
-    <li>From the compile target, select "Windows" and then Debug. <img src="images/compileWindows.png" alt="Compile Windows" />
-        You should eventually see a Windows program running. <img src="images/windowsProgram.png" alt="Windows Program" /></li>
+    <li>From the compile target, select "Windows" and then Debug.
+        However, for this to work, you must have Visual Studio installed. You must then also have the Desktop C++ tools installed in Visual Studio.
+        You can get the free Community Edition from here:
+        <a href="https://visualstudio.microsoft.com/vs/community/" target="_blank">https://visualstudio.microsoft.com/vs/community/</a></li>
+
+    <img src="images/compileWindows.png" alt="Compile Windows" />
+        You should eventually see a Windows program running. <img src="images/windowsProgram.png" alt="Windows Program" />
     <br>
 
     <li>Next, select a web browser "Chrome" or "Edge" and debug again. It will only debug on Chrome or Edge,
         Firefox and Safari won't work. <img src="images/edgeProgram.png" alt="Run on Edge" /></li>
     <li>You can also select to run it on an Android emulator. Select the emulator and debug it again.
         <img src="images/runAndroid.png" alt="Run on Android" />
+    You might have to show your running devices by pushing this button:
+    <img src="images/showDevices.png">
     <li>If you have a Macintosh computer, you should also be able to select
         an iPhone emulator to run it.</li>
 </ol>
 
-<p>The important thing to understand about Flutter is that you just write the code once and you can run it on many different platforms. If you would like more information about flutter, go here:
+<p>The important thing to understand about Flutter is that you just write the code once and you can run it on many different platforms. If you would like more information about Flutter, go here:
  <a href="https://www.adservio.fr/post/what-is-flutter-and-what-are-its-advantages" target="_blank">https://www.adservio.fr/post/what-is-flutter-and-what-are-its-advantages</a></p>
 </body>
 </html>
