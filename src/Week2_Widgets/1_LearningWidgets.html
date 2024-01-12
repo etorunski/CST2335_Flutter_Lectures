@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Learning Widgets
+    </title>
+</head>
+<body>
+
+<h1>Learning Widgets</h1><p>
+    Flutter has many widgets, and we won't have time to learn them all. However, we will learn some of the basics, and you should recognize the pattern and be able to then add any Widgets you find later.
+
+<h2>Image</h2>
+<p>Images can be any of the normal image formats: JPG, PNG, GIF, BMP. Let's start by downloading an image from the internet onto our computer:
+    <a href="http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg">http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg</a>
+
+<br>Rename the file to <b>algonquin.jpg</b> to make things simple. Next in your Flutter project, create a directory called "images" in the root project folder. Then copy your algonquin.jpg file into the images folder.
+    Next, you must list all of the images your app uses so that they get packaged along with your code. Your project has an important file called <b>pubspec.yaml</b>. Open that file and look for the line:
+    <b># To add assets to your application, add an assets section, like this:</b><br>
+    Below that is where you should list the images you put in the images folder of your project: <pre># To add assets to your application, add an assets section, like this:
+  assets:
+    - images/algonquin.jpg
+</pre>
+<p><b> Make sure that you use 2 spaces for indenting!</b>. There should be 2 spaces before <b>assets:</b>, and there should be 4 spaces before <b>"- images/algonquin.jpg"</b></p>
+<p>Next open the file main.dart from last week. Below the Text() widget saying "You have pushed the button this many times", add this:
+<pre>  Image.asset("images/algonquin.jpg")
+</pre>
+<p>Then debug your application and you should see your picture there. It might be quite large but you can resize the image using <b>height:</b> and <b>width:</b> parameters:
+<pre>  Image.asset("images/algonquin.jpg", width: 200, height:200)</pre>
+
+<h2>Text</h2>
+<p> We have already looked at <b>Text</b> last week, but the Text widget normally shows a String. You can also change the size of the string using the <b>fontSize</b> parameter.
+
+    <h2>Button</h2><p>
+A button is just an area on the screen that you can click on. The area can have either a Text or Image widget in it. Let's have a look:
+<pre> ElevatedButton( onPressed: buttonClicked, child:  Text("Click me")  ) </pre><p>
+
+This shows a button with the text "Click Me", but we have to write a function <b>buttonClicked</b> which will get called whenever the user clicks on the button:
+<pre> void buttonClicked(){
+
+  }
+</pre>
+<p> An ElevatedButton can also show an Image instead of text, if you just change the <b>child:</b> parameter to be an Image instead.
+<pre>  ElevatedButton(
+    onPressed: buttonClicked,
+    child:Image.asset("images/algonquin.jpg", width: 200, height:200)
+    )
+</pre><p> Instead of declaring a function somewhere else in your code and then giving the function name as the onPressed: parameter, you can instead declare the function right in the parameter:
+<pre>
+    ElevatedButton(
+        onPressed: () {  }, //  <--- Lambda function
+        child:Image.asset("images/algonquin.jpg", width: 200, height:200),
+    )</pre>
+
+<p> An ElevatedButton can take any Widget as its child: parameter so that you can put Text, Images, etc. and when you click on the Button's surface, it will call the <b>onPressed</b> function.</p>
+<h2>Checkbox</h2>
+<p>A Checkbox takes a <b>value</b> parameter, which should be a boolean indicating whether the box is checked or not. There should also be a function which gets called whenever the user clicks on the checkbox.
+This function passes in a boolean indicating whether the box is now checked or not.  Let's declare an instance variable to store if this should be checked or not:
+<pre> var isChecked = false;</pre><p>Then set that variable to be the value of the checkbox:
+<pre>Checkbox(value: isChecked, onChanged: ),</pre>
+<p>Now create the update function for when the user clicks on the checkbox: <pre> (newValue) { setState( () { isChecked = newValue; } )</pre>
+
+<p>There is a problem with this update function, since the callback function declares <b>newValue</b> as nullable, we can use a not-null assertion (!).
+    <pre>isChecked = newValue !;</pre>
+<p> This means that Flutter will check that newValue not null. If it is null, then the app will crash. You don't have to worry about this because if you are clicking on a checkbox, then the checkbox exists
+    and it has a true/false value. I'm not sure how it can be null in the first place.
+</p>
+<h2>Switch</h2>
+<p>A Switch works in the same way as a Checkbox. It can either be in an "On" state or "Off" state. In fact, just copy and paste the Checkbox line from above but change Checkbox to Switch. It will still have a
+<b>value:</b> parameter and an <b>onChanged: </b> callback function. Leave the callback function the same so that it will also change the value of <b>isChecked</b>. This just shows that when a variable gets updated using
+<b>setState()</b>, then any widget that uses that variable gets updated:<pre>Switch(value:isChecked, onChanged: (newValue) {  setState(() { isChecked = newValue!; });}),
+</pre></p>
+<h2>TextField</h2>
+<p>
+    TextField allows a user to type in some text. This is used for login name, password, address, etc. In Flutter, you use a TextField() widget. However this widgets needs an
+    TextEditingController object to read what the user has typed.
+    <pre>  late TextEditingController _controller; </pre>
+<p> The keyword <b>late</b> means that the object will be initialized later, but the variable is not nullable. This brings us to some of the lifecycle functions of Flutter. A State
+    class has a <b>void initState()</b> function that always gets called first, sort of like a constructor.
+    There is also a <b> void dispose() </b> function that gets called when the widget is deleted. You must use these functions to create and then dispose of the TextEditingController:
+    <pre>  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+</pre>
+<p>Now you can create a TextField object:
+    <pre> TextField(controller: _controller),</pre>
+<p>Then when you want to know what is currently typed in the TextField, use:
+    <pre> _controller.value.text </pre><p>This returns a String that is currently what is in the TextField.
+    If you want to overwrite what is there with a new string, use:
+    <pre>_controller.text = "The new text";</pre>
+<p> The TextField widget is pretty plain looking and there are many options to add to make it look nicer. There is a <b>decoration:</b> parameter where you can give an <b>InputDecoration</b> object.
+<ul><li>
+    <b>hintText:</b> This is a string that appears in the field but disappears as soon as you start entering text. This usually explains what to write in this field.
+</li>
+<li><b>labelText:</b> This is a string the appears above the field normally saying which field this is, such as "First Name", "Last Name", "login name", etc.</li>
+    <li><b>border:</b> This can give the field a nice outline around the field. </li>
+</ul>
+<pre> TextField(controller: _controller,
+    decoration: InputDecoration(
+        hintText:"Type here",
+        border: OutlineInputBorder(),
+        labelText: "First name"
+    )),</pre>
+</p>
+
+<br><br><br><br><br><br>
+</body>
+</html>
