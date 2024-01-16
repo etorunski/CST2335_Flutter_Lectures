@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Using Git</Title>
+</head>
+<body>
+<h1 >Git</h1>
+<p>You should have Git installed from your previous courses. If not, then go to <a href="https://git-scm.com/downloads">Git - Downloads (git-scm.com)</a>&nbsp;and download and install Git on your computer. For installing git, all of the default install options are fine.</p>
+<p>Git is a program that tracks changes in your source code, and who made those changes. It was created by Linus Torvalds, the same person who crated Linux.
+    Git was created to help create Linux, where hundreds of people are contributing code to a project from around the world.</p>
+<p>Git uses a list of files to specify which files to check. To start the process of tracking files in a directory, type <string> git init</string> from the command line
+    and git will install a <strong>.git</strong> folder which stores all of the tracking information. To add a file to the list of files being tracked, use the command
+    <strong>git add _________</strong> but put the filename of the file you want to track. If you want to track everything in a directory, then use the command
+    <strong>git add .</strong> and don't forget the dot "." at the end to mean the current directory.</p>
+<section class="section is-medium"><B><u><h2 class="title">Practice - Lab Work</h2></u></B></section>
+<h4><span style="color: #009e0f;">Lab exercise step 3:</span></h4>
+<h1>Enable git integration</h1>
+<p>Once git is installed, you can enable git integration with Android Studio by clicking on the "VCS" menu, and click on "Enable Version Control Integration", or open
+    the <strong>git bash</strong> program and type "git init" in the root directory of your project.</p>
+<p><img src="images/img_p4_1.png" data-d2l-editor-default-img-style="true" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"></p>
+<p>On the next window, Git should be pre-selected so just click "Ok":</p>
+<p><img src="images/img_p4_2.png" data-d2l-editor-default-img-style="true" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"></p>
+<p></p>
+<p></p>
+<p>This is the same as initializing your git repository with the command "git init" at the root of your project folder. Now notice that Android Studio highlights files in various colours to show their git status:</p>
+<p><img src="images/img_p4_3.png" data-d2l-editor-default-img-style="true" style="max-width: 100%;"></p>
+<p>RED means that the files aren't even added to git tracking.</p>
+<p></p>
+<h1>Adding your files to git</h1>
+<p>Next, add your files to git tracking by clicking on the top-most folder in your project window with your right mouse button to show the context menu. Select the "git" option and select "add". Notice that after adding the files to git, the filenames all turn green. Watch this video example:</p>
+<p></p>
+<p><video title="Example of adding files to git" controls="controls" width="800" height="300">
+    <source src="videos/AddFilesToGit_W1.mp4" type="video/mp4">
+</video></p>
+<p></p>
+<p></p>
+<h2><span style="text-decoration: underline;"><em><strong>Your first commit</strong></em></span></h2>
+<p>Now that your files have been added to git for tracking, you should do your first commit. From your previous courses, you can do this from the command terminal with the command:</p>
+<p><em><strong>git commit -am "Initial Commit"</strong></em></p>
+<p>Or, you can use the menus to do the same thing. Right-click on the top most folder in the project window and select "Git" -&gt; "Commit Directory". Watch this video example:</p>
+<p><video title="Make your first git commit" controls="controls" width="800" height="300">
+    <source src="videos/FirstGitCommit.mp4" type="video/mp4">
+</video></p>
+<p><strong>Notice in the video that I turned off the "perform code analysis", and "Check TODO" options in Android Studio</strong>. These have nothing to do with git and they are waste of time so just uncheck those options. Then type "Initial Commit" as your commit message and then type commit. The video shows that I didn't set my git user information yet on this computer. You can type any name / email combination. There is no checking if they are correct or not. You can always change it later, as explained in this webpage: <a href="https://linuxize.com/post/how-to-configure-git-username-and-email/">How to Configure Git Username and Email Address | Linuxize</a></p>
+<h1>Share your project on Github</h1>
+<p>You should already have a github account from your previous courses. In this course, we'll use it for saving our code in a github repository for safekeeping, and for working with other students. From Android Studio, click on the "VCS" menu at the top, click "Import into Version Control", then "Share project on github".</p>
+<p>On the next window, github no longer allows login using login and password, so you have to use access tokens instead. Click on the "Use Token" link on this window:</p>
+<p><img src="images/img_p4_4.png" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;" data-d2l-editor-default-img-style="true"></p>
+<p>Now, you must go to your github account and generate an access token that has access for: repo, gist, and read:org</p>
+<p><img src="images/img_p4_5.png" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;" data-d2l-editor-default-img-style="true"></p>
+<p>From your github account, click on your profile, and select "Setting". Then, select "Developer Settings" on the left side. Then select "Personal Access Tokens", and select "Generate New Token". From the window for making a new personal access token, give it a name such as "Android Studio CST2335 token", or some name that says what it's for. From the access options, select repo, read:org, and gist.&nbsp; Then go to the bottom and and click "Generate Token". Once the token is generated, click on the clipboard icon to copy the token.</p>
+<p>Watch this video to show you the steps:</p>
+<p><video title="Generating Token from github" controls="controls" width="800" height="300">
+    <source src="videos/GenerateTokenAndroidStudio.mp4" type="video/mp4">
+</video></p>
+<p>Once you have your token, paste it back into your Android Studio login window and click "Log In". Select a repository name of MyAndroidLabs, and make it private. You can't have any spaces in the repository name. Select the "private" checkbox to make it a private repository and then click on "Share".</p>
+<p>Once Android Studio has pushed your code to the new repository, you should get a notification window in the bottom right. You can then view your code on github to make sure it's been committed properly:</p>
+<p><video title="Viewing your github repository" controls="controls" width="800" height="300">
+    <source src="videos/ViewingGithubRepository.mp4" type="video/mp4">
+</video></p>
+<p>Since it's a private repository, you'll have to log in to your account to view it. You have correctly finished all of these steps when you can see your code on the github repository, and your files in Android Studio all have black filenames. If there are any red, green or blue filenames, then you should commit your files again and then push your commit.</p>
+<p>Once the files on your git repository match the files in your project window, you are done this step of the lab. Go on to read learning XML.</p>
+<section class="section is-medium"><B><u><h2 class="title">Summary:</h2></u></B></section>
+<p>
+    Git tracks changes in your files over time. Git only tracks the files that are on the tracking list. AndroidStudio shows <strong>untracked</strong> files in Red, <strong>uncommitted</strong> files in Green, <strong>changed</strong> files in Blue.
+
+</p>
+</body></html>
