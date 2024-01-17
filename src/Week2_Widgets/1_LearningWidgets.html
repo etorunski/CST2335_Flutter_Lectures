@@ -88,10 +88,10 @@ This function passes in a boolean indicating whether the box is now checked or n
 <h2>TextField</h2>
 <p>
     TextField allows a user to type in some text. This is used for login name, password, address, etc. In Flutter, you use a TextField() widget. However this widgets needs an
-    TextEditingController object to read what the user has typed.
+    TextEditingController object to read what the user has typed so go ahead and define a new variable:
     <pre>  late TextEditingController _controller; </pre>
 <p> The keyword <b>late</b> means that the object will be initialized later, but the variable is not nullable. This brings us to some of the lifecycle functions of Flutter. A State
-    class has a <b>void initState()</b> function that always gets called first, sort of like a constructor.
+    class inherits a <b>void initState()</b> function that always gets called first, sort of like a constructor.
     There is also a <b> void dispose() </b> function that gets called when the widget is deleted. You must use these functions to create and then dispose of the TextEditingController:
     <pre>  @override
   void initState() {
@@ -105,7 +105,14 @@ This function passes in a boolean indicating whether the box is now checked or n
     super.dispose();
   }
 </pre>
-<p>Now you can create a TextField object:
+<p>If you put a breakpoint on the initState() function, you will see that the debugger will pause when the program runs the initState() function:
+<img src="images/setBreakpoint.png"><p>
+    When the program hits the breakpoint, the program is paused so you can see what all the variables are set to at that point in time.
+
+    The program will not continue until you press on the resume button.
+    <img src="images/resumeDebugger1.png">
+</p>
+<p>Now you can create a TextField object below the Image from before:
     <pre> TextField(controller: _controller),</pre>
 <p>Then when you want to know what is currently typed in the TextField, use:
     <pre> _controller.value.text </pre><p>This returns a String that is currently what is in the TextField.
