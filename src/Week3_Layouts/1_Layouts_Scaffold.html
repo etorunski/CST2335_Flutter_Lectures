@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Scaffold</Title>
+</head>
+<body>
+<h1 >Git Branches</h1>
+<p>Using branches in Git means that you can add file changes on a different path. You can create a branch through the git
+menu. Click on New Branch. <img src="images/createBranch.png">  </p>
+<p>Create a new branch called "Week3". <img src="images/newBranch.png"> </p>
+
+<p>Now, whenever you commit changes, the changes will be applied to the Week3 branch instead of the main branch.</p>
+<p>Let's change the contents of the Column().
+<pre>  Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[         ],
+        )</pre>
+<p> Some Widgets only take 1 child, like Button, or the <b>Center()</b>. The <b>Column()</b> widget takes an array of
+    children:[  ]. Let's add 4 ElevatedButtons: Button 1, Button 2, Button 3, Button 4:
+    <img src="images/fourButtons.png"><p>This is what <b>MainAxisAlignment.Center</b> looks like. Let's commit
+    these changes now so that we can go back to it later. <b>MainAxisAlignment.Start</b> makes all the children
+    start from the top:
+    <img src="images/fourButtonsStart.png">
+    <p><b>MainAxisAlignment.End</b> makes all the children start at the bottom:
+    <img src="images/fourButtonsEnd.png">
+    <p><b>MainAxisAlignment.SpaceEvenly</b> creates an even amount of space between the children and the top and bottom:
+    <img src="images/fourButtonsSpaceEvenly.png">
+    <p><b>MainAxisAlignment.SpaceBetween </b> makes the children line against the top and bottom and puts all the
+    space between the elements. <img src="images/fourButtonsSpaceBetween.png">
+    <p><b>MainAxisAlignment.SpaceAround</b> is similar to <b>SpaceEvenly</b> except that the space at the top
+    and bottom is only half that of the space between the elements. <img src="images/fourButtonsSpaceAround.png">
+    <p>Your options for spacing elements in a Column are:
+    <ul>
+    <li>MainAxisAlignment.center</li>
+    <li>MainAxisAlignment.start</li>
+    <li>MainAxisAlignment.end</li>
+    <li>MainAxisAlignment.spaceEvenly</li>
+    <li>MainAxisAlignment.spaceAround</li>
+    <li>MainAxisAlignment.spaceBetween</li>
+    </ul>
+<p>These parameters can also be used for <b>Row()</b> instead of Column. Column puts elements vertically, where Row
+    lines them up horizontally from left to right.
+</p>
+</body></html>
