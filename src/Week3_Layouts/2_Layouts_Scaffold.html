@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Scaffold</Title>
+</head>
+<body>
+<h1 >Scaffold</h1>
+<p>Scaffold is a layout that separates your page into several regions. There is an app bar, a body, and a footer.</p>
+
+<p>In the AppBar() constructor, you can change the <b>title:</b> parameter and it will change what string appears at the top of your page.</p>
+<p>The AppBar() also has an <b>actions:</b> parameter which takes an array of Widgets, just like a Column or Row. This
+is a special row in the top of the app for commonly used buttons. Go ahead and add two buttons:
+<pre> AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text("ABCDE"),
+        actions: [
+          OutlinedButton(onPressed: () { }, child:Text("Button 1")),
+          OutlinedButton(onPressed: (){ }, child: Text("Button 2"))]
+      ),</pre>
+
+<p> You'll see a row of buttons on the top right of "Action buttons". <img src="images/actionBarButtons.png">
+
+    <p>To get rid of the "Debug" banner, add this parameter <b>debugShowCheckedModeBanner: false,</b> to the <b>MaterialApp()</b> constructor:</p>
+
+<pre>  return MaterialApp(
+     <b> debugShowCheckedModeBanner: false,</b>
+      title: 'Flutter Demo',
+      theme: ThemeData(</pre>
+</p>
+<p>NavigationDrawer - the Scaffold also has a <b>drawer:</b> parameter which lets the user show a pop-out page from the left side
+ of the page:
+<pre> drawer:Drawer(child:Text("Hi there")),</pre>
+<img src="images/navigationDrawer.png">
+<p>The <b>child:</b> element can again be a Column() of items going down the side of the page.</p>
+<hr>
+<h2>Bottom Navigation Bar:</h2>
+<p>The bottom navigation bar is a set of icons you can put at the bottom of the page for easy navigation:
+<pre> BottomNavigationBar(items: [], onTap:(btnIndex){  }  )</pre>
+<p>The items array should be a bunch of <b>BottomNavigationBarItem</b> objects:
+    <pre>
+        BottomNavigationBarItem( icon: Icon(Icons.camera), label: 'Camera'  ),
+        BottomNavigationBarItem( icon: Icon(Icons.add_call), label: 'Phone' ),</pre>
+<p>The icon parameter has many possible pre-installed values to choose from. You can also set a label for the tabs:
+    <img src="images/BottomNavigationItems.png">
+    <p>The BottomNavigationBar also has an <b>onTap:</b> parameter that takes a function to call when
+the user presses one of the items. This function should take an <b>int</b> representing the index of which
+of the items was selected. <pre> onTap: (buttonIndex) {   } ,</pre></p>
+</body></html>
