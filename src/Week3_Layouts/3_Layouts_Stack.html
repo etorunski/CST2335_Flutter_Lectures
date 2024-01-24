@@ -28,7 +28,19 @@ to align elements using a stack:
     <li><b>AlignmentDirectional.topCenter</b>  - This is the bottom middle</li>
     <li><b>AlignmentDirectional.topEnd</b>  - This is the bottom right corner</li>
 </ul>
-
 </p>
+<p>You can also mix a combination of Column, Row, and Stack to make layouts for a page.
+<img src="https://homefrontmag.com/wp-content/uploads/skillet-cookie-recipe-ingredients-278x360.jpg">
+In this example, the first two rows are the title and subtitle. Then there are a list of recipe ingredients, where a row has an image on the left followed
+by the ingredient.Let's take a moment now to see how would you fill in the code:</p>
+<pre>
+     Column( crossAxisAlignment: CrossAxisAlignment.start,  children: [
+          Text("One-pan skillet Cookie", style: TextStyle(fontSize: 30.0),),
+          Text("Ingredient List", style: TextStyle(fontSize: 20.0)),
+              Row(  children: [ Icon(Icons.star), Text("1 stick [8 TBSP] Unsalted butter") ] )
+
+      ])
+</pre>
+
 <p>For more information, have a look at: <a href="https://medium.com/@divyansh_garg/layout-widgets-in-flutter-508280c22b71">https://medium.com/@divyansh_garg/layout-widgets-in-flutter-508280c22b71</a> </p>
 </body></html>
