@@ -1,8 +1,7 @@
 Introduction
 Widgets (Text, Image, Button, Checkbox, InputText), Javadoc, Git
-Layouts (Column, Row, Box), Scaffold, Appbar
+Layouts (Column, Row, Stack), Scaffold, Appbar
 Moving between pages,SharedPreferences
-Networking (JSON)
 ListView
 SQL
 Fragments, Internationalization

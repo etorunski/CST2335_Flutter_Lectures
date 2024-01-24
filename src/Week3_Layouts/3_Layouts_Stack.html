@@ -6,44 +6,29 @@
 </head>
 <body>
 <h1>Stack</h1>
-<p>Scaffold is a layout that separates your page into several regions. There is an app bar, a body, and a footer.</p>
+<p>A Stack() widget is something that lays out items one over top of the other. For instance, a picture on the bottom, and some words over the picture:</p>
+<pre>Stack(
+          children: &lt;Widget&gt;[
+            Image.asset("images/algonquin.jpg"),
+            Text("Algonquin College", style: TextStyle(fontSize: 30.0, backgroundColor:Colors.white ),)
+          ])</pre>
+<img src="images/stackLayout.png">
+<p>
+This shows our image, and then the text "Algonquin college" on top of the image, in the top left corner by default. There are 9 choices of where
+to align elements using a stack:
+<ul><li><b>AlignmentDirectional.topStart</b>  - This is the top left corner</li>
+    <li><b>AlignmentDirectional.topCenter</b>  - This is the top middle</li>
+    <li><b>AlignmentDirectional.topEnd</b>  - This is the top right corner</li>
 
-<p>In the AppBar() constructor, you can change the <b>title:</b> parameter and it will change what string appears at the top of your page.</p>
-<p>The AppBar() also has an <b>actions:</b> parameter which takes an array of Widgets, just like a Column or Row. This
-is a special row in the top of the app for commonly used buttons. Go ahead and add two buttons:
-<pre> AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text("ABCDE"),
-        actions: [
-          OutlinedButton(onPressed: () { }, child:Text("Button 1")),
-          OutlinedButton(onPressed: (){ }, child: Text("Button 2"))]
-      ),</pre>
+    <li><b>AlignmentDirectional.centerStart</b>  - This is the middle left side</li>
+    <li><b>AlignmentDirectional.center</b>  - This is the middle</li>
+    <li><b>AlignmentDirectional.centerEnd</b>  - This is the  middle right side</li>
 
-<p> You'll see a row of buttons on the top right of "Action buttons". <img src="images/actionBarButtons.png">
+    <li><b>AlignmentDirectional.bottomStart</b>  - This is the bottom left corner</li>
+    <li><b>AlignmentDirectional.topCenter</b>  - This is the bottom middle</li>
+    <li><b>AlignmentDirectional.topEnd</b>  - This is the bottom right corner</li>
+</ul>
 
-    <p>To get rid of the "Debug" banner, add this parameter <b>debugShowCheckedModeBanner: false,</b> to the <b>MaterialApp()</b> constructor:</p>
-
-<pre>  return MaterialApp(
-     <b> debugShowCheckedModeBanner: false,</b>
-      title: 'Flutter Demo',
-      theme: ThemeData(</pre>
 </p>
-<p>NavigationDrawer - the Scaffold also has a <b>drawer:</b> parameter which lets the user show a pop-out page from the left side
- of the page:
-<pre> drawer:Drawer(child:Text("Hi there")),</pre>
-<img src="images/navigationDrawer.png">
-<p>The <b>child:</b> element can again be a Column() of items going down the side of the page.</p>
-<hr>
-<h2>Bottom Navigation Bar:</h2>
-<p>The bottom navigation bar is a set of icons you can put at the bottom of the page for easy navigation:
-<pre> BottomNavigationBar(items: [], onTap:(btnIndex){  }  )</pre>
-<p>The items array should be a bunch of <b>BottomNavigationBarItem</b> objects:
-    <pre>
-        BottomNavigationBarItem( icon: Icon(Icons.camera), label: 'Camera'  ),
-        BottomNavigationBarItem( icon: Icon(Icons.add_call), label: 'Phone' ),</pre>
-<p>The icon parameter has many possible pre-installed values to choose from. You can also set a label for the tabs:
-    <img src="images/BottomNavigationItems.png">
-    <p>The BottomNavigationBar also has an <b>onTap:</b> parameter that takes a function to call when
-the user presses one of the items. This function should take an <b>int</b> representing the index of which
-of the items was selected. <pre> onTap: (buttonIndex) {   } ,</pre></p>
 <p>For more information, have a look at: <a href="https://medium.com/@divyansh_garg/layout-widgets-in-flutter-508280c22b71">https://medium.com/@divyansh_garg/layout-widgets-in-flutter-508280c22b71</a> </p>
 </body></html>
