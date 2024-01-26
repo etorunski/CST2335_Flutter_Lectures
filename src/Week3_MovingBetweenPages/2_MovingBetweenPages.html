@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Snackbar messages</title>
+</head>
+<body>
+
+<h1>Move to next page</h1>
+
+<h1>Named routes</h1>
+<p>In order to support web sites, we can use named routes. Named routes let your app behave like a website:
+<ul>
+    <li><b>/pageOne</b> For going to page one</li>
+    <li><b>/pageTwo</b> For going to page two</li>
+</ul>
+</p>
+<p>In the <b>MaterialApp(</b>  declaration of your app, where you set removed the debug banner, you can also define the
+routes to your different pages:
+<pre>
+    MaterialApp(
+        title: 'Named Routes Demo',
+        initialRoute: '/',
+        routes: {
+
+            '/': (context) => const FirstScreen(),
+            '/second': (context) => const SecondScreen(),
+            '/otherPage': (context) => OtherPage(),
+        },
+    )
+</pre>
+<p> On the left side, you define the route's name followed by :  and then the constructor of a page object that should be loaded when
+    that route is loaded.
+</p>
+<h1>Creating new pages</h1>
+<p>Creating new pages follows this pattern:
+<pre>
+    class OtherPage extends StatefulWidget {
+        @override
+        State&lt;MyHomePage&gt; createState() => OtherPageState();
+    }
+
+    class OtherPageState extends State&lt;OtherPage&gt;
+    {
+        @override
+        Widget build(BuildContext context) {
+
+        return  ; //create a layout for this page using Column, Row, Stack() etc
+    }
+
+</pre>
+<pre>
+    Navigator.pushNamed(  context, "/secondPage" ), //This string must be one of the named states
+
+</pre></p>
+
+<p> To go back to the previous page, use Navigator.pop():
+
+<pre>{
+  Navigator.pop(context);
+}</pre>.</p>
+
+<br><br><br><br><br><br>
+</body>
+</html>

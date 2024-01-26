@@ -12,6 +12,7 @@
             Image.asset("images/algonquin.jpg"),
             Text("Algonquin College", style: TextStyle(fontSize: 30.0, backgroundColor:Colors.white ),)
           ])</pre>
+<p>Will give you this:</p>
 <img src="images/stackLayout.png">
 <p>
 This shows our image, and then the text "Algonquin college" on top of the image, in the top left corner by default. There are 9 choices of where
@@ -29,10 +30,11 @@ to align elements using a stack:
     <li><b>AlignmentDirectional.topEnd</b>  - This is the bottom right corner</li>
 </ul>
 </p>
-<p>You can also mix a combination of Column, Row, and Stack to make layouts for a page.
+<hr>
+<p>You can also mix a combination of Column, Row, and Stack to make layouts for a page. Have a look at this picture:
 <img src="https://homefrontmag.com/wp-content/uploads/skillet-cookie-recipe-ingredients-278x360.jpg">
 In this example, the first two rows are the title and subtitle. Then there are a list of recipe ingredients, where a row has an image on the left followed
-by the ingredient.Let's take a moment now to see how would you fill in the code:</p>
+by the ingredient. Let's take a moment now to see how would you fill in this code example to add in the missing rows of the recipe:</p>
 <pre>
      Column( crossAxisAlignment: CrossAxisAlignment.start,  children: [
           Text("One-pan skillet Cookie", style: TextStyle(fontSize: 30.0),),
@@ -42,5 +44,6 @@ by the ingredient.Let's take a moment now to see how would you fill in the code:
       ])
 </pre>
 
-<p>For more information, have a look at: <a href="https://medium.com/@divyansh_garg/layout-widgets-in-flutter-508280c22b71">https://medium.com/@divyansh_garg/layout-widgets-in-flutter-508280c22b71</a> </p>
+<p>There are many other layout widgets but we will only cover Column, Row, and Stack.
+    For more information about other layouts, have a look at: <a href="https://medium.com/@divyansh_garg/layout-widgets-in-flutter-508280c22b71" target="_blank">https://medium.com/@divyansh_garg/layout-widgets-in-flutter-508280c22b71</a> </p>
 </body></html>

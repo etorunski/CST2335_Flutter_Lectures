@@ -11,24 +11,25 @@ menu. Click on New Branch. <img src="images/createBranch.png">  </p>
 <p>Create a new branch called "Week3". <img src="images/newBranch.png"> </p>
 
 <p>Now, whenever you commit changes, the changes will be applied to the Week3 branch instead of the main branch.</p>
-<p>Let's change the contents of the Column().
+<p>Let's change the contents of the Column( ) so that it is empty:
 <pre>  Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[         ],
         )</pre>
 <p> Some Widgets only take 1 child, like <b>Button</b>, or <b>Center()</b>. The <b>Column()</b> widget takes an array of
-    children:[  ]. Let's add 4 ElevatedButtons: Button 1, Button 2, Button 3, Button 4:
-    <img src="images/fourButtons.png"><p>This is what <b>MainAxisAlignment.Center</b> looks like. Let's commit
-    these changes now so that we can go back to it later. <b>MainAxisAlignment.Start</b> makes all the children
-    start from the top:
+    children:[  ]. Let's add 4 ElevatedButtons with the text: Button 1, Button 2, Button 3, Button 4.
+    This is what <b>MainAxisAlignment.center</b> looks like:
+    <img src="images/fourButtons.png"><p>Let's commit
+    these changes now so that we can go back to it later.Next, change the <b>mainAxisAlignent:</b> parameter to: <b>MainAxisAlignment.start</b>.
+    That makes all the children start from the top:
     <img src="images/fourButtonsStart.png">
-    <p><b>MainAxisAlignment.End</b> makes all the children start at the bottom:
+    <p>Next, change it to: <b>MainAxisAlignment.end</b>. That makes all the children start at the bottom:
     <img src="images/fourButtonsEnd.png">
-    <p><b>MainAxisAlignment.SpaceEvenly</b> creates an even amount of space between the children and the top and bottom:
+    <p><b>MainAxisAlignment.spaceEvenly</b> creates an even amount of space between the children and the top and bottom:
     <img src="images/fourButtonsSpaceEvenly.png">
-    <p><b>MainAxisAlignment.SpaceBetween </b> makes the children line against the top and bottom and puts all the
+    <p><b>MainAxisAlignment.spaceBetween </b> makes the children line against the top and bottom of the page and puts all the
     space between the elements. <img src="images/fourButtonsSpaceBetween.png">
-    <p><b>MainAxisAlignment.SpaceAround</b> is similar to <b>SpaceEvenly</b> except that the space at the top
+    <p><b>MainAxisAlignment.spaceAround</b> is similar to <b>spaceEvenly</b> except that the space at the top
     and bottom is only half that of the space between the elements. <img src="images/fourButtonsSpaceAround.png">
     <p>Your options for spacing elements in a Column are:
     <ul>
@@ -40,6 +41,8 @@ menu. Click on New Branch. <img src="images/createBranch.png">  </p>
     <li>MainAxisAlignment.spaceBetween</li>
     </ul>
 <p>These parameters can also be used for <b>Row()</b> instead of Column. Column puts elements vertically, where Row
-    lines them up horizontally from left to right.
+    lines them up horizontally from left to right. Basically, there area 6 choices for spacing the <b>mainAxisAlignment</b> when using a Column or Row. We'll look at cross-axis alignment later today.
 </p>
+<p>For more information, have a look at: <a href="https://champ96k.medium.com/flutter-crossaxisalignment-vs-mainaxisalignment-5cc220bc0e2c" target="_blank">https://champ96k.medium.com/flutter-crossaxisalignment-vs-mainaxisalignment-5cc220bc0e2c</a> </p>
+
 </body></html>

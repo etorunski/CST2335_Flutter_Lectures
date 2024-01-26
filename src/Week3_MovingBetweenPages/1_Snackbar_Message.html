@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Snackbar messages</title>
+</head>
+<body>
+
+<h1>Snackbar</h1>
+<p>Whenever you want to give a message to the user, normally a window shows up with a short message. It can either be an error message,
+or something like password doesn't match. Android uses a Snackbar window that shows up at the bottom of the window for a few seconds and then disappears:
+<pre>
+    snackBar = SnackBar( content: Text('Yay! A SnackBar!') );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+</pre>
+</p>
+<p> Let's use last week's code example to add this code to a button onPress handler.</p>
+
+<h1>Alert Dialog</h1>
+<pre>
+    showDialog&lt;String&gt;(
+    context: context,
+    builder: (BuildContext context) => AlertDialog(
+        title: const Text('AlertDialog Title'),
+        content: const Text('AlertDialog description'),
+        actions: &lt;Widget&gt;[
+        ],
+    ),
+    ),
+</pre>
+<p>showDialog is a function that will make an alert dialog appear. You have 3 things to provide:
+<ol>
+    <li>title:</li> This should be a Text() widget that appears at the top of the window.
+    <li>content:</li> This should be a Text() widget that appears in the middle of the window.
+    <li>actions:</li> This is an array of Buttons that will be on the alert dialog. Normally, you would have an "ok" button or
+    "ok" and "cancel" buttons.
+</ol></p>
+<br><br><br><br><br><br>
+</body>
+</html>

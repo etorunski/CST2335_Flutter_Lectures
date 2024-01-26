@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1 >Scaffold</h1>
-<p>Scaffold is a layout that separates your page into several regions. There is an app bar, a body, and a footer.</p>
+<p>Scaffold is a layout that separates your page into several regions. There is an <b>app bar</b> at the top of the page, a <b>body</b>
+    which is the main contents of the page like with HTML, and a <b>footer</b> area.</p>
 
 <p>In the AppBar() constructor, you can change the <b>title:</b> parameter and it will change what string appears at the top of your page.</p>
 <p>The AppBar() also has an <b>actions:</b> parameter which takes an array of Widgets, just like a Column or Row. This
@@ -18,7 +19,8 @@ is a special row in the top of the app for commonly used buttons. Go ahead and a
           OutlinedButton(onPressed: (){ }, child: Text("Button 2"))]
       ),</pre>
 
-<p> You'll see a row of buttons on the top right of "Action buttons". <img src="images/actionBarButtons.png">
+<p> You'll see the title of the app at the top, and a row of buttons on the top right of "Action buttons".
+    Notice here, we are using <b>OutlinedButton</b> instead of <b>ElevatedButton</b>. They work the same but just look different, since OutlinedButton doesn't have a different background colour. <img src="images/actionBarButtons.png">
 
     <p>To get rid of the "Debug" banner, add this parameter <b>debugShowCheckedModeBanner: false,</b> to the <b>MaterialApp()</b> constructor:</p>
 
@@ -28,14 +30,15 @@ is a special row in the top of the app for commonly used buttons. Go ahead and a
       theme: ThemeData(</pre>
 </p>
 <p>NavigationDrawer - the Scaffold also has a <b>drawer:</b> parameter which lets the user show a pop-out page from the left side
- of the page:
+ of the page if you hit the "Hamburger" button:
+<img src="images/hamburgerButton.png">
 <pre> drawer:Drawer(child:Text("Hi there")),</pre>
 <img src="images/navigationDrawer.png">
 <p>The <b>child:</b> element can again be a Column() of items going down the side of the page.</p>
 <hr>
 <h2>Bottom Navigation Bar:</h2>
 <p>The bottom navigation bar is a set of icons you can put at the bottom of the page for easy navigation:
-<pre> BottomNavigationBar(items: [], onTap:(btnIndex){  }  )</pre>
+<pre> bottomNavigationBar: BottomNavigationBar(items: [], onTap:(btnIndex){  }  )</pre>
 <p>The items array should be a bunch of <b>BottomNavigationBarItem</b> objects:
     <pre>
         BottomNavigationBarItem( icon: Icon(Icons.camera), label: 'Camera'  ),
@@ -44,6 +47,13 @@ is a special row in the top of the app for commonly used buttons. Go ahead and a
     <img src="images/BottomNavigationItems.png">
     <p>The BottomNavigationBar also has an <b>onTap:</b> parameter that takes a function to call when
 the user presses one of the items. This function should take an <b>int</b> representing the index of which
-of the items was selected. <pre> onTap: (buttonIndex) {   } ,</pre></p>
-<p>For more information, have a look at: <a href="https://champ96k.medium.com/flutter-crossaxisalignment-vs-mainaxisalignment-5cc220bc0e2c">https://champ96k.medium.com/flutter-crossaxisalignment-vs-mainaxisalignment-5cc220bc0e2c</a> </p>
+of the items was selected. <pre> onTap: (buttonIndex) {   } ,</pre>
+
+<p>Altogether, the bottomNavigationBar parameter should look like this but you can have between <b>2</b> and <b>5</b> items in the array:
+<pre>bottomNavigationBar: BottomNavigationBar(items: [
+          BottomNavigationBarItem( icon: Icon(Icons.camera), label: 'Camera' ),
+          BottomNavigationBarItem( icon: Icon(Icons.add_call), label: 'Phone'  ),
+        ],
+        onTap: (buttonIndex) {  } ,
+      )</pre></p>
 </body></html>
