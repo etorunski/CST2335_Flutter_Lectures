@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Sending Data to Other Pages</title>
+</head>
+<body>
+
+<h1>Repository Pattern</h1>
+
+
+<p>Modern applications have adopted the <b>Repository pattern</b>. The pattern is that all the stored data is in a central repository
+that is accessible anywhere in the app. Usually this is done by creating a class with static variables:
+<pre>
+    class DataRepository{
+    static String loginName;
+    static int age;
+    }
+</pre>
+<p>Then in your pages, you set these values whenever the user clicks on something:
+    <pre>
+    onPress: () {
+        DataRepository.loginName = "Something";
+        Navigator.pushNamed(context, "/secondPage");
+        },
+
+</pre>
+<p> Then when the new page is loading, you can access the value:
+    <pre>
+    Text("Welcome back: " + DataRepository.loginName);
+</pre>
+</p>
+<h1>Starting other apps on the device</h1>
+<p>If your device supports sending emails, send text messages or making phone calls then you can launch those apps from within your program.
+We will use extra software packages that implement the phone dialing. In the <b>pubspec.yaml</b> file, add this line below the section
+<b>dev_dependencies:</b></p>
+<pre>url_launcher: ^5.5.0</pre>
+<p>The first part means the library name, and the ^5.5.0 means version 5.5.0</p>
+<p>To find other software packages, go to this website: <a href="https://pub.dev/packages" target="_blank">https://pub.dev/packages</a>.
+Put in the name "url_launcher" in the search field and hit enter. Select the "url_launcher" package from the results.
+<img src="images/url_launcher.png">
+<p>The page should show what the latest version of the library is, in this case 6.2.4. Change the line in pubspec.yaml file to that version.
+Then to download that library from the dart library, you need to click the "pub get" button in the pubspec.yaml editor:
+<img src="images/pub_get.png"> </p>
+<p>This library lets you launch URLs. For instance, you can run:
+<pre>launch("https://www.algonquincollege.com")</pre>
+<p>however you need to import the library into your code. If you look at the web page for the package, it gives you the import
+    statement:
+    <img src="images/pub_install.png">
+    <p>If you add <b>import 'package:url_launcher/url_launcher.dart';</b> then you can use the function
+    and it should launch a web browser</p>
+<p>To dial a phone number, you just use "tel:" instead of "http://". For example:
+<pre>launch("tel:888 123 4567")</pre>
+<p>However, this app might be running on a desktop computer that doesn't support phone calls. To check if your app supports the URL that you
+    are giving it, there is a function called <b> canLaunch( )</b> that will return true if your device can do whatever the URL is
+    wanting to launch. However, canLaunch() is <b> asynchronous</b>, meaning that the function will run on another thread.
+
+    To handle asynchronous returns, we add a <b>.then(  )</b> to the function call.
+    <pre>
+        canLaunch("tel: 888 123 4567").then(
+            (itCan) {
+
+                if(itCan)
+                    launch("tel:888 123 4567")
+                }
+                else
+                    Snackbar.messenger("You can't make phone calls from this device");
+            )
+
+</pre>
+<p> The function <b>canLaunch()</b> returns a Future&lt;bool&gt; meaning that when the function returns, it will return a <b>bool</b>.
+    In the then( ) function after it, you must supply a bool parameter, which in our example is (itCan)
+</p>
+<br><br><br><br><br><br>
+</body>
+</html>
