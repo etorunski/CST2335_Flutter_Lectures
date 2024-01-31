@@ -36,7 +36,72 @@ or something like password doesn't match. Android uses a Snackbar window that sh
     "ok" and "cancel" buttons.
 </ol></p>
 <h1>SharedPreferences</h1>
-<p>SharedPreferences let you save variables to your device and then retrieve them the next time you run the application.</p>
+<p>SharedPreferences let you save variables to your device and then retrieve them the next time you run the application.
+The SharedPreferences object uses the Singleton pattern, where there is only one object in the whole
+program.
+    However, the SharedPreferences library is not normally part of flutter. You must use the
+    "shared_preferences" package to your project. You can do this by opening a command terminal in the same folder as your project,
+    and running the command <b> flutter pub add shared_preferences</b>. This should change your
+    pubspec.yaml file to add the latest version of the shared_preferences package.
+    To retrieve the object, we call:
+<pre>
+    // Load and obtain the shared preferences for this app.
+    final prefs = await SharedPreferences.getInstance();
+</pre>
+<p>In order to keep the application as responsive as possible, reading data from the hard disk is
+done asynchronously. The keyword <b>await</b> means to wait until the function returns. This will
+     have many other implications that in the end will make life really hard. It's easier to
+    use the <b>.then()</b> which is a function that will be called once the getInstance() has finished.
+    The function getInstance() returns an object of type <b>SharedPreferences</B>, so the
+    .then() function needs a lambda function that accepds a SharedPreference object as the result:
+    <pre>    SharedPreferences.getInstance().then((result) {
+
+
+    });</pre>
+<p>To write data to the disk, we have several setter functions to chose from:
+    <img src="images/sharedPrefsSetFunction.png">
+    <p>There is a limit to what types of data you can save:
+    <ul>
+
+   <li><b>Bool</b> - use setBool( )</li>
+    <li><b>Int</b> - use setInt()</li>
+    <li><b>Double</b> - use setDouble()</li>
+    <li><b>String</b> - use setString()</li>
+</ul>
+<p>The first parameter is always the key (or variable name). The second parameter is the value that
+    you want to save.
+</p>
+<p>To retrieve the value, you use the getString("key") if you used <b>setString()</b>.
+If you used setInt("AA", value), then you would use getInt("AA") to get the value back.
+If you used setDouble("BBB", value), then you would use getDouble("BBB") to get the value back.</p>
+<p>The getter functions return nullable objects because the variable might not be saved yet.
+If there is no value associated with the key, then the function returns null. <br>
+So in reality, <b>getInt("AA")</b> returns an object of type <b>Int?</b>, or nullable Int.</p>
+<h2>How do you use this?</h2><p>Normally you would use this when the user clicks a button, like "login"
+    some other button. Whenever you read a variable and then want to save it, you can use the
+    shared preferences:
+    <pre>
+    void buttonPressed( ){
+       SharedPreferences.getInstance().then( (sharedPrefs) {
+            sharedPrefs.setString("LoginName", loginStringController.getValue().text);
+
+        } );
+    }
+</pre>
+<p>This will save the string that was typed along with the variable name "LoginName".
+The next time the user runs your application, your program will run the <b>initState()</b> function
+as it is loading. This is where you should be reading the values that were saved to disk:
+<pre>
+     var loginName = result.getString("Word");
+      if(loginName != null){
+        _controller.text = loginName;
+      }
+</pre>
+<p>If you want to just delete a value, then you can use the <b>remove( )</b> function and
+    pass in the key (or variable name) that you want to remove:
+    <pre>sharedPrefs.remove("LoginName");</pre>
+</p>
+
 <br><br><br><br><br><br>
 </body>
 </html>
