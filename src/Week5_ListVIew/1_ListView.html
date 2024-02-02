@@ -40,7 +40,20 @@ In order to fix this, you can put the ListView inside of an Expanded( ) widget. 
 that takes as much space as it can. So the Column ends up having a child Widget which takes as much space
 as possible, which would be the window size. The ListView can also know how big its parent container is.
 The code should look like this:
-<pre>s</pre>
-</p>
+<pre> Column( children:[
+        Expanded(child:
+        ListView.builder( itemCount:words.length,
+          itemBuilder: (context, rowNum) {  return
+            Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:[
 
+                  ]);
+            }
+        )
+    )
+])</pre>
+</p>
+<hr>
+<h1>Adding items to your list</h1>
+<p>Let's add a </p>
 </body></html>
