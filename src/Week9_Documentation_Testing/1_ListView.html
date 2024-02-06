@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Column & Row</Title>
+</head>
+<body>
+<h1>ListView</h1>
+<p>A ListView is a widget like a Column where you can add many rows that are scrollable. For instance,
+your Email program normally shows a ListView of emails that you have received, or the "missed calls" list view
+shows you all the calls that you have missed on your phone. A ListView is a Widget that you would use
+when you don't know how many things ahead of time that you want to show in a list. The user can then
+scroll down the list if it is larger than the screen. To create a ListView, we use a ListView.builder( ) function.
+    This follows the Builder pattern:
+
+
+<pre> ListView.builder( )</pre>
+<p>We need to supply the number of rows to build using the <b>itemCount:</b> parameter. This
+tells the application how many rows we want to build. The next parameter is the <b>itemBuilder:</b>
+parameter which takes a function where you pass in the row number to build, and it should return a
+Widget object representing what goes in that row:
+<pre> (context, rowNum) {  return  ; }</pre>
+<p>Normally, a program uses an ArrayList that can hold a variable number of objects. Java has the
+    ArrayList&lt; &gt; object, but the same object in Dart is just List &lt; &gt;.
+</p>
+<p> In Dart, List is initialized a little differently by using the array notation:
+<pre>List&lt;String&gt; words =  [] ;</pre>
+<p>To get the number of items in a List, there is a <b>length</b> property.
+    In the ListView.builder function, you can use this as the number of rows:
+    <pre> ListView.builder( itemCount:words.length,</pre>
+<p>
+    Now you can play around with what gets returned by the itemBuilder function. You can
+    create more complex widgets using Row, Column or Stack.
+
+</p>
+<p>Whenever you try to put a ListView inside a Column, it will crash because a ListView must know
+how much height is being given by its containing object. The Column must know how big each of its
+sub items are in order to calculate its height. This gives a circular dependency which causes the crash.
+In order to fix this, you can put the ListView inside of an Expanded( ) widget. Expanded is a widget
+that takes as much space as it can. So the Column ends up having a child Widget which takes as much space
+as possible, which would be the window size. The ListView can also know how big its parent container is.
+The code should look like this:
+<pre> Column( children:[
+        Expanded(child:
+        ListView.builder( itemCount:words.length,
+          itemBuilder: (context, rowNum) {  return
+            Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:[
+
+                  ]);
+            }
+        )
+    )
+])</pre>
+</p>
+<hr>
+<h1>Adding items to your list</h1>
+<p>Let's add a </p>
+</body></html>

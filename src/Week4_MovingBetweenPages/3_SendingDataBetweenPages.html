@@ -38,15 +38,15 @@ We will use extra software packages that implement the phone dialing. In the <b>
 <p>The first part means the library name, and the ^5.5.0 means version 5.5.0</p>
 <p>To find other software packages, go to this website: <a href="https://pub.dev/packages" target="_blank">https://pub.dev/packages</a>.
 Put in the name "url_launcher" in the search field and hit enter. Select the "url_launcher" package from the results.
-<img src="images/url_launcher.png">
+<img src="../Week3_AlertWindows_SharedPreferences/images/url_launcher.png">
 <p>The page should show what the latest version of the library is, in this case 6.2.4. Change the line in pubspec.yaml file to that version.
 Then to download that library from the dart library, you need to click the "pub get" button in the pubspec.yaml editor:
-<img src="images/pub_get.png"> </p>
+<img src="../Week3_AlertWindows_SharedPreferences/images/pub_get.png"> </p>
 <p>This library lets you launch URLs. For instance, you can run:
 <pre>launch("https://www.algonquincollege.com")</pre>
 <p>however you need to import the library into your code. If you look at the web page for the package, it gives you the import
     statement:
-    <img src="images/pub_install.png">
+    <img src="../Week3_AlertWindows_SharedPreferences/images/pub_install.png">
     <p>If you add <b>import 'package:url_launcher/url_launcher.dart';</b> then you can use the function
     and it should launch a web browser</p>
 <p>To dial a phone number, you just use "tel:" instead of "http://". For example:
