@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Lab week 4</Title>
+</head>
+<body>
+<h1>Lab work</h1>
+<p>For this week's lab, show your knowlege of AlertDialog, Snackbar and SharedPreferences:
+
+
+<p>Take your login page from your Week2 branch and add code so that whenever the user clicks on the login button,
+you show an AlertDialog asking whether the user would like to save their username and password for the next time
+they run the application.</p>
+
+<p>If the user clicks "Yes" or "Ok" or whatever button you choose, then you will save the two strings to
+EncryptedSharedPreferences. If the user clicks "No" or "Cancel", then your application will clear any data
+that is saved in EncryptedSharedPreferences.</p>
+
+<p>Next, add code so that when the program starts, you load the data in EncryptedSharedPreferences and if you find
+that the username and password are stored, then load it into the EditText fields. You should then show a SnackBar
+that the previous login name and passwords have been loaded, and add an Action button to "Undo" or clear the
+text fields. If the user clicks the Undo button, then the TextFields are reset to empty string (""), but the data
+are not removed from the EncryptedSharedPreferences. That means that if the user clicks the Undo button and then
+restarts the application, then the TextFields will be repopulated with the strings that are stored, and the Snackbar
+shows again the next time.</p>
+
+<p>The marks for this lab are:
+<ol>
+    <li>You show an AlertDialog asking to save the login name and password.</li>
+    <li>CLicking on the buttons of the dialog will either save or not save the strings.</li>
+    <li>If you save the strings, then the next time you start your application, the strings are loaded into the TextFields</li>
+    <li>You show a Snackbar if you have reloaded the strings, and the snackbar shows an "Undo" button</li>
+    <li>If you click the Undo button, the reloaded strings are cleared but not removed from EncryptedSharedPreferences.</li>
+</ol>
+</p></body></html>

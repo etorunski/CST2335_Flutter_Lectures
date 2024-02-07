@@ -2,39 +2,10 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../main.css">
-    <title>Snackbar messages</title>
+    <title>Shared Preferences</title>
 </head>
 <body>
 
-<h1>Snackbar</h1>
-<p>Whenever you want to give a message to the user, normally a window shows up with a short message. It can either be an error message,
-or something like password doesn't match. Android uses a Snackbar window that shows up at the bottom of the window for a few seconds and then disappears:
-<pre>
-    snackBar = SnackBar( content: Text('Yay! A SnackBar!') );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-</pre>
-</p>
-<p> Let's use last week's code example to add this code to a button onPress handler.</p>
-
-<h1>Alert Dialog</h1>
-<pre>
-    showDialog&lt;String&gt;(
-    context: context,
-    builder: (BuildContext context) => AlertDialog(
-        title: const Text('AlertDialog Title'),
-        content: const Text('AlertDialog description'),
-        actions: &lt;Widget&gt;[
-        ],
-    ),
-    ),
-</pre>
-<p>showDialog is a function that will make an alert dialog appear. You have 3 things to provide:
-<ol>
-    <li>title:</li> This should be a Text() widget that appears at the top of the window.
-    <li>content:</li> This should be a Text() widget that appears in the middle of the window.
-    <li>actions:</li> This is an array of Buttons that will be on the alert dialog. Normally, you would have an "ok" button or
-    "ok" and "cancel" buttons.
-</ol></p>
 <h1>SharedPreferences</h1>
 <p>SharedPreferences let you save variables to your device and then retrieve them the next time you run the application.
 The SharedPreferences object uses the Singleton pattern, where there is only one object in the whole
@@ -46,12 +17,13 @@ program.
     To retrieve the object, we call:
 <pre>
     // Load and obtain the shared preferences for this app.
-    final prefs = await SharedPreferences.getInstance();
+    void functionName() <b>async</b> {
+        final prefs = <b>await</b> SharedPreferences.getInstance();
+    }
 </pre>
 <p>In order to keep the application as responsive as possible, reading data from the hard disk is
-done asynchronously. The keyword <b>await</b> means to wait until the function returns. This will
-     have many other implications that in the end will make life really hard. It's easier to
-    use the <b>.then()</b> which is a function that will be called once the getInstance() has finished.
+done asynchronously. The keyword <b>await</b> means to wait until the function returns. If your code must await for a function to return,
+    then the function your are in must also be declared <b>async</b>. Or, you can  use the <b>.then()</b> which is a function that will be called once the getInstance() has finished.
     The function getInstance() returns an object of type <b>SharedPreferences</B>, so the
     .then() function needs a lambda function that accepds a SharedPreference object as the result:
     <pre>    SharedPreferences.getInstance().then((result) {
@@ -71,8 +43,8 @@ done asynchronously. The keyword <b>await</b> means to wait until the function r
 <p>The first parameter is always the key (or variable name). The second parameter is the value that
     you want to save.
 </p>
-<p>To retrieve the value, you use the getString("key") if you used <b>setString()</b>.
-If you used setInt("AA", value), then you would use getInt("AA") to get the value back.
+<p>To retrieve the value, you use the getString("key") if you used <b>setString()</b>.<br>
+If you used setInt("AA", value), then you would use getInt("AA") to get the value back.<br>
 If you used setDouble("BBB", value), then you would use getDouble("BBB") to get the value back.</p>
 <p>The getter functions return nullable objects because the variable might not be saved yet.
 If there is no value associated with the key, then the function returns null. <br>
@@ -100,8 +72,26 @@ as it is loading. This is where you should be reading the values that were saved
 <p>If you want to just delete a value, then you can use the <b>remove( )</b> function and
     pass in the key (or variable name) that you want to remove:
     <pre>sharedPrefs.remove("LoginName");</pre>
-</p>
+<p>This erases the data that was saved under the variable name (key) that was given.</p>
+<h1>EncryptedSharedPreferences</h1>
+<p>There have been new data protection laws that were passed in Europe (GDPR), in Canada and the USA. These laws are all similar in requirements that
+    require that any data that is saved must be anonymized (or encrypted). You should not be able to tell anything about a person by looking at the data
+    on the disk in case your data is breached. Flutter offers a class called EncryptedSharedPreferences that does the encryption for you. You must add
+the <b>encrypted_shared_preferences</b> library with the command line:
+    <pre>flutter pub add encrypted_shared_preferences</pre>
 
+<p> Then you can created an EncryptedSharedPreferences object:
+    <pre>EncryptedSharedPreferences prefs = EncryptedSharedPreferences();</pre>
+<p> This object uses a SharedPreferences object internally and just adds the encryption algorithm to whatever you are inserting. It uses a default
+    encryption algorithm of SIC
+    (<a href="https://stackoverflow.com/questions/70492520/where-can-i-find-more-information-on-aes-mode-sic" target="_blank">
+        https://stackoverflow.com/questions/70492520/where-can-i-find-more-information-on-aes-mode-sic</a>) but you can supply a different algorithm if you need.
+Your choices are listed at the bottom of this page: <a href="https://pub.dev/packages/encrypted_shared_preferences" target="_blank">
+        https://pub.dev/packages/encrypted_shared_preferences</a></p>
+<p>
+    The EncryptedSharedPreferences object only supports storing String data since Int, Float, Boolean aren't really identifying data. If you really want to
+    store numbers then you can just convert them to string and then encrypt the String.
+</p>
 <br><br><br><br><br><br>
 </body>
 </html>
