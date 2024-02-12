@@ -29,16 +29,19 @@ program with an email pre-populated with the email address that is in the TextFi
 
 <p>Use the repository pattern for storing the user's data, and add two functions to the reporitory class:
 <ul><li>loadData() - this function should load the variables from EncryptedSharedPreferences</li>
-<li>saveData() - this function should save the variables to EncryptedSharedPreferences. </li></ul>
+<li>saveData() - this function should save the variables to EncryptedSharedPreferences. </li></ul><p>
 You should call these two functions in the <b>initState()</b> function and the <b>dispose</b> function to automatically
 load and save the variables from the repository.
 </p>
 <p>The marks for this lab are:
 <ol>
-    <li>You show an AlertDialog asking to save the login name and password.</li>
-    <li>CLicking on the buttons of the dialog will either save or not save the strings.</li>
+    <li>When you log in successfully, your app goes to a second page. A Snackbar shows a message saying "Welcome Back" followed by your login name from the first page.</li>
+    <li>If a user enters in data in the fields of the second page, it gets saved into EncryptedSharedPreferences</li>
     <li>If you save the strings, then the next time you start your application, the strings are loaded into the TextFields</li>
-    <li>You show a Snackbar if you have reloaded the strings, and the snackbar shows an "Undo" button</li>
-    <li>If you click the Undo button, the reloaded strings are cleared but not removed from EncryptedSharedPreferences.</li>
+    <li>If you click the email button beside the email address, it will launch a mailto: URL</li>
+    <li>If you click the call button, it launches a tel: URL.</li>
+    <li>If you click the message button, it launches an sms: URL.</li>
+    <li>If your device doesn't support any of the URL types, then your application shows an AlertDialog saying that
+    that URL is not supported on this device.</li>
 </ol>
 </p></body></html>
