@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Sending Data to Other Pages</title>
+</head>
+<body>
+
+<h1>Repository Pattern</h1>
+
+
+<p>Modern applications have adopted the <b>Repository pattern</b>
+    (<a href="https://www.dhiwise.com/post/the-complete-guide-to-the-repository-pattern-in-flutter" target="_blank">https://www.dhiwise.com/post/the-complete-guide-to-the-repository-pattern-in-flutter</a>) .
+    The pattern is that all the stored data is in a central repository
+that is accessible anywhere in the app. Usually this is done by creating a class with static variables:
+<pre>
+    class DataRepository{
+    static String loginName;
+    static int age;
+    }
+</pre>
+<p>Then in your pages, you set these values whenever the user clicks on something:
+    <pre>
+    onPress: () {
+        DataRepository.loginName = "Something";
+        Navigator.pushNamed(context, "/secondPage");
+        },
+
+</pre>
+<p> Then when the new page is loading, you can access the value from other pages:
+    <pre>
+    Text("Welcome back: " + DataRepository.loginName);
+</pre>
+<p>The repository should hold any variables that are going to be accessed on multiple pages within the app, as well
+    as data that gets saved and loaded from a database or from a network connection. The data repository is responsible
+    only for the application's data and nothing else.
+</p>
+<h1>Starting other apps on the device</h1>
+<p>If your device supports sending emails, sending text messages or making phone calls then you can launch those apps from within your program.
+We will use extra software packages that implement the phone dialing. You can either run this command in the terminal:
+    <pre>
+    flutter pub add url_launcher
+</pre>
+ <p>Or you can do it manually by opening the <b>pubspec.yaml</b> file, add this line below the section
+<b>dependencies:</b></p>
+<pre>url_launcher: ^5.5.0</pre>
+<p>The first part means the library name, and the ^5.5.0 means version 5.5.0</p>
+<p>To find other software packages for your apps, go to this website: <a href="https://pub.dev/packages" target="_blank">https://pub.dev/packages</a>.
+Put in the name "url_launcher" in the search field and hit enter. Select the "url_launcher" package from the results.
+<img src="../Week4_AlertWindows_SharedPreferences/images/url_launcher.png">
+<p>The page should show what the latest version of the library is, in this case 6.2.4. Change the line in <b>pubspec.yaml</b>
+    file to the latest version.
+Then to download that library from the online repository, you need to click the "pub get" button in the pubspec.yaml editor:
+<img src="../Week4_AlertWindows_SharedPreferences/images/pub_get.png"> </p>
+<p>This library lets you launch URLs. For instance, you can run:
+<pre>launch("https://www.algonquincollege.com")</pre>
+<p>however you need to import the library into your code. If you look at the web page for the package, it gives you the import
+    statement:
+    <img src="../Week4_AlertWindows_SharedPreferences/images/pub_install.png">
+    <p>If you add <b>import 'package:url_launcher/url_launcher.dart';</b> then you can use the function
+    and it should launch a web browser</p>
+<p>You can use the same function to dial a phone number, you just use <b>"tel:"</b> protocol instead of <b>"http://"</b>.
+    For example:<pre>launch("tel:888 123 4567")</pre>
+<p>However, your app might be running on a desktop computer that doesn't support making phone calls.
+    To check if your app supports the URL that you are giving it, there is a function called <b>canLaunch( )</b> that will return true if your device can do whatever the URL is
+    wanting to launch. However, canLaunch() is <b> asynchronous</b>, meaning that the function will run on another thread.
+
+    To handle asynchronous returns, we add a <b>.then(  )</b> to the function call.
+    <pre>
+        canLaunch("tel: 888 123 4567").then(
+            (itCan) {
+
+                if(itCan)
+                    launch("tel:888 123 4567")
+                }
+                else
+                    Snackbar.messenger("You can't make phone calls from this device");
+            )
+
+</pre>
+<p> The function <b>canLaunch()</b> returns a Future&lt;bool&gt; meaning that when the function returns, it will return a <b>bool</b>.
+    In the then( ) function after it, you must supply a bool parameter, which in our example is (itCan)
+</p>
+<h2>Taking pictures with the camera</h2>
+<p>Here is a short tutorial if you want to learn how to take pictures with your device's camera:
+<a href="https://medium.com/@fernnandoptr/how-to-use-camera-in-flutter-flutter-camera-package-44defe81d2da">
+    https://medium.com/@fernnandoptr/how-to-use-camera-in-flutter-flutter-camera-package-44defe81d2da
+</a></p>
+<br><br><br><br><br><br>
+</body>
+</html>

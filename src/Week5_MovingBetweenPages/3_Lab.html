@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Lab week 5</Title>
+</head>
+<body>
+<h1>Lab work</h1>
+<p>For this week's lab, show your knowlege of creating a second page for your app:
+
+
+<p>Take your login page from your Week4 branch and create a Week5 branch. Add a second page to your app called
+ProfilePage. Then when you use your login page, and your password is correct, then navigate to your new page</p>
+
+<p>The second page should have four TextFields:
+<ol><li>First Name</li>
+<li>Last Name</li>
+    <li>Phone Number</li>
+    <li>Email address</li>
+</ol>
+<p>
+    The Phone Number should have two buttons beside it: Telephone, SMS. If you click on the Telephone button,
+    it should launch a phone dialer for that phone number. If you click on the SMS button, then it should launch
+    a text messaging application to that phone number.
+</p>
+
+<p>Email Address should have a "mail" button beside it where if you click on the button, it launches an email
+program with an email pre-populated with the email address that is in the TextField. Use the "mailto:" protocol.</p>
+
+<p>Use the repository pattern for storing the user's data, and add two functions to the reporitory class:
+<ul><li>loadData() - this function should load the variables from EncryptedSharedPreferences</li>
+<li>saveData() - this function should save the variables to EncryptedSharedPreferences. </li></ul>
+You should call these two functions in the <b>initState()</b> function and the <b>dispose</b> function to automatically
+load and save the variables from the repository.
+</p>
+<p>The marks for this lab are:
+<ol>
+    <li>You show an AlertDialog asking to save the login name and password.</li>
+    <li>CLicking on the buttons of the dialog will either save or not save the strings.</li>
+    <li>If you save the strings, then the next time you start your application, the strings are loaded into the TextFields</li>
+    <li>You show a Snackbar if you have reloaded the strings, and the snackbar shows an "Undo" button</li>
+    <li>If you click the Undo button, the reloaded strings are cleared but not removed from EncryptedSharedPreferences.</li>
+</ol>
+</p></body></html>
