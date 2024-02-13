@@ -8,7 +8,9 @@
 <h1>ListView</h1>
 <p>A ListView is a widget like a Column where you can add many rows that are scrollable. For instance,
 your Email program normally shows a ListView of emails that you have received, or the "missed calls" list view
-shows you all the calls that you have missed on your phone. A ListView is a Widget that you would use
+shows you all the calls that you have missed on your phone.
+    <img src="https://javapapers.com/wp-content/uploads/2014/06/ListView-Layout.jpg">
+    A ListView is a Widget that you would use
 when you don't know how many things ahead of time that you want to show in a list. The user can then
 scroll down the list if it is larger than the screen. To create a ListView, we use a ListView.builder( ) function.
     This follows the Builder pattern:
@@ -19,18 +21,32 @@ scroll down the list if it is larger than the screen. To create a ListView, we u
 tells the application how many rows we want to build. The next parameter is the <b>itemBuilder:</b>
 parameter which takes a function where you pass in the row number to build, and it should return a
 Widget object representing what goes in that row:
-<pre> (context, rowNum) {  return  ; }</pre>
+<pre> ListView.builder(
+            itemCount: ,
+            itemBuilder: (context, rowNum) {   } )</pre>
 <p>Normally, a program uses an ArrayList that can hold a variable number of objects. Java has the
-    ArrayList&lt; &gt; object, but the same object in Dart is just List &lt; &gt;.
+   <b>ArrayList&lt; &gt; </b> object, but the same object in Dart is called <b>List &lt; &gt;</b>.
+</p>
 </p>
 <p> In Dart, List is initialized a little differently by using the array notation:
-<pre>List&lt;String&gt; words =  [] ;</pre>
+<pre>
+    List&lt;String&gt; words =  [] ;
+    //or with type inference:
+    var wordsArray = &lt;String&gt;[ ]
+</pre>
 <p>To get the number of items in a List, there is a <b>length</b> property.
     In the ListView.builder function, you can use this as the number of rows:
     <pre> ListView.builder( itemCount:words.length,</pre>
 <p>
     Now you can play around with what gets returned by the itemBuilder function. You can
     create more complex widgets using Row, Column or Stack.
+    <pre>
+    ListView.builder(
+            itemCount: words.length,
+            itemBuilder: (context, rowNum) {
+              return Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [Text("Row number: $rowNum"), Text(words[rowNum])]) ; } )
+</pre>
 
 </p>
 <p>Whenever you try to put a ListView inside a Column, it will crash because a ListView must know
@@ -55,5 +71,16 @@ The code should look like this:
 </p>
 <hr>
 <h1>Adding items to your list</h1>
-<p>Let's add a </p>
+<p>Let's add a TextField at the top of the screen so that the user can add words to the ListView:
+<pre>
+    Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children:[
+        ElevatedButton( child:Text("Add item"), onPressed:() {  }  ),
+        TextField(inputController:  )
+    ]);
+</pre>
+<p>
+    When you click the button, it will take the contents of the TextField and add it to the List. You should put that inside of
+    a <b>setState(() {  } ) </b> function so that the screen will update when items are added.
+
+</p>
 </body></html>
