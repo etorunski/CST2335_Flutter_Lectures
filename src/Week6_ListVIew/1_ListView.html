@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../main.css">
-    <title>Column & Row</Title>
+    <title>ListView</Title>
 </head>
 <body>
 <h1>ListView</h1>
@@ -75,12 +75,29 @@ The code should look like this:
 <pre>
     Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children:[
         ElevatedButton( child:Text("Add item"), onPressed:() {  }  ),
-        TextField(inputController:  )
+        TextField(inputController: _controller )
     ]);
 </pre>
 <p>
     When you click the button, it will take the contents of the TextField and add it to the List. You should put that inside of
-    a <b>setState(() {  } ) </b> function so that the screen will update when items are added.
+    a <b>setState(() {  } ) </b> function so that the screen will update when items are added:
 
+<pre>() {
+    setState(() {
+        words.add( _controller.value.text );
+        _controller.text = "";
+        });
+    }</pre>
+<p>Now when you click on the Add Item button, your test will show up in the ListView. How about deleting items from the ListView?
+    Flutter has a Widget called <b>GestureDetector( child: )</b>. This object has many different gesture listener functions, some of which are:
+    <ul>
+    <li>onTap:</li>
+    <li>onDoubleTap: - for detecting double-tap / double-click</li>
+    <li>onLongPress: - for holding your finger / mouse for a long time</li>
+    <li>onHorizontalDragUpdate: - for left-to-right swiping</li>
+</ul>
+<p>You can implement several of these gesture detectors for each Row( ) widget. When any of these gestures are detected,
+    you can then remove an item from the List. Just be sure that removing from the List is surrounded by
+    <b>setState( () {  } )</b> so that the UI will redraw.
 </p>
 </body></html>
