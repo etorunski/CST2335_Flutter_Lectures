@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Tablet vs. Phone</Title>
+</head>
+<body>
+<h1>Tablet devices</h1>
+<p>Normally, a tablet is held in landscape mode, meaning that the width is bigger than the height:
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20200908195729/GFGback.png">
+In Flutter, you can call a function to find out what the width and height of your device is in pixels:
+<pre> var size = MediaQuery.of(context).size;
+    var height = size.height;
+    var width = size.width;</pre>
+<p>In Android, if the width is more than 720 pixels, then there is enough room to fit a listView on one side, and details on the other side. This is called the Master-Detail pattern:
+    <a href="https://developer.microsoft.com/en-us/azure-devops/components/master-detail" target="_blank">https://developer.microsoft.com/en-us/azure-devops/components/master-detail</a>
+
+<p>To check if you are landscape mode, just check if the width is greater than the height. If that's true, then verify that the display width has at least 720 pixels:
+<pre> if( (width>height) && (width > 720)) {
+
+}</pre><p>In this case, you can put your listView on the left side, and a details page on the right side for when the user selects something from the list:
+
+<pre>{
+    Row( children:[
+        Column( children:[ ListView() ] ),
+        DetailsPage()
+    ]
+}</pre>
+ <p>The DetailsPage() doesn't exist yet because it's a function that you must write. Since everything on the screen is a type of Widget object, declare this function
+     so that it returns a widget:
+
+     <pre>Widget DetailsPage() {
+
+}</pre>
+<p>Now we'll create a variable to store which item in the list has been selected by the user. This should be nullable because it's possible that the user hasn't selected anything yet:
+    <pre>var selectedItem:ToDoItem ? = null</pre>
+</p>
+</body></html>
