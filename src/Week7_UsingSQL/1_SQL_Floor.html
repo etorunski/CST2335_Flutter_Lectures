@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>SQL Database</Title>
+</head>
+<body>
+<h1>SQLite</h1>
+<p>Flutter is loosely based on Android, so it inherits SQLite from how Android implements it. However, it uses a lot
+ of common code (called boilerplate) to set up a database and queries. There are newer libraries that now
+generate that code for you so it is easier to manage. In Android, there is the ROOM database library, and there
+is a similar library for Flutter called the Floor SQLite library:
+<a href="https://pinchbv.github.io/floor/" target="_blank">https://pinchbv.github.io/floor/</a>
+    <br> The Floor library can be used for all platforms except for Web Applications. To get started, have a look at this tutorial:
+    <a href="https://pinchbv.github.io/floor/getting-started/" target="_blank">https://pinchbv.github.io/floor/getting-started/</a>
+</p>
+<p>Basically the steps are:
+<ol>
+    <li>Add the following dependencies to pubspec.yaml:
+    <pre>dependencies:
+  flutter:
+    sdk: flutter
+  floor: ^1.4.0
+
+dev_dependencies:
+  floor_generator: ^1.4.0
+  build_runner: ^2.1.2</pre></li>
+<li>Create an Entity by adding the annotations <b>@entity</b> above the class that will go in the database, and then add  <pre>@primaryKey
+  final int id;</pre> to the class to store the database id.</li>
+<li>Create a DAO object:<pre>@dao
+abstract class PersonDao {
+  @Query('SELECT * FROM Person')
+  Future&lt;List&lt;Person&gt;&gt; findAllPersons();
+
+  @delete
+  Future&lt;Long?&gt; delete(Person p);
+
+  @insert
+  Future&lt;Long&gt; insertPerson(Person person);
+}</pre>The @insert annotation will generate the necessary SQL code to insert the Person object into the database. It will map the class' variables automatically to database columns.
+    Likewise, the @Query annotation will create the SQL query code to find all Person objects in the database. It will return a List object with all the objects it found.
+    All the funcions return Future objects meaning that these queries are all asynchronous. You either have to use <b>await</b> when calling these functions, or follow the function
+    calls with <b>.then( obj {  } ) </b> </li>
+    <li>Create the dataabse:<pre>// database.dart
+
+// required package imports
+import 'dart:async';
+import 'package:floor/floor.dart';
+import 'package:sqflite/sqflite.dart' as sqflite;
+
+import 'dao/person_dao.dart';
+import 'entity/person.dart';
+
+part 'database.g.dart'; // the generated code will be there
+
+@Database(version: 1, entities: [Person])
+abstract class AppDatabase extends FloorDatabase {
+  PersonDao get personDao;
+}
+</pre>  Make sure to change the <b>entities:</b> from Person to whatever object you are using in your project. You will have to run the code generator after to build
+    the code from the annotations.</li>
+    <li>Use the generated code:<pre>final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
+
+final personDao = database.personDao;
+final person = Person(1, 'Frank');
+
+await personDao.insertPerson(person);
+final result = await personDao.findPersonById(1);
+</pre> You can change the filename that it uses for your database by replacing the string <b>app_database.db'</b></li>
+</ol>
+<p>Please explore more of the documentation in the tutorial. Let's now go over the steps in an example by modifying the ListView example from last week. Whenever you
+    add something to the List&lt; &gt;, you should also insert into the database. Whenever you remove something from the List&lt; &gt;, you should also delete from the database.
+    Whenever you start the application, you should initialize the List&lt; &gt; by running a query. This will run asynchronously so when the results return from the database,
+    you can call <b>setState() </b> to cause your GUI to redraw.
+</p>
+</body></html>
