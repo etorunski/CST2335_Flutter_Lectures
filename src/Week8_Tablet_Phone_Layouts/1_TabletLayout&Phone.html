@@ -22,8 +22,9 @@ In Flutter, you can call a function to find out what the width and height of you
 
 <pre>{
     Row( children:[
-        Column( children:[ ListView() ] ),
-        DetailsPage()
+        Column( children:[ ListView() ] ), //Left side
+        DetailsPage() //Right side
+
     ]
 }</pre>
  <p>The DetailsPage() doesn't exist yet because it's a function that you must write. Since everything on the screen is a type of Widget object, declare this function
@@ -34,5 +35,26 @@ In Flutter, you can call a function to find out what the width and height of you
 }</pre>
 <p>Now we'll create a variable to store which item in the list has been selected by the user. This should be nullable because it's possible that the user hasn't selected anything yet:
     <pre>var selectedItem:ToDoItem ? = null</pre>
-</p>
+<p>Then when the user selects an item from the list, you set the variable to be the object represented at that row.
+
+<pre>Widget DetailsPage() {
+    if(selectedItem != null){
+     //Show some layout to represent the object's variables
+    }
+}</pre>
+<p>
+    That should take care of the code for the tablet version of your application. Last is to take care of the phone version. Normally a phone whould
+    show a listView using the whole screen. Then when the user selects something, then the next screen shows the details of what was selected:
+    <pre>
+    if(selectedItem == null){
+        Column( children:[ ListView() ] ) // reuse the code from the tablet Left side,
+    }
+    else
+    {
+        DetailsPage(); //reuse the code from the tablet Right side
+    }
+</pre>
+<p> If the user selects something from the ListView, there should be some way to set the <b>selectedItem</b> variable back to null, so that there is no longer something selected.
+This can either be done by putting some sort of "Delete" or "Clear" button on the details page, or using the AppBar or BottomNavigationBar to present a button that clears the selected
+ item.</p>
 </body></html>
