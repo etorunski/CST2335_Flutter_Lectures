@@ -14,9 +14,10 @@ interpreted language. Microsoft proposed a new language called
 TypeScript, which is a superset of JavaScript, meaning that it does everything JavaScript does,
   but it can also enforce strong type checking. When publishing a web page in TypeScript, it just
   gets compiled to JavaScript before it gets run in the browser.</p>
-<p>Dart is similar to JavaScript except that it can be compiled to native code. It is also similar to Java, so it should be easy to learn
+<p>Google developed the language called Dart to be similar to JavaScript except that it can be compiled
+  to native code. Dart is also similar to Java, so it should be easy to learn
 for those who already know it. Google has further developed the language as the basis for Flutter,
-  which allows Dart to be compiled to other platforms.</p>
+  which allows Dart to be compiled to machine language on other platforms.</p>
 <hr>
 <h1 >Variable declaration</h1>
 <p>Like with Java, you first write the variable type <b>(int, float, double, boolean) </b> followed by the variable name:
@@ -36,7 +37,7 @@ will make the variable type to be what it is first equal to:
 always have what it was first initialized to, then you can use
 <strong>const</strong> instead of var. <pre>  const PI = 3.14; //Always double 3.14
   const URL = "http://www.google.com"; //Always String "http://www.google.com </pre></p>
-<h2 id="nullable-objects">Nullable objects</h2>
+<h1 >Nullable objects</h1>
 <p>Dart is one of several new languages that introduces a term called Nullable, meaning that the variable can
 be equal to null, or it can hold an object. If a variable
 is not nullable, then you can never set it to null:</p>
@@ -73,7 +74,7 @@ want to change other than the default values. If you only want to change the par
 <strong>name</strong>, then just pass in the new value</p>
 <pre>functionName ( name : "Eric" );</pre><p>
 The parameter <b>a</b> will get the default value of <b>0</b> and parameter <b>b</b> gets the default value of <b>false</b>.
-<h2 id="when-to-use-this">When to use this?</h2>
+<h2 >When to use this?</h2 >
 <p>In the code that was generated for your first project, find the file main.dart. You should
 find the string <b>'You have pushed the button this many times:'</b> somewhere
 in the code.
@@ -89,7 +90,7 @@ src="images/TextWidget.png" alt="Text widget" /></p>
 <p>If you want to change the size, pass in a new value for the parameter
 <strong>fontSize</strong>:</p>
 <pre>style:TextStyle( fontSize:30 )</pre></p>
-<p>If you want to change the font color, give a new value for the color
+<p>If you want to change the font color, give a new value for the <b>color</b>
 parameter:</p>
 <p><pre>style:TextStyle( fontSize:30, color:Colors.blue )</pre></p>
 <p>You can reverse the order of fontSize and color parameters.</p>
@@ -102,7 +103,7 @@ the browser with the new TextStyle. When it's running, change the
 fontSize to something else and save the file. Watch as the GUI instantly
 updates without restarting.</p>
 
-
+<hr>
 <h1>Summary</h1>
 <p>Dart is similar to Java when it comes to declaring variables or functions. However, it also lets you write
   that some parameters are optional and if they're not specified,

@@ -24,7 +24,8 @@
   }
   </pre>
 <p>
-  You will get a value that int can't be set to double, so go and change the declaration of _counter from int to double:
+  You will get a error that int can't be set to double, so go and change the declaration of <b>_counter</b>
+  from <b>int</b> to <b>double</b>:
   <pre>   double _counter = 0; </pre><p>
   Then set the onChanged: parameter to the name of the function <b>setNewValue</b>. If you try running this, changing the slider won't change the text the way the button would do.
   This brings us to one of the main new concepts of Mobile Graphical Programming.
@@ -32,7 +33,7 @@
   <hr>
 <h1>Redraw on variable update </h1>
 <p>
-  In modern interfaces, the screen will only redraw when a variable has changed. If none of the variables have changed, then there is no need to redraw the screen.
+  In modern user interface programming, the screen will only redraw when a variable has changed. If none of the variables have changed, then there is no need to redraw the screen.
   In order to indicate that we are changing a variable and we want the screen to update, we use the <b>setState()</b> function.
   <b><pre>
     void setNewValue(double value)
@@ -42,7 +43,7 @@
       });
     }
   </pre></b>
-  <p> Here, we are updating the <b>_counter</b> variable. By doing this, Flutter will optimize the redraw so that it only updates widgets that actually use the <b>_counter</b>
+  <p> Here, we are updating the <b>_counter</b> variable to a new value. By doing this, Flutter will optimize the redraw so that it only updates widgets that actually use the <b>_counter</b>
 variable. Any widget that uses numClicks will get updated.</p>
 <p> If you try to click the + button, you will get a crash: <img src="images/crash.png" >
 If you read the message, it says that value is not between minimum 0 and maximum 1. Of course, because the _incrementCounter function has: _counter++.</p>

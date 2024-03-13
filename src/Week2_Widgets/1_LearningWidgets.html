@@ -8,7 +8,14 @@
 
 <h1>Learning Widgets</h1><p>
     Flutter has many widgets, and we won't have time to learn them all. However, we will learn some of the basics, and you should recognize the pattern and be able to then add any Widgets you find later.
-
+</p>
+<p> Instead of you writing code and trying to follow along with the notes, just copy the project that the professor is using. Open
+    Android Studio, and select the "File" menu, then "New" -> "Project from Version Control". Next, it will ask you to put in the
+    URL of the project you want to copy. Put this address in the URL field:
+    <pre>https://github.com/etorunski/CST2335_Summer24.git</pre>
+<p>Then click "Clone". Your Android Studio will copy all the files that are located in that repository to your computer. You should
+    then open the project in a new window.
+</p>
 <h2>Image</h2>
 <p>Images can be any of the normal image formats: JPG, PNG, GIF, BMP. Let's start by downloading an image from the internet onto our computer:
     <a href="http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg">http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg</a>
@@ -40,7 +47,10 @@ the file isn't even on the Git tracking list. A colour or Green means that the f
 </pre>
 <p>Then debug your application and you should see your picture there. The image might be quite large, but you can resize the image using <b>height:</b> and <b>width:</b> parameters:
 <pre>  Image.asset("images/algonquin.jpg", width: 200, height:200)</pre>
-
+<p>Go ahead and change the width and height parameters and you should see your program react immediately without recompiling. This
+is a great feature of modern programming languages called <b>"Hot swapping"</b>. It is basically changing the code of the program while it is still running.
+You don't need to recompile and restart your program.</p>
+<p>At this point, let's commit our code to git. </p>
 <h2>Text</h2>
 <p> We have already looked at <b>Text</b> last week, but the Text widget normally shows a String. You can also change the size of the string using the <b>fontSize</b> parameter.
 
