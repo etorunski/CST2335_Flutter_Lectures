@@ -18,7 +18,7 @@
 </p>
 <h2>Image</h2>
 <p>Images can be any of the normal image formats: JPG, PNG, GIF, BMP. Let's start by downloading an image from the internet onto our computer:
-    <a href="http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg">http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg</a>
+    <a href="http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg" target="_blank">http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg</a>
 
 <br>Rename the file to <b>algonquin.jpg</b> to make things simple. Next in your Flutter project, create a directory called "images" in the root project folder. Then copy your algonquin.jpg file into the images folder.</p>
 <h2>Git Tracking</h2>
@@ -50,7 +50,17 @@ the file isn't even on the Git tracking list. A colour or Green means that the f
 <p>Go ahead and change the width and height parameters and you should see your program react immediately without recompiling. This
 is a great feature of modern programming languages called <b>"Hot swapping"</b>. It is basically changing the code of the program while it is still running.
 You don't need to recompile and restart your program.</p>
-<p>At this point, let's commit our code to git. </p>
+
+
+<h2>Committing changes</h2>
+<p>To save the work from today, click on the "Master" git button on the top of AndroidStudio. From the list, click on "Commit":
+    <img src="images/commitButton.png">
+<p>The next window show the list of Updates to the project. These are the files that have changed since the last time you committed. You must
+    give an update message describing what has changed in these files.<img src="images/changesToProject.png">
+<p>Click on "Commit" to save the updates to your project. Notice that after the commit, all the filenames change to black color.</p>
+<!-- p>Then to upload those changes to your Github repository, click on the "Push" button to send your changes <img src="images/pushChanges.png"> </p-->
+
+<hr>
 <h2>Text</h2>
 <p> We have already looked at <b>Text</b> last week, but the Text widget normally shows a String. You can also change the size of the string using the <b>fontSize</b> parameter.
 
@@ -76,6 +86,9 @@ This shows a button with the text "Click Me", but we have to write a function <b
     )</pre>
 
 <p> An ElevatedButton can take any Widget as its child: parameter so that you can put Text, Images, etc. and when you click on the Button's surface, it will call the <b>onPressed</b> function.</p>
+<p>Go ahead again and commit your work as you did above. This time, add the commit message <b>"Added a button"</b>.</p>
+<hr>
+
 <h2>Checkbox</h2>
 <p>A Checkbox takes a <b>value</b> parameter, which should be a boolean indicating whether the box is checked or not. There should also be a function which gets called whenever the user clicks on the checkbox.
 This function passes in a boolean indicating whether the box is now checked or not.  Let's declare an instance variable to store if this should be checked or not:
@@ -89,11 +102,13 @@ This function passes in a boolean indicating whether the box is now checked or n
 <p> This means that Flutter will check that newValue not null. If it is null, then the app will crash. You don't have to worry about this because if you are clicking on a checkbox, then the checkbox exists
     and it has a true/false value. I'm not sure how it can be null in the first place.
 </p>
+<hr>
 <h2>Switch</h2>
 <p>A Switch works in the same way as a Checkbox. It can either be in an "On" state or "Off" state. In fact, just copy and paste the Checkbox line from above but change Checkbox to Switch. It will still have a
 <b>value:</b> parameter and an <b>onChanged: </b> callback function. Leave the callback function the same so that it will also change the value of <b>isChecked</b>. This just shows that when a variable gets updated using
 <b>setState()</b>, then any widget that uses that variable gets updated:<pre>Switch(value:isChecked, onChanged: (newValue) {  setState(() { isChecked = newValue!; });}),
 </pre></p>
+<hr>
 <h2>TextField</h2>
 <p>
     TextField allows a user to type in some text. This is used for login name, password, address, etc. In Flutter, you use a
@@ -142,13 +157,6 @@ This function passes in a boolean indicating whether the box is now checked or n
         labelText: "First name"
     )),</pre>
 </p>
-<h2>Committing changes</h2>
-<p>To save the work from today, click on the "Master" git button on the top of AndroidStudio. From the list, click on "Commit":
-<img src="images/commitButton.png">
-<p>The next window show the list of Updates to the project. These are the files that have changed since the last time you committed. You must
-    give an update message describing what has changed in these files.<img src="images/changesToProject.png">
-<p>Click on "Commit" to save the updates to your project. Notice that after the commit, all the filenames change to black color.</p>
-<p>Then to upload those changes to your Github repository, click on the "Push" button to send your changes <img src="images/pushChanges.png"> </p>
 <br><br><br><br><br><br>
 </body>
 </html>
