@@ -86,7 +86,7 @@ This shows a button with the text "Click Me", but we have to write a function <b
     )</pre>
 
 <p> An ElevatedButton can take any Widget as its child: parameter so that you can put Text, Images, etc. and when you click on the Button's surface, it will call the <b>onPressed</b> function.</p>
-<p>Go ahead again and commit your work as you did above. This time, add the commit message <b>"Added a button"</b>.</p>
+<p>Go ahead again and commit your work as you did above. This time, add the commit message: <b>"Added a button"</b>.</p>
 <hr>
 
 <h2>Checkbox</h2>
@@ -102,12 +102,14 @@ This function passes in a boolean indicating whether the box is now checked or n
 <p> This means that Flutter will check that newValue not null. If it is null, then the app will crash. You don't have to worry about this because if you are clicking on a checkbox, then the checkbox exists
     and it has a true/false value. I'm not sure how it can be null in the first place.
 </p>
+<p>Go ahead again and commit your work as you did above. This time, add the commit message "Added a Checkbox".</p>
 <hr>
 <h2>Switch</h2>
 <p>A Switch works in the same way as a Checkbox. It can either be in an "On" state or "Off" state. In fact, just copy and paste the Checkbox line from above but change Checkbox to Switch. It will still have a
 <b>value:</b> parameter and an <b>onChanged: </b> callback function. Leave the callback function the same so that it will also change the value of <b>isChecked</b>. This just shows that when a variable gets updated using
 <b>setState()</b>, then any widget that uses that variable gets updated:<pre>Switch(value:isChecked, onChanged: (newValue) {  setState(() { isChecked = newValue!; });}),
 </pre></p>
+<p>Go ahead again and commit your work as you did above. This time, add the commit message "Added a switch".</p>
 <hr>
 <h2>TextField</h2>
 <p>
@@ -157,6 +159,7 @@ This function passes in a boolean indicating whether the box is now checked or n
         labelText: "First name"
     )),</pre>
 </p>
+<p>Go ahead again and commit your work as you did above. This time, add the commit message "Added a TextField".</p>
 <br><br><br><br><br><br>
 </body>
 </html>
