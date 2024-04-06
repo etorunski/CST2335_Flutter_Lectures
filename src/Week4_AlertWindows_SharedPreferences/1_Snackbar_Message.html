@@ -44,7 +44,9 @@ Ok, Cancel, Yes/No, etc. Just add some buttons in the <b>actions:</b> array of w
     <li><b>content:</b> This should be a Text() widget that appears in the middle of the window.</li>
     <li><b>actions:</b> This is an array of Buttons that will be on the alert dialog. Normally, you would have an "ok" button or
     "ok" and "cancel" buttons.</li>
-</ol></p><p>Let's take some time to do a demonstration and see how it works.</p>
+</ol><p>Once an AlertDialog has been shown or opened, it will stay on screen over top of what you had on the main screen. To hide an AlertDialog, you call:
+<pre> Navigator.pop(context);</pre>
+</p><p>Let's take some time to do a demonstration and see how it works.</p>
 <br><br><br><br><br><br>
 </body>
 </html>
