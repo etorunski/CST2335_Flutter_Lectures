@@ -11,13 +11,12 @@
 
 <p>Modern applications have adopted the <b>Repository pattern</b>
     (<a href="https://www.dhiwise.com/post/the-complete-guide-to-the-repository-pattern-in-flutter" target="_blank">https://www.dhiwise.com/post/the-complete-guide-to-the-repository-pattern-in-flutter</a>) .
-    The pattern is that all the stored data is in a central repository
-that is accessible anywhere in the app. Usually this is done by creating a class with static variables:
+    The pattern is that all the stored data is in a central repository class that is accessible anywhere in the app. Usually this is done by creating a class with static variables:
 <pre>
-    class DataRepository{
-    static String loginName;
-    static int age;
-    }
+class DataRepository{
+  static String loginName;
+  static int age;
+}
 </pre>
 <p>Then in your pages, you set these values whenever the user clicks on something:
     <pre>
@@ -35,9 +34,10 @@ that is accessible anywhere in the app. Usually this is done by creating a class
     as data that gets saved and loaded from a database or from a network connection. The data repository is responsible
     only for the application's data and nothing else.
 </p>
+<hr>
 <h1>Starting other apps on the device</h1>
 <p>If your device supports sending emails, sending text messages or making phone calls then you can launch those apps from within your program.
-We will use extra software packages that implement the phone dialing. You can either run this command in the terminal:
+We will use extra software packages called <a href="https://pub.dev/packages/url_launcher" target="_blank"><b>url_launcher</b></a> that implement the phone dialing. You can either run this command in the terminal:
     <pre>
     flutter pub add url_launcher
 </pre>
@@ -52,7 +52,7 @@ Put in the name "url_launcher" in the search field and hit enter. Select the "ur
     file to the latest version.
 Then to download that library from the online repository, you need to click the "pub get" button in the pubspec.yaml editor:
 <img src="../Week4_AlertWindows_SharedPreferences/images/pub_get.png"> </p>
-<p>This library lets you launch URLs. For instance, you can run:
+<p>This <b>url_launcher</b> library lets you launch URLs. For instance, you can run:
 <pre>launch("https://www.algonquincollege.com")</pre>
 <p>however you need to import the library into your code. If you look at the web page for the package, it gives you the import
     statement:
