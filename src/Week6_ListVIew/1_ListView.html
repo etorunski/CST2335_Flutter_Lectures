@@ -96,7 +96,13 @@ The code should look like this:
     <li>onLongPress: - for holding your finger / mouse for a long time</li>
     <li>onHorizontalDragUpdate: - for left-to-right swiping</li>
 </ul>
-<p>You can implement several of these gesture detectors for each Row( ) widget. When any of these gestures are detected,
+<p>You can implement several of these gesture detectors for each Row( ) widget:
+
+
+    <pre>
+    GestureDetector(child: Row(    ....), onTap: () {  }  )
+</pre><p>
+    When any of these gestures are detected,
     you can then remove an item from the List. Just be sure that removing from the List is surrounded by
     <b>setState( () {  } )</b> so that the UI will redraw.
 </p>

@@ -9,20 +9,18 @@
 <p>For this week's lab, show your knowledge of ListViews:
 
 
-<p>Create a "To Do" list that lets users add items to a list. The user can type into a TextField and click "Add".
-The item should then appear in the List, and there should be an empty checkbox on the same row. When the user
-    clicks on the checkbox, it marks the item as finished. There should also be a bottom Navigation bar with two items:
-    <ol>
-    <li>Current</li>
-    <li>Finished</li>
-</ol>
-<p>When the user clicks on "Current", the application should show the current list of to do items. When users click
-    on the checkbox to finish an item, it should go into a second list of finished items. From the list of
-    finished items, if a user selects the checkbox again, it will make the item current again, and it should appear
-    in the list of current items.
+<p>Create a "To Do" list that lets users add items to a list. The user can type into a TextField and click "Add" which should then make the item in the List.
+
+    Each item should have the row number on the left side, and the To do item to the right.
+<br>
+You should add a Long-Press gesture listener which will bring up a dialog box asking if the
+user wants to delete the item. If the user selects "Yes", then the item will be removed from the list. If the user selects
+"No", then nothing should change.
+</p>
+<p>
+    If the number of items is empty, then you should instead show a Text saying "There are no items in the list".
+
 </p>
 
-<p>In the finished items list, each item should have a Long-Press listener which will bring up a dialog box asking if the
-user wants to delete the item. If the user selects "Yes", then the item will be permanently deleted. If the user selects
-"No", then nothing should change.
-</p></body></html>
+
+</body></html>
