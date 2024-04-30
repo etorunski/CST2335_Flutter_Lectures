@@ -5,7 +5,27 @@ html{
   line-height: 1.4;
   height: 100%;
 }
-
+ol {
+  list-style: none;
+  counter-reset: item;
+}
+li {
+  counter-increment: item;
+  font-family: Roboto, sans-serif;
+  display: block;
+  margin-left:3em;
+  margin-bottom:1em;
+}
+li:before {
+  margin-right: 10px;
+  content: counter(item);
+  background: lightblue;
+  border-radius: 100%;
+  color: white;
+  width: 1.2em;
+  text-align: center;
+  display: inline-block;
+}
 p{
   font-family: Roboto, sans-serif;
   display: block;
