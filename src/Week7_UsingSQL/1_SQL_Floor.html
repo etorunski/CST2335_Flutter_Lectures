@@ -14,7 +14,13 @@ is a similar library for Flutter called the Floor SQLite library:
     <br> The Floor library can be used for all platforms except for Web Applications. To get started, have a look at this tutorial:
     <a href="https://pinchbv.github.io/floor/getting-started/" target="_blank">https://pinchbv.github.io/floor/getting-started/</a>
 </p>
-<p>Basically, the steps are:
+
+<p>Before we begin, we will need to create an entity, or model class. This is just a class that will store data about the
+objects in our project. Entity, or model classes are typically something like Car, Person, Date, Assignment, etc.
+They are the kind of classes that are the building blocks of an application, which represent the most basic object being
+used in your project. For our To-Do list, our entity class should be a ToDoItem, with just a String for the name of the item.</p>
+
+<p>If we follow the tutorial listed above, the steps are basically:
 <ol>
     <li>Add the following dependencies to pubspec.yaml:
     <pre>dependencies:
@@ -66,7 +72,23 @@ final person = Person(1, 'Frank');
 
 await personDao.insertPerson(person);
 final result = await personDao.findPersonById(1);
-</pre> You can change the filename that it uses for your database by replacing the string <b>app_database.db'</b></li>
+</pre> You can change the filename that it uses for your database by replacing the string <b>app_database.db'</b>
+    You will also have to implement your own tracking variable for the database IDs. In the example above, "Frank" had the ID of 1, however the ID should be dynamically created.</li>
+    <pre>static int ID = 1; </pre>
+    <p>
+        Then, when you create Entity objects, you increment the counter:
+        <pre>final person = Person(ID++, "Frank");</pre>
+    <p> However, here the Floor library might load items from the file that have an ID already assigned that is higher than the current ID. For example,
+        if an object in the database has an ID that is 100 for example, then your ID variable should be higher than that.
+         In the Person constructor:
+        <pre>Person(int id, String name)
+{
+    if(id > ID)
+        ID = id + 1;
+
+    ...
+}</pre>
+    </p>
 </ol>
 <p>Please explore more of the documentation in the tutorial. Let's now go over the steps in an example by modifying the ListView example from last week. Whenever you
     add something to the List&lt; &gt;, you should also insert into the database. Whenever you remove something from the List&lt; &gt;, you should also delete from the database.
