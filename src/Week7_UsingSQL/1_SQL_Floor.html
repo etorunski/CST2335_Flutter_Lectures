@@ -88,6 +88,10 @@ final result = await personDao.findPersonById(1);
 
     ...
 }</pre>
+    <p>Lastly, when you are using databases in your application, you normally load all the data as a first step.
+        When you are creating your List&lt; &gt; object, you would then also run your query to load items into that
+        list from the database. A good place to do this is in the <b>initState()</b> function since you are indeed initializing the
+        state of your application.
     </p>
 </ol>
 <p>Please explore more of the documentation in the tutorial. Let's now go over the steps in an example by modifying the ListView example from last week. Whenever you
