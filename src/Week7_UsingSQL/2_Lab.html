@@ -2,23 +2,26 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../main.css">
-    <title>Lab week 6</Title>
+    <title>Lab week 7</Title>
 </head>
 <body>
 <h1>Lab work</h1>
-<p>For this week's lab, you will use last week's lab where you used a ListView to show to-do items. You will demonstrate your knowledge of databases by:
+<p>For this week's lab, you will use last week's lab where you used a ListView to show to-do items.
+    You will demonstrate your knowledge of databases to save the items that are entered so that they can be loaded again when the application
+    launches.
 
 
-<p>Whenever the user clicks the "Add" button, you will now also add the newly created ToDo item to the Database using a DAO object.
+<ol><li>Whenever the user clicks the "Add" button, you will now also add the newly created ToDo item to the Database using a DAO object and an
+    insert function (1 mark).</li>
 
 
-<p>When the user clicks on "Current", the application should show the current list of to do items. When users click
-    on the checkbox to finish an item, it should go into a second list of finished items. From the list of
-    finished items, if a user selects the checkbox again, it will make the item current again, and it should appear
-    in the list of current items.
-</p>
+<li>Whenever the application restarts, your List should contain all the items that were previously saved in the database. (1 mark).
+</li>
 
-<p>In the finished items list, each item should have a Long-Press listener which will bring up a dialog box asking if the
-user wants to delete the item. If the user selects "Yes", then the item will be permanently deleted. If the user selects
-"No", then nothing should change.
-</p></body></html>
+<li>Whenever the user deletes an item using the long press, you should delete the item from the database. When you restart your application,
+    it should not appear again (1 mark).
+</li>
+</ol>
+<h2>Demonstration</h2>
+<p> For your work to be assessed by the professor, you must demonstrate that adding items stores them in the database, restarting the application
+retains all the saved items, and deleted items do not appear the next time you run your application (3 marks).</p></body></html>
