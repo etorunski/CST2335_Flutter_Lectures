@@ -71,11 +71,15 @@ class DataRepository{
             (itCan) {
 
                 if(itCan)
-                    launch("tel:888 123 4567")
+                {
+                    launch("tel:888 123 4567");
                 }
                 else
+                {
                     Snackbar.messenger("You can't make phone calls from this device");
-            )
+                }
+            }
+    );
 
 </pre>
 <p> The function <b>canLaunch()</b> returns a Future&lt;bool&gt; meaning that when the function returns, it will return a <b>bool</b>.
