@@ -19,8 +19,15 @@ ProfilePage. Then when you use your login page, and your password is correct, th
     <li>Phone Number</li>
     <li>Email address</li>
 </ol>
+<img src="images/pageTwo.png"/>
 <p>
-    The Phone Number should have two buttons beside it: Telephone, SMS. If you click on the Telephone button,
+    The Phone Number should have two buttons beside it: Telephone, SMS. You can use a normal ElevatedButton() widget and the child is an Icon object
+    like we covered in the BottomNavigationBar.<br>
+    Normally, a textField will go all the way across the screen, however if you mix elements that grow like a TextField with elements that have a fixed size like
+    a Button, then your app will crash. To fix it, you must put the TextField inside a <b>Flexible( child:  )</b> widget. The reason is here: <a href="https://stackoverflow.com/questions/45986093/textfield-inside-of-row-causes-layout-exception-unable-to-calculate-size">
+    https://stackoverflow.com/questions/45986093/textfield-inside-of-row-causes-layout-exception-unable-to-calculate-size</a>. <br>
+
+    If you click on the Telephone button,
     it should launch a phone dialer for that phone number. If you click on the SMS button, then it should launch
     a text messaging application to that phone number.
 </p>
