@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Various Topics</Title>
+</head>
+<body>
+<p>Normally Week 7 is busy with midterm preparation so to keep things relaxed in this course, this week will just cover a few different topics that wouldn't normally take a whole lecture.</p>
+<p>Flutter has a "Widget of the week" video series where they do a quick overview of various widgets. Have a look at these:</p>
+<p></p>
+<h2>Expanded widget:</h2>
+<p>Expanded basically makes a child widget grow larger, but it grows proportionally to its<strong> flex:</strong> parameter. Have a look at the demo widget at this website:&nbsp;<a href="https://api.flutter.dev/flutter/widgets/Expanded-class.html">Expanded class - widgets library - Dart API (flutter.dev)</a> .</p>
+<hr>
+<h2>CachedNetworkImage:&nbsp;</h2>
+<p>Cached Network Image lets you specify an Image's URL in the Widget constructor and then downloads it when the network is available. Once downloaded, it just reuses what it downloaded instead of reloading it. It does the same thing as you downloading an image to the assets folder ahead of time as you did in week 2. Have a look at this site: <a href="https://pub.dev/packages/cached_network_image">cached_network_image | Flutter package (pub.dev)</a> and the video here: <a href="https://www.youtube.com/watch?v=fnHr_rsQwDA">CachedNetworkImage (Package of the Week) - YouTube</a>&nbsp;</p>
+<p></p>
+<hr>
+<h2>Padding:</h2>
+<p>The padding widget lets you set margins around the child: parameter. Have a look at this page: <a href="https://api.flutter.dev/flutter/widgets/Padding-class.html">Padding class - widgets library - Dart API (flutter.dev)</a>&nbsp;</p>
+<p></p>
+<hr>
+<h2>Flutter launcher icons on Android, iOS, and Web:</h2>
+<p>Have a look at this webpage: <a href="https://pub.dev/packages/flutter_launcher_icons">flutter_launcher_icons | Dart package (pub.dev)</a>&nbsp; . For these extra packages, you must install them using the commandline:&nbsp;</p>
+<pre data-text-to-copy="flutter pub add flutter_launcher_icons"><code data-highlighted="yes">flutter pub add flutter_launcher_icons</code></pre>
+<p>Basically, download a PNG or JPG to your images folder like we did in previous weeks. Look at the website for launcher_icons and follow the section on copying and pasting the parameters to your pubspec.yaml file:&nbsp;</p>
+<pre><code data-highlighted="yes">dev_dependencies:
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "path/to/image.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "path/to/image.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "path/to/image.png"</code></pre>
+<p>The only thing to change is the <strong>image_path</strong> parameter for each of the android, ios, web, windows, macos sections. The web section also needs a <strong>background_color </strong>and <strong>theme_color</strong> HEX color, like #FFFFFF for example.</p>
+<p>Then when everything is finished, just run this command to generate the icons for each specified platform:</p>
+<pre><code data-highlighted="yes">flutter pub run flutter_launcher_icons</code></pre>
+<p>Then launch your app in Android or iOS and you'll see the icon has changed from default Flutter icon. On Web, you should see the icon at the top in the tab bar.</p>
+<p></p>
+<hr>
+<h2>Circle Avatar</h2>
+<p>To get a circular shape around an Image, just CircleAvatar widget. <a href="https://api.flutter.dev/flutter/material/CircleAvatar-class.html">CircleAvatar class - material library - Dart API (flutter.dev)</a>&nbsp; Set the <strong>backgroundImage</strong>: parameter as the picture you want to show but use an AssetImage() widget instead of Asset.image() as we did in Week 2. Also change the <strong>radius</strong>: parameter until the shape looks like what you want. Just follow this example:</p>
+<pre><code>CircleAvatar(
+  backgroundImage: AssetImage('images/algonquin.png'),<br>  radius:100
+);</code></pre>
+<hr>
+<h2>Platform being run:</h2>
+<p>If you want to determine which platform your app is running on, have a look at this page:</p>
+<p><a href="https://api.flutter.dev/flutter/dart-io/Platform-class.html" target="_blank" rel="noopener">Platform class - dart:io library - Dart API (flutter.dev)</a></p>
+<p></p>
+<hr>
+<h2>Audio player</h2>
+<p>To play audio in your app, follow this tutorial: <a href="https://pub.dev/packages/audioplayers">audioplayers | Flutter package (pub.dev)</a>&nbsp;</p>
+<p>Just find the URL of an audio stream you want to play and then call the <strong>play()</strong> function.</p>
+<p></p></body></html>
