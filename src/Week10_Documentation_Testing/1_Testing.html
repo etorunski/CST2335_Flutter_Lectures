@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Documentation</Title>
+</head>
+<body>
+<h1>Documentation</h1>
+<p>Dart follows the Java commenting format: /**   */ for comments, or /// for single line comments
+    Let's look at the the official Dart documentation guidelines for creating comments:<br>
+    <a href="https://dart.dev/effective-dart/documentation" target="_blank">https://dart.dev/effective-dart/documentation</a>
+Make sure that you look at the <b>"Doc comments"</b> section for the DartDoc style. Notice that DartDoc supports MarkDown formatting
+    in its comments.
+</p>
+<p>You should comment your instance variables and the functions you declare. You don't need to comment variables that are declared
+    inside of functions.</p>
+<p> Dart has a library called DartDoc, which is equivalent to JavaDoc. To install the library, run the command:
+<pre>flutter pub add dartdoc</pre>
+</p>
+<p>Once you have finished, you can generate the documents for your project by running the command:
+<pre>dart doc</pre><p>This will create a <b>/doc</b> subfolder that has your documentation.</p>
+<p>For more information about generating documentation, read this page:
+    <a href="https://www.dhiwise.com/post/getting-started-with-dartdoc-tips-for-generating-dart-api-docs">https://www.dhiwise.com/post/getting-started-with-dartdoc-tips-for-generating-dart-api-docs</a></p>
+</body></html>
