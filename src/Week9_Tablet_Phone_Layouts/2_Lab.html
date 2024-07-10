@@ -2,27 +2,25 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../main.css">
-    <title>Lab week 6</Title>
+    <title>Lab week 8</Title>
 </head>
 <body>
 <h1>Lab work</h1>
 <p>For this week's lab, show your knowledge of Responsive Layouts:
 
 
-<p>Create a "To Do" list that lets users add items to a list. The user can type into a TextField and click "Add".
-The item should then appear in the List, and there should be an empty checkbox on the same row. When the user
-    clicks on the checkbox, it marks the item as finished. There should also be a bottom Navigation bar with two items:
-    <ol>
-    <li>Current</li>
-    <li>Finished</li>
-</ol>
-<p>When the user clicks on "Current", the application should show the current list of to do items. When users click
-    on the checkbox to finish an item, it should go into a second list of finished items. From the list of
-    finished items, if a user selects the checkbox again, it will make the item current again, and it should appear
-    in the list of current items.
-</p>
+<p>Create a "To Do" list that lets users add items to a list. The user can type into a TextField and click "Add", the same as what
+    you have had for the previous labs.
+    <ol><li>Change the long-press gesture event to a Tap gesture. Whenever the user selects taps on an item from the list,
+    it should show a details page to the right of the page on a tablet. It should show the Item name, and database id. (1 mark)
+</li>
+    <li>For a phone, or device in portrait mode, selecting an item from the list will show the details of the item instead of the list. (1 mark)</li>
+<li>The details page should have a "Delete" botton that deletes the item from the list and from the database. (1 mark)</li>
 
-<p>In the finished items list, each item should have a Long-Press listener which will bring up a dialog box asking if the
-user wants to delete the item. If the user selects "Yes", then the item will be permanently deleted. If the user selects
-"No", then nothing should change.
-</p></body></html>
+</ol>
+
+<h2>Demonstration</h2>
+<p> For your work to be assessed by the professor, you must demonstrate that selecting an item from the list shows the details
+    page on a device in Landscape mode. Selecting an item in Portrait mode shows the details using the full page.
+When you delete an item, the details are no longer shown on the page.</p>
+</body></html>
