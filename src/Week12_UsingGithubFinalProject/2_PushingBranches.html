@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Using Github</Title>
+</head>
+<body>
+
+
+<h1>How to use branches in workflows</h1>
+<p>When you are going to work on a new feature, you want to keep your work seperate from other people's work so that they aren't affected by your changes. First of all, make sure that you have the latest code from the repository from the server by pulling from the server. For this, type in the command <b>git pull</b>. This will
+    make sure that all commits on the server are also present on your computer.</p>
+
+<h2>Creating a branch</h2>
+<p>To create a branch, type in the command: <b>git branch BRANCH_NAME</b> but replace BRANCH_NAME with something you make up. This will create the branch but
+    will not make it active. To activate the branch, type: <b>git checkout BRANCH_NAME</b> but with the name that you created.<br>
+
+    Try that now by creating a branch called <b>Delete_Comments</b>. Then check out your branch. To make sure that the branch is active, type <b>git branch</b>. This should list
+    all of the branches on your local computer, along with a star * next to the current branch. That means that all your commits will be saved to that branch.
+    Go ahead now and remove the comments in <b>main.dart</b>. Since you have changed your file from the way it was committed, it should show up in the commit window:
+
+
+    <br>
+    In the command line, you can do the same thing by typing <b>git status</b>. This will tell you what files have changed from how they were last committed. This should
+    tell you that main.dart has changed. To see the changes in main.dart, type: <b>git diff main.dart</b>. The lines in red are what were deleted and the lines in green with a +
+    show you which lines have been added.
+</p>
+<p>Go ahead and commit your changes onto your branch by typing: <b>git commit -am "Removed Comments"</b>. This means that this change has been saved as a commit on the
+    Delete_Comments branch. Go ahead and checkout the main branch and you will see that the file is back to how it was before because the main branch doesn't include your last commit.
+    Checkout your Delete_Comments branch and see that your file is now the way you last saved it. Use AndroidStudio to push your branch to github through the git menu, or use the command:
+    <b>git push origin Delete_Comments</b>. The origin is variable replacing the URL of the remote computer, and Delete_Comments is the branch name to push to on Github.
+    To see what URL that origin is tied to, type: <b>git remote -v</b>
+</p>
+<h2>Pull requests on Github</h2>
+<p>Now go look at your repository on Github.</p>
+
+
+</body></html>

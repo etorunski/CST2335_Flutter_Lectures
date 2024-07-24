@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Using Github</Title>
+</head>
+<body>
+<h1>Using Github</h1>
+<p>We learned how to share a project on Github using Android Studio. Look at Week 2's content for a reminder.
+    However today we will cover how to do it using
+the command line.</p>
+<p>Create a new Flutter project, and let's call it "test_github_flutter". Once you are done, you should have
+a project that compiles and shows a Text widget just showing "You have clicked the button X times".</p>
+<hr>
+<h2>Enabling Git source control</h2>
+<p>Open a Terminal in AndroidStudio in your new project. At the command line, type: <b>git init</b>.
+    This will initialize the files required for git. Now if you look at your files in the Project window, you
+    should see that all your filenames are in red, meaning that they are not on the git tracking list.</p>
+<p>In the terminal, type <b>git status</b>. This will tell you the same thing, that there a whole bunch of untracked files.
+    To add files to the tracking list, type: <b>git add .</b> This will add all files in the current directory.
+    Once you type this command, you will see that all of your files in the project window turn green.<br>
+    If you type <b>git status</b> in the terminal, you will see the same thing that there are uncommitted files in your directory.
+    This just means that there is no previous version of the file so you cannot do a rollback.<br>
+    To commit from the Terminal, type: <b>git commit -am "Initial Commit"</b></p>
+
+<p>The parameters <b>-am</b> mean (a) add the file to the index for commit, and (m) the commit message in quotation
+marks. Once you run this command, you will see that all your filenames in your project window, the filenames all
+have a black font colour.</p>
+<hr>
+<h2>Sharing to github from the command line</h2>
+<p>Log in to Github using your account credentials. Then click on the menu in the top right and select "your repositories"
+<img src="images/repositories.png"></p>
+<p>Then click on the "New" button:<img  src="images/new_repository.png"></p>
+<p>Then give your repository a name (<b>test_github_flutter</b>): <img src="images/repo_name.png">
+Then scroll to the bottom of the page and click "Create Repository".</p>
+<p>The next page gives you instructions on how to transfer your repository to github:
+<img src="images/push_repo_remote.png">
+
+The first line tells git what the URL is to send your code to.<br>
+The second line creates a branch called "main". Traditionally git used the name "master" however people now use main
+instead instead.<br>
+The last line pushes your code to the remote repository (from the line above) and says to put it in a branch called "main"</p>
+</body></html>

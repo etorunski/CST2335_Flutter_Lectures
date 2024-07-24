@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="../main.css">
+    <title>Internationalization</title>
 </head>
 <body>
 <h1>Internationalization</h1>
 <p>This refers to supporting other languages for your application. There is a really good tutorial at this website:</p>
 <a href="https://www.flutterclutter.dev/flutter/tutorials/internationalization-i18n-in-flutter-an-easy-and-quick-approach/2020/213/" target="_blank">https://www.flutterclutter.dev/flutter/tutorials/internationalization-i18n-in-flutter-an-easy-and-quick-approach/2020/213/
 </a>
+<p>However the tutorial uses Dart version 2 and won't compile in Dart version 3. Have a look at the Week11 branch from the CST2335
+repository. It has the code from the tutorial that's been refactored to work with Dart version 3.</p>
 
 <p>Basically are the steps are:
 <ol>
-    <li>Add "flutter_localizations:" section to pubspec.yaml</li>
-    <li>Add translation json files to the <b>assets/translations</b> folder.</li>
-    <li>Add those files to the <b>assets:</b> section of the pubspec.yaml file. This is the same section as the JPG and PNG images.</li>
-    <li>Create the <b>AppLocalizations</b> and <b>LocalizationsDelegate</b> classes following the tutorial.</li>
-    <li>Make sure that all your language JSON files are complete and are not missing any entries.</li>
+    <li>Add "flutter_localizations:" section to pubspec.yaml <img src="images/pubspec.png"> </li>
+    <li>Add translation json files to the <b>assets/translations</b> folder.<img src="images/translations.png"></li>
+    <li>Add those files to the <b>assets:</b> section of the pubspec.yaml file. This is the same section as the JPG and PNG images. <img src="images/assets_pubpec.png"></li>
+    <li>Copu the <b>AppLocalizations</b> and <b>LocalizationsDelegate</b> file that are is part of this branch
+         but were created following the tutorial and updated to compile with Dart version 3.</li>
+    <li>Make sure that all your language JSON files are complete and are not missing any entries.
+    <img src="images/string_entries.png"> <br>Then when you want to use the translation of a string, call this function:
+        <pre>AppLocalizations.of(context)?.translate('string');</pre> <p> but pass in the string Key that you want to use and the
+        code will return the correct translation for your current locale.</p></li>
+    <li>Lastly, change the application so that the language can change. You'll have to go to where your App is declared and change it so that it inherits from <b>StatelessWidget</b> to <b>StatefulWidget</b>
+    <img src="images/change_app.png">
+        <p>You have to make new entries for the language codes you want your app to support. A list of codes can be found on this page: <a href="https://docs.mojolicious.org/I18N/LangTags/List" target="_blank">https://docs.mojolicious.org/I18N/LangTags/List</a></p>
+        <p>Whenever you want to change your language that is shown, just call the <b>changeLanguage()</b> function with the new Locale() object. It must be one of the languages that you support in your <b>assets:</b> section.</p>
+    </li>
 </ol>
 </p>
 <p>Have a look at the Week11 branch of the example code for this course. It has the AppLocalizations and LocalizationsDelegate already implemented
