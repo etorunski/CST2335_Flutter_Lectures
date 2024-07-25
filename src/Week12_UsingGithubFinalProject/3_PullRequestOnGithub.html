@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Using Github</Title>
+</head>
+<body>
+<h1>Creating a pull request</h1>
+<p>Look at your repository now on Github:
+<img src="images/img.png" width="1000">
+<p>The picture shows that you just pushed your branch and asks if you want to "Compare & pull request". This button
+    is the easy way to do it, but that button will not always be there so we'll show the consistent way to do a pull request.
+    Click on the "Pull Requests" tab at the top.
+    <img src="images/img_1.png" width="1000">
+
+    Then click on "New pull request":
+    <img src="images/img_2.png" width="1000">
+    Then select the branch that you just pushed. The arrow shows that the changes you pushes will go to the Main branch.
+    Then click on the "Create Pull Request" button. Lower on the page should show all the red lines showing the removed
+    comments. Click again on the "Create Pull Request" button. At each step, you are looking for the Green button for you
+    to be able to proceed.
+    The next page should show you that there are no conflicts and you are able to merge your changes onto the Main branch. Click
+
+    on the green button "Merge pull request", and then again on the green "Confirm merge".
+    Now that you have merged your changes, you should see that your merge was successful. You don't need the branch anymore
+    so you should delete it by clicking on the "Delete branch" button.
+    <img src="images/img_5.png">
+
+    You should also delete your branch from your computer since it has served its purpose. On your computer, go to your main
+    branch by typing: <b>git checkout main</b>. Then delete your previous branch by typing:
+    <b>git branch -D Delete_Comments</b>. The -D parameter means delete.
+
+    Your changes should be removed on your computer but they have been merged on the Remove Github repository. To bring those changes
+    to your computer, type: <b>git pull</b>. In your main.dart file, you should see that your comments have been removed.
+    In AndroidStudio, click on the Git tab and you should see graphically what happened:
+    <img src="images/img_6.png">
+    <h2>Summary</h2>
+<p> 1) Whenever you implement a new feature, you should pull the latest code from the server onto your main branch on your computer.
+    This makes sure that you have the latest code from your team and that you are incorporating their changes into the code.
+ <br>  2) Then you should create a new branch that will keep the commits for this new feature that you are creating.
+    <br> 3) Once you are done at it works, you commit your changes and push to the server.
+    <br> 4) You create a Pull Request on the server to merge your code.
+    <br> 5) You merge your pull request and then delete your branch on Github.
+    <br> 6) You checkout your main branch on your computer and delete the branch you had created. You then pull those changes onto
+    your main branch from Github.
+
+</p><br><br><br><br></body></html>

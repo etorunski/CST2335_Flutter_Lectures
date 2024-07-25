@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Using Github</Title>
+</head>
+<body>
+<h1>Merge conflicts on Github</h1>
+<p>A Merge conflict happens when two commits want to make changes to the same line of a file. Let's create two branches
+    to see how that happens. Create a new branch called "Customers":
+    <pre> git branch Customers </pre>
+<p>Now create a new branch called "Flights":
+    <pre>git branch Flights</pre>
+<p>
+    Now checkout the Customers branch: <b>git checkout Customers</b>. Go to the scaffold and let's change the Title of our
+    app on line 47 to be "Customers":
+    <img src="images/customers_title.png">
+    <p>Then commit the changes and push them to Github:
+    <pre>git commit -am "Changed the title"
+git push origin Customers</pre>
+<p> Then checkout the Flights branch: <b>git checkout Flights</b>.  Change the same title to "Flights":
+<img src="images/flights_title.png">
+    <p>Then push the changes to Github:
+<pre>git commit -am "Changed the title"
+git push origin Flights</pre>
+<p>If you look at the git tab in AndroidStudio, you'll see that there are two branches coming out from main:
+    <img src="images/two_branches.png">
+</p>
+
+
+<p>Repeat the steps from before to merge the Customers branch onto the main branch. When you are done, delete the Customers branch from Github and from your computer.
+    There shouldn't be any problems because there shouldn't be any conflicts when merging the first branch.
+    <br>Then create a pull request to merge the Flights branch onto the main branch.
+    You'll get a warning that you can't automatically merge but you can still create the pull request:
+    <img src="images/cant_merge.png">
+    Go ahead and click on the Green button to create the pull request.
+    Then you will see which files are causing the conflicts and you will have the chance to resolve them:
+    <img src="images/resolve_conflicts.png">
+    <p>If you click on the Resolve Conflicts button, you will then see a text editor showing you one or more conflicting regions:
+    <img src="images/conflict_region.png">
+
+    <p> The first branch will have the line: <b>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;Flights</b>
+<br>The Flights is just the branch name, and then there will be: <b>================================</b> to show the end of
+    the first branch conflict.<br>
+    Next will be another region of code followed by: <b>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</b><br>
+    This is telling you that the Flights branch wants to insert: <b> title:Text("Flights")</b> <br> and the main branch
+    inserted: <b> title:("Customers")</b>
+    It is up to you to figure out how to mix the two. In our case, there can only be one title so you will have to get rid of
+    one of the regions.</p>
+<p><pre>
+    &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;   Branch1
+
+    AAAAAAAAA
+
+    ==========================
+
+    BBBBBBBBBB
+
+    &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;   Branch 2
+</pre> So any time you see merge conflicts in github, you will see:
+
+<p> and it is up to you to mix the two regions into something that makes sense for the code. For your final project, you will
+    come into this situation for the pubspec.yaml file so you can just mix the two regions. Other times, you will have conflicting
+    lines of code so one of the regions will have to be deleted entirely.
+    Once you are done, delete the lines that were put there to show the difference between the branches:
+<pre>
+    Delete these lines at the end:
+
+    &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;   Branch1
+
+    ===========================
+
+    &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;   Branch 2
+</pre>
+<p>
+    Once you believe the code has been merged properly, you click on the <b>"Mark as resolved"</b> button:
+    <img src="images/mark_as_resolved.png">
+    <p>When all of the conflicting files have been resolved (you see a green checkmark) then the <b>Commit merge</b> button
+    becomes activated and you can merge your pull request.<img src="images/commit_merge.png" width="1000">
+    <p>When your conflicts have all been resolved, then you can merge your pull request:
+    <img src="images/finish_merge_PR.png">
+    <p>Then click on the "Confirm" button and then delete your branch when it's been merged. Everything should now be on the
+    main branch. Checkout the main branch on your computer: <b>git checkout main</b>. Then delete your Flights branch since it's
+    been merged: <b>git branch -D Flights</b> <br>Then you restart the sequence by pulling the latest code on the main branch from the server:
+    <b>git pull</b> and then create a new branch to implement your next feature.</p>
+<p> You should always follow the same sequence for branches and pull requests:
+    <ol>
+    <li>Pull the latest code on your main branch: <b>git pull</b></li>
+    <li>Create a new branch for your new changes: <b>git branch NewBranch</b></li>
+    <li>Move to that new branch: <b>git checkout NewBranch</b></li>
+    <li>Make your changes and then commit them: <b>git commit -am "Added new changes"</b></li>
+    <li>Push your commit to the remote repository: <b>git push origin NewBranch</b>. This creates NewBranch on the remote repository</li>
+    <li>Create a pull request on the server and merge your code. Resolve any conflicts if necessary.</li>
+    <li>After it's successfully merged, delete your branch on the server.</li>
+    <li>On your computer, go back to the main branch: <b>git checkout main</b></li>
+    <li>On your computer, delete your branch that you pushed: <b>git branch -D NewBranch</b></li>
+    <li>Go back to step 1 above and repeat with pulling the latest code onto your main branch.</li>
+</ol>
+<p>Creating the small incremental changes will make sure that your merge conflicts remain small and manageable. If you don't do this
+    regularly, then you will have a really big merge conflict that will be almost impossible to merge successfully. Normally, your commits and pull requests will tie in with project management software so that the bug report
+can be closed off with a link to your Pull Request that has 1 or more commits where you fixed the bug or added a new feature.</p><br><br><br><br></body></html>
