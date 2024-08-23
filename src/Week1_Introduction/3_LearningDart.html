@@ -20,10 +20,10 @@ for those who already know it. Google has further developed the language as the 
   which allows Dart to be compiled to machine language on other platforms.</p>
 <hr>
 <h1 >Variable declaration</h1>
-<p>Like with Java, you first write the variable type <b>(int, float, double, boolean) </b> followed by the variable name:
+<p>Like with Java, you first write the variable type <b>(int, long, double, boolean) </b> followed by the variable name:
   <pre>  int age;
   bool done = false; // In Dart, boolean is called bool
-  float pi = 3.14;
+  double pi = 3.14;
 </pre>
 </p>
 <p>However, if you are going to initialize a variable to an initial
@@ -52,6 +52,9 @@ null:</p>
 <p><pre>if(name != null) return name.length();</pre></p>
 <p>can be shortened to</p>
 <p><pre>return name?.length;</pre></p>
+
+<p>Another way to explain it is that if an object is not nullable, then you never have to check that
+it's null because that's impossible!</p>
 <hr>
 <h1 >Function declarations</h1>
 <p>Functions look the same as in Java:
@@ -68,7 +71,8 @@ the position of the parameters, for instance: <b>int a</b> is the first paramete
 <p>Why would you want this? First of all, because you can specify default values for
 the parameters of the function:</p>
 <pre>functionName( int a = 0, bool b = false, String name = "")</pre>
-<p>but you wrap the parameter list in braces: { }</p>
+<p>but you wrap the parameter list in braces: { }  to make them optional. That means that if you don't
+specify one of the parameters, then it will take the default values.</p>
 <pre>functionName( {int a = 0, bool b = false, String name = ""})</pre>
 <p>Now you can call the function but only pass in parameters that you
 want to change other than the default values. If you only want to change the parameter
@@ -108,7 +112,7 @@ updates without restarting.</p>
 <h1>Summary</h1>
 <p>Dart is similar to Java when it comes to declaring variables or functions. However, it also lets you write
   that some parameters are optional and if they're not specified,
-  then they will get their default values. You can also use <b>val</b> to declare a variable as long as you also supply the initial value.</p><br><br><br><br>
+  then they will get their default values. You can also use <b>const</b> to declare a variable as long as you also supply the initial value.</p><br><br><br><br>
 </body>
 
 </html>
