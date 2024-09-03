@@ -13,7 +13,7 @@
     for Week3 so you can commit your work for this lab 3 assignment.</p>
 <p>For this week's lab, show your knowlege of layouts by recreating this image on a page:
 <img src="https://feastdesignco.com/wp-content/uploads/2020/04/modern-recipe-index-example-720x1118.jpg">
-    <p>If you have a look at the page, the root looks like it's a Column(), and then there are many rows.</p>
+    <p>If you have a look at the page, the root looks like it's a Column(), and then there are many rows.
 
 <p>Some of the rows have text that is in the center, except the second row which is aligned to the left side. There is also a row of images with
 "Beef", "Chicken", "Pork", and "Seafood" written in the middle. This is a row that has the spacing in between the images, but each image is itself
@@ -35,8 +35,17 @@ is over top of the image but this time in bottom center.</p>
     <li><a href="https://www.pexels.com/photo/close-up-of-salad-in-plate-257816/" target="_blank">Salad</a> </li>
     <li><a href="https://www.pexels.com/photo/food-set-on-tray-2942319/" target="_blank">Side Dishes</a> </li>
     <li><a href="https://www.pexels.com/photo/brown-lidded-cooking-pot-on-gray-round-wooden-coaster-39521/" target="_blank">Crockpot</a> </li>
-</ul><p> These images are royalty-free so there is no problem in using them. </p>
-<p>The marks for this lab are:
+</ul><p>For the rest of the images, you can just use the search bar to look for Ice Cream, Brownies, Pies and Cookies. These images are royalty-free so there is no problem in using them. </p>
+<p>To get the circle frame around an image, use the
+<b>CircleAvatar Widget</b>: <a href="https://api.flutter.dev/flutter/material/CircleAvatar-class.html" target="_blank">CircleAvatar class - material library - Dart API (flutter.dev)</a>&nbsp; Set the <strong>backgroundImage</strong>: parameter as the picture you want to show but use an AssetImage() widget instead of Image.asset() as we did in Week 2. Also change the <strong>radius</strong>: parameter until the shape looks like what you want. Just follow this example:</p>
+<pre><code>CircleAvatar(
+  backgroundImage: AssetImage('images/algonquin.png'),<br>  radius:100
+);</code></pre>
+
+</p>
+<hr>
+<h2>Demonstration</h2>
+<p>To get marks for this lab, you must show your work to the lab professor during your normal lab period. The marks for this lab are:
 <ol>
     <li>You have 8 items in the Column()</li>
     <li>The Column( ) uses SpaceBetween for the layout</li>
