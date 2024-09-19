@@ -23,7 +23,7 @@ must do a Rollback to remove any unsaved chages before you continue.</p>
 <p>Whenever you want to give a message to the user, normally a window shows up with a short message. It can either be an error message,
 or something like password doesn't match. Android uses a Snackbar window that shows up at the bottom of the window for a few seconds and then disappears:
 <pre>
-    snackBar = SnackBar( content: Text('Yay! A SnackBar!') );
+    const snackBar = SnackBar( content: Text('Yay! A SnackBar!') );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
 </pre>
 </p>

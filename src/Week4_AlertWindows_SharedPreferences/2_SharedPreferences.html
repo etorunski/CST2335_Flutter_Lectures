@@ -25,7 +25,7 @@ program.
 done asynchronously. The keyword <b>await</b> means to wait until the function returns. If your code must await for a function to return,
     then the function your are in must also be declared <b>async</b>. Or, you can  use the <b>.then()</b> which is a function that will be called once the getInstance() has finished.
     The function getInstance() returns an object of type <b>SharedPreferences</B>, so the
-    .then() function needs a lambda function that accepds a SharedPreference object as the result:
+    .then() function needs a lambda function that accepts the SharedPreference object what gets returned as the result:
     <pre>    SharedPreferences.getInstance().then((result) {
 
 

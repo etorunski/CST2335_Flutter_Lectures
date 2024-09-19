@@ -94,7 +94,19 @@ This shows a button with the text "Click Me", but we have to write a function <b
     <a href="https://api.flutter.dev/flutter/widgets/Padding-class.html" target="_blank">Padding class - widgets library - Dart API (flutter.dev)</a>&nbsp;</p>
 
 <hr>
+<h2>Screen Readers</h2>
+<p>For people who are visually impaired, you should put a label to describe the image, or a text field so that the screen reading software will describe what
+is on your GUI. For that, there is something called a <b>Semantics</b> widget. Have a look at this video: <a href="https://www.youtube.com/watch?v=NvtMt_DtFrQ">https://www.youtube.com/watch?v=NvtMt_DtFrQ</a>
+Basically, you just add a Semantics tag, and put a child widget that goes with your tag:
+    <pre>
+    Semantics( child:   ,
+            label:'This label describes the child')
+</pre>
+</p>
 
+
+
+<hr>
 <h2>Checkbox</h2>
 <p>A Checkbox takes a <b>value</b> parameter, which should be a boolean indicating whether the box is checked or not. There should also be a function which gets called whenever the user clicks on the checkbox.
 This function passes in a boolean indicating whether the box is now checked or not.  Let's declare an instance variable to store if this should be checked or not:
