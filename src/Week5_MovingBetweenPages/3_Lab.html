@@ -38,11 +38,13 @@ program with an email pre-populated with the email address that is in the TextFi
 <ul><li>loadData() - this function should load the variables from EncryptedSharedPreferences</li>
 <li>saveData() - this function should save the variables to EncryptedSharedPreferences. </li></ul><p>
 You should call these two functions in the <b>initState()</b> function and the <b>dispose()</b> function to automatically
-load and save the variables from the repository.
+load and save the variables from the repository. Because loading will be done asynchronously, it is easier to load the repository on
+    the first page once your app loads. Then when you go to your second page, the repository class should have the variables loaded to put
+    into the TextFields on the second page.
 </p>
 <p>The marks for this lab are (7 marks):
 <ol>
-    <li>When you log in successfully, your app goes to a second page. A Snackbar shows a message saying "Welcome Back" followed by your login name from the first page.</li>
+    <li>When you log in successfully, your app goes to a second page. The top of the page shows a Text widget saying "Welcome Back" followed by your login name from the first page.</li>
     <li>If a user enters in data in the fields of the second page, it gets saved into EncryptedSharedPreferences</li>
     <li>If you save the strings, then the next time you start your application, the strings are loaded into the TextFields</li>
     <li>If you click the email button beside the email address, it will launch a mailto: URL</li>
