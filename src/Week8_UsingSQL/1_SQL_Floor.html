@@ -45,7 +45,7 @@ abstract class PersonDao {
   Future&lt;Long&gt; insertPerson(Person person);
 }</pre>The @insert annotation will generate the necessary SQL code to insert the Person object into the database. It will map the class' variables automatically to database columns.
     Likewise, the @Query annotation will create the SQL query code to find all Person objects in the database. It will return a List object with all the objects it found.
-    <br>All the funcions return Future objects meaning that these queries are all asynchronous. You either have to use <b>await</b> when calling these functions, or follow the function
+    <br>All the functions return Future objects meaning that these queries are all asynchronous. You either have to use <b>await</b> when calling these functions, or follow the function
     calls with <b>.then( obj {  } ) </b> </li>
     <li>Create the database:<pre>// database.dart
 
@@ -65,13 +65,21 @@ abstract class AppDatabase extends FloorDatabase {
 }
 </pre>  Make sure to change the <b>entities:</b> from Person to whatever object you are using in your project. You will have to run the code generator after to build
     the code from the annotations.</li>
-    <li>Use the generated code:<pre>final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
+
+    <li>Run the code generator tool: <pre>flutter packages pub run build_runner build</pre></li>
+    <li>Use the generated code but instead of <b>FloorAppDatabase</b>, use <b>Floor</b> followed by your database class created above:
+
+
+        <pre>final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
 
 final personDao = database.personDao;
 final person = Person(1, 'Frank');
 
 await personDao.insertPerson(person);
-final result = await personDao.findPersonById(1);
+
+
+final result = await personDao.getAllRows();
+
 </pre> You can change the filename that it uses for your database by replacing the string <b>app_database.db'</b>
     You will also have to implement your own tracking variable for the database IDs. In the example above, "Frank" had the ID of 1, however the ID should be dynamically created.</li>
     <pre>static int ID = 1; </pre>
