@@ -17,21 +17,28 @@ repository. It has the code from the tutorial that's been refactored to work wit
     <li>Add "flutter_localizations:" section to pubspec.yaml <img src="images/pubspec.png"> </li>
     <li>Add translation json files to the <b>assets/translations</b> folder.<img src="images/translations.png"></li>
     <li>Add those files to the <b>assets:</b> section of the pubspec.yaml file. This is the same section as the JPG and PNG images. <img src="images/assets_pubpec.png"></li>
-    <li>Copu the <b>AppLocalizations</b> and <b>LocalizationsDelegate</b> file that are is part of this branch
+    <li>Copy the <b>AppLocalizations</b> and <b>LocalizationsDelegate</b> file that are is part of this branch
          but were created following the tutorial and updated to compile with Dart version 3.</li>
     <li>Make sure that all your language JSON files are complete and are not missing any entries.
     <img src="images/string_entries.png"> <br>Then when you want to use the translation of a string, call this function:
         <pre>AppLocalizations.of(context)?.translate('string');</pre> <p> but pass in the string Key that you want to use and the
         code will return the correct translation for your current locale.</p></li>
-    <li>Lastly, change the application so that the language can change. You'll have to go to where your App is declared and change it so that it inherits from <b>StatelessWidget</b> to <b>StatefulWidget</b>
+    <li>Change the application so that the language can change. You'll have to go to where your App is declared and change it so that it inherits from <b>StatelessWidget</b> to <b>StatefulWidget</b>
     <img src="images/change_app.png">
-        <p>You have to make new entries for the language codes you want your app to support. A list of codes can be found on this page: <a href="https://docs.mojolicious.org/I18N/LangTags/List" target="_blank">https://docs.mojolicious.org/I18N/LangTags/List</a></p>
-        <p>Whenever you want to change your language that is shown, just call the <b>changeLanguage()</b> function with the new Locale() object. It must be one of the languages that you support in your <b>assets:</b> section.</p>
+        <li>In the MyApp class, you must also add this function: <pre>
+    static void setLocale(BuildContext context, Locale newLocale) async {
+        _MyAppState? state = context.findAncestorStateOfType&lt;_MyAppState&gt;();
+        state?.changeLanguage(newLocale);
+}&nbsp;
+
+</pre></li>
+        <li>You have to make new entries for the language codes you want your app to support. A list of codes can be found on this page: <a href="https://docs.mojolicious.org/I18N/LangTags/List" target="_blank">https://docs.mojolicious.org/I18N/LangTags/List</a>
+        <p>Whenever you want to change your language that is shown, just call the <b>changeLanguage()</b> function with the new Locale() object. It must be one of the languages that you support in your <b>assets:</b> section.</p></li>
     </li>
 </ol>
 </p>
 <p>Have a look at the Week11 branch of the example code for this course. It has the AppLocalizations and LocalizationsDelegate already implemented
-so you can just copy and paste those files into your project. You can also look at the </p>
+so you can just copy and paste those files into your project. </p>
 
 
 </body>
