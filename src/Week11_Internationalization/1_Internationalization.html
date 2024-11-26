@@ -21,7 +21,7 @@ repository. It has the code from the tutorial that's been refactored to work wit
          but were created following the tutorial and updated to compile with Dart version 3.</li>
     <li>Make sure that all your language JSON files are complete and are not missing any entries.
     <img src="images/string_entries.png"> <br>Then when you want to use the translation of a string, call this function:
-        <pre>AppLocalizations.of(context)?.translate('string');</pre> <p> but pass in the string Key that you want to use and the
+        <pre>AppLocalizations.of(context)!.translate('string')!;</pre> <p> but pass in the string Key that you want to use and the
         code will return the correct translation for your current locale.</p></li>
     <li>Change the application so that the language can change. You'll have to go to where your App is declared and change it so that it inherits from <b>StatelessWidget</b> to <b>StatefulWidget</b>
     <img src="images/change_app.png">
