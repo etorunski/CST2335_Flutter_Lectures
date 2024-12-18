@@ -37,9 +37,9 @@ program with an email pre-populated with the email address that is in the TextFi
 <p>Use the repository pattern for storing the user's data, and add two functions to the reporitory class:
 <ul><li>loadData() - this function should load the variables from EncryptedSharedPreferences</li>
 <li>saveData() - this function should save the variables to EncryptedSharedPreferences. </li></ul><p>
-You should call these two functions in the <b>initState()</b> function and the <b>dispose()</b> function to automatically
-load and save the variables from the repository. Because loading will be done asynchronously, it is easier to load the repository on
-    the first page once your app loads. Then when you go to your second page, the repository class should have the variables loaded to put
+You should load the data in the <b>initState()</b> function to save the data, you can add an <b>addListener(  )</b> to
+    a TextEditingController, which calls your listener function whenever the text changes. Because loading will be done asynchronously, it is easier to load the repository on
+    the first page once your app loads. Then, when you go to your second page, the repository class should have the variables loaded to put
     into the TextFields on the second page.
 </p>
 <p>The marks for this lab are (7 marks):

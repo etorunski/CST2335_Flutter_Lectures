@@ -8,12 +8,13 @@
 <h1>Lab work</h1>
 <h2>GITHUB:</h2>
 <p>Before you start working on this week's lab, create a new branch in git called "Week4", and it should be based off of your week 2 work. Your week 2
-    work should be committed on the main or master branch before you worked on your lab 3 assignment.</p>
+    work should be committed on the main or master branch before you worked on your lab 3 assignment.
+This shows how you can create various branches and add new commits to previous commits on various branches.</p>
 
     <h2> For week 4's lab, show your knowledge of AlertDialog, Snackbar and SharedPreferences:</h2>
 
 
-<p>Take your login page from your Week2 branch and add code so that whenever the user clicks on the login button,
+<p>Take your login page from your <b>Week2</b> branch and add code so that whenever the user clicks on the login button,
 you show an AlertDialog asking whether the user would like to save their username and password for the next time
 they run the application.</p>
 
@@ -23,18 +24,14 @@ that is saved in EncryptedSharedPreferences.</p>
 
 <p>Next, add code so that when the program starts, you load the data in EncryptedSharedPreferences and if you find
 that the username and password are stored, then load it into the EditText fields. You should then show a SnackBar
-that the previous login name and passwords have been loaded, and add an Action button to "Undo" or clear the
-text fields. If the user clicks the Undo button, then the TextFields are reset to empty string (""), but the data
-are not removed from the EncryptedSharedPreferences. That means that if the user clicks the Undo button and then
-restarts the application, then the TextFields will be repopulated with the strings that are stored, and the Snackbar
-shows again the next time.</p>
+that the previous login name and passwords have been loaded.</p>
 
 <p>The marks for this lab are: (5 marks)
 <ol>
-    <li>You show an AlertDialog asking to save the login name and password.</li>
-    <li>CLicking on the buttons of the dialog will either save or not save the strings.</li>
+    <li>When the user clicks Login, you show an AlertDialog asking to save the login name and password.</li>
+    <li>Clicking on the buttons of the dialog will either save or not save the strings.</li>
     <li>If you save the strings, then the next time you start your application, the strings are loaded into the TextFields</li>
-    <li>You show a Snackbar if you have reloaded the strings, and the snackbar shows an "Undo" button</li>
-    <li>If you click the Undo button, the reloaded strings are cleared but not removed from EncryptedSharedPreferences.</li>
+    <li>You show a Snackbar if you have reloaded the strings from shared preferences.</li>
+    <li>If you click on the "No" button on the AlertDialog, then the next time your start your application then the TextFields are empty.</li>
 </ol>
 </p></body></html>

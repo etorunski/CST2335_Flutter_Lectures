@@ -34,6 +34,13 @@ bottom of the page for a few seconds and then hide itself.</p>
 <p>You must supply the <b>label</b> parameter which is just a string that will appear on the button. There is also an <b>onPressed:</b> parameter which
 you supply a function that gets called in case the user presses the button.</p>
 
+<p> If you want to show a SnackBar right at the beginning of the page loading, in the <b>initState()</b> function, then you must slightly
+delay launching it because the page isn't ready to draw yet. In order to slightly delay something in Dart, there is a function called
+    <b>Future.delayed()</b><p>
+<pre>Future.delayed(Duration.zero, () {
+    //code to run later
+
+    }  );</pre>
 
 <hr>
 <h1>Alert Dialog</h1>
