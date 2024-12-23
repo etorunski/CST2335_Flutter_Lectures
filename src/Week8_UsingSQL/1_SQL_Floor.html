@@ -32,66 +32,76 @@ dev_dependencies:
   floor_generator: ^1.4.0
   build_runner: ^2.1.2</pre></li>
 <li>Create an Entity by adding the annotations <b>@entity</b> above the class that will go in the database, and then add  <pre>@primaryKey
-  final int id;</pre> to the class to store the database id.</li>
-<li>Create a DAO object:<pre>@dao
+  final int id;</pre> to the class to store the database id.<br>
+    You should also create a static int to allocate the IDs for your class:
+    <pre>static int ID = 1; </pre>
+</li>
+<li>Create a DAO class:<pre>@dao
 abstract class PersonDao {
+    //this performs a SQL query and returns a List of your <b>@entity</b> class
   @Query('SELECT * FROM Person')
   Future&lt;List&lt;Person&gt;&gt; findAllPersons();
 
-  @delete
-  Future&lt;Long?&gt; delete(Person p);
 
+    //This performs a SQL delete operation where the <b>p.id</b> matches that in the database
+  @delete
+  Future&lt;void&gt; delete(Person p);
+
+    //This performs a SQL insert operation, but you must create a unique id variable
   @insert
-  Future&lt;Long&gt; insertPerson(Person person);
+  Future&lt;void&gt; insertPerson(Person person);
 }</pre>The @insert annotation will generate the necessary SQL code to insert the Person object into the database. It will map the class' variables automatically to database columns.
     Likewise, the @Query annotation will create the SQL query code to find all Person objects in the database. It will return a List object with all the objects it found.
     <br>All the functions return Future objects meaning that these queries are all asynchronous. You either have to use <b>await</b> when calling these functions, or follow the function
-    calls with <b>.then( obj {  } ) </b> </li>
-    <li>Create the database:<pre>// database.dart
+    calls with <b>.then( obj {  } ) </b> to get the data back.</li>
+    <li>Create the database:<pre>
+
+        // If your file is called: database.dart
 
 // required package imports
-import 'dart:async';
-import 'package:floor/floor.dart';
-import 'package:sqflite/sqflite.dart' as sqflite;
+    import 'dart:async';
+    import 'package:floor/floor.dart';
+    import 'package:sqflite/sqflite.dart' as sqflite;
 
-import 'dao/person_dao.dart';
-import 'entity/person.dart';
+    //import your classes you wrote
+    import 'person_dao.dart';
+    import 'person.dart';
 
+        //This must match the filename of this file you are writing
 part 'database.g.dart'; // the generated code will be there
 
 @Database(version: 1, entities: [Person])
 abstract class AppDatabase extends FloorDatabase {
   PersonDao get personDao;
 }
-</pre>  Make sure to change the <b>entities:</b> from Person to whatever object you are using in your project. You will have to run the code generator after to build
+</pre>  Make sure to change the <b>entities:</b> from Person to whatever @entity class you are using in your project. You will have to run the code generator after to build
     the code from the annotations.</li>
 
-    <li>Run the code generator tool: <pre>flutter packages pub run build_runner build</pre></li>
+    <li>Run the code generator tool to generate all the SQL code from your annotations: <pre>flutter packages pub run build_runner build</pre></li>
     <li>Use the generated code but instead of <b>FloorAppDatabase</b>, use <b>Floor</b> followed by your database class created above:
 
 
-        <pre>final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
-
-final personDao = database.personDao;
-final person = Person(1, 'Frank');
-
-await personDao.insertPerson(person);
-
-
-final result = await personDao.getAllRows();
-
-</pre> You can change the filename that it uses for your database by replacing the string <b>app_database.db'</b>
-    You will also have to implement your own tracking variable for the database IDs. In the example above, "Frank" had the ID of 1, however the ID should be dynamically created.</li>
-    <pre>static int ID = 1; </pre>
-    <p>
-        Then, when you create Entity objects, you increment the counter:
-        <pre>final person = Person(ID++, "Frank");</pre>
+        <pre>final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();</pre><p>
+        You can change the filename that it uses for your database by replacing the string <b>'app_database.db'.</b>
+Then open the database in the initState() function: <pre>
+        final personDao = database.personDao;
+        personDao.getAllRows().then(
+            (list) {
+                setState((){myList = list;
+                    } );
+            });
+            </pre>
+        Then to insert a new object, you increment the counter:
+        <pre>
+    final person = Person( Person.ID++, 'Frank');
+    personDao.insertPerson( person );</pre>
+</pre>
     <p> However, here the Floor library might load items from the file that have an ID already assigned that is higher than the current ID. For example,
         if an object in the database has an ID that is 100 for example, then your ID variable should be higher than that.
          In the Person constructor:
         <pre>Person(int id, String name)
 {
-    if(id > ID)
+    if(id >= ID)
         ID = id + 1;
 
     ...
