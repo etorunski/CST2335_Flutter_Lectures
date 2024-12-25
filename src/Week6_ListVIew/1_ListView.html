@@ -13,6 +13,22 @@ Then from the list of <b>Remote</b>,  checkout the Week6 branch which will downl
 your Email program normally shows a ListView of emails that you have received, or the "missed calls" list view
 shows you all the calls that you have missed on your phone.
     <img src="https://javapapers.com/wp-content/uploads/2014/06/ListView-Layout.jpg">
+    <h1>Using functions to create components</h1>
+    <p>Whenever you have several components that work together to create a portion of a page, it is helpful
+        to use a function to isolate their construction and usage. Since a ListView normally also has a button
+        and TextField for entering data, let's create a function that creates all 3 and returns them:
+    <pre>
+    Widget ListPage(){
+        return Column(  );
+    }
+</pre><p>
+    Then for the Scaffold layout, we can just call the function for the body parameter:
+    <pre> body: ListPage(),</pre>
+<p>Now let's implement that function somewhere else in the file so that everything that has to do with the list view is impemented
+    in the same place.
+    </p><hr>
+<h1>ListView</h1>
+<p>
     A ListView is a Widget that you would use
 when you don't know how many things ahead of time that you want to show in a list. The user can then
 scroll down the list if it is larger than the screen. To create a ListView, we use a ListView.builder( ) function.
@@ -59,18 +75,22 @@ In order to fix this, you can put the ListView inside of an Expanded( ) widget. 
 that takes as much space as it can. So the Column ends up having a child Widget which takes as much space
 as possible, which would be the window size. The ListView can also know how big its parent container is.
 The code should look like this:
-<pre> Column( children:[
-        Expanded(child:
-        ListView.builder( itemCount:words.length,
-          itemBuilder: (context, rowNum) {  return
-            Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:[
+<pre>
+    Widget ListPage(){
+       return Column( children:[
+            Expanded(child:
+                ListView.builder( itemCount:words.length,
+                    itemBuilder: (context, rowNum) {  return
+                        Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children:[
 
-                  ]);
-            }
-        )
-    )
-])</pre>
+                            ]);
+                    }
+                )
+            )
+        ]);
+    }
+</pre>
 </p>
 <hr>
 <h1>Adding items to your list</h1>
