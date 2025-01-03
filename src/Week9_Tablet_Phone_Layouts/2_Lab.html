@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../main.css">
-    <title>Lab week 8</Title>
+    <title>Lab 8</Title>
 </head>
 <body>
 <h1>Lab work</h1>
@@ -10,13 +10,15 @@
 from the lecture.
 
 
-<p>Create a "To Do" list that lets users add items to a list. The user can type into a TextField and click "Add", the same as what
-    you have had for the previous labs.
+<p>Modify your "Shopping List" application from the previous two weeks however this time implement the Master-Detail pattern in a reactive layout:
     <ol><li>Change the long-press gesture event to a Tap gesture. Whenever the user selects taps on an item from the list,
-    it should show a details page on the right side when using a tablet or desktop screen. It should show the Item name, and database id. (1 mark)
+    it should show a details page on the right side when using a tablet or desktop screen. It should show the Item name, the quantity, and the database id. (1 mark)
 </li>
-    <li>For a phone, or device in portrait mode, selecting an item from the list will show the details of the item instead of the list. (1 mark)</li>
+    <li>For a phone, or device in portrait mode, selecting an item from the list will show the Item name, the quantity and
+        the database id on the page so that it replaces the list. (1 mark)</li>
 <li>The details page should have a "Delete" button that deletes the item from the list and from the database. (1 mark)</li>
+    <li>The details page should have a "Close" button that just sets the SelectedItem variable back to null so that the
+        DetailsPage doesn't show any more. (1 mark)</li>
 
 </ol>
 

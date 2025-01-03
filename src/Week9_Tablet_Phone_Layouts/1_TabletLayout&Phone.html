@@ -22,7 +22,7 @@ In Flutter, you can call a function to find out what the width and height of you
 <pre> if( (width>height) && (width > 720)) {
 
 }</pre>
-<p>In the Scaffold layout, you can't put an <b>if()</b> statement as a parameter to the <b>body:</b>, so we'll create a function called <b>reactiveLayout</b> which will be a function
+<p>In the Scaffold layout of your page, you can't put an <b>if()</b> statement as a parameter to the <b>body:</b>, so we'll create a function called <b>reactiveLayout</b> which will be a function
 that will have the if statement above, and returns a Widget component:</p>
 <pre>
     Widget reactiveLayout()
@@ -33,35 +33,34 @@ that will have the if statement above, and returns a Widget component:</p>
 </pre>
 <p>In this case, you can put your listView on the left side, and a details page on the right side for when the user selects something from the list:
 
-<pre>{
+<pre>Widget reactiveLayout(){
     Row( children:[
-        ToDoList(), //Left side
+        ListPage(), //Left side
         DetailsPage() //Right side
     ])
 }</pre>
- <p>However the ToDoList() function and DetailsPage() don't exist yet because they are functions that you must write.
+ <p>The ListPage() is what you have done in previous weeks but the DetailsPage() don't exist yet so you must write it.
      Since everything that can be shown on the screen is a type of Widget object we can declare the  following functions
      so that they return a widget:
 
      <pre>
-    Widget ToDoList() {
-
-    }
-
     Widget DetailsPage() {
 
     }</pre>
 
 <p>We also need a way to space out the List and DetailsPage so that the ListView takes a fixed width on the Left side, and the
 DetailsPage is on the rigth side. There is an <b>Expanded( )</b> class that lets you specify a flex parameter:
-<pre>Expanded(
-      flex: a, // takes  a/(a+b)  of available width
-      child: ToDoList(),
-    ),
-Expanded(
-      flex: b, // takes b(a+b) of available width
-      child: DetailsPage(),
-    ),
+<pre>Row(
+        children:[
+          Expanded(
+            flex: a, // takes  a/(a+b)  of available width
+            child: ListPage(),
+          ),
+          Expanded(
+            flex: b, // takes b(a+b) of available width
+            child: DetailsPage(),
+            )
+    ]),
 
 </pre>
 </p>
@@ -80,12 +79,25 @@ Expanded(
     Normally a phone would
     show a listView using the whole screen. Then when the user selects something, then the next screen shows the details of what was selected:
     <pre>
-    if(selectedItem == null){
-        ToDoList() // reuse the code from the tablet Left side,
-    }
-    else
-    {
-        DetailsPage(); //reuse the code from the tablet Right side
+    Widget reactiveLayout(){
+        if( (width>height) && (width > 720)) {
+           return Row(
+                children:[
+                    Expanded(flex: a, // takes  a/(a+b)  of available width
+                    child: ListPage()  ),
+                    Expanded(flex: b, // takes b(a+b) of available width
+                    child: DetailsPage())
+                ]),
+        }
+        else{
+            if(selectedItem == null){
+                return ListPage() // reuse the code from the tablet Left side,
+            }
+            else
+            {
+                return DetailsPage(); //reuse the code from the tablet Right side
+            }
+        }
     }
 </pre>
 <p> If the user selects something from the ListView, there should be some way to set the <b>selectedItem</b> variable back to null, so that there is no longer something selected.
