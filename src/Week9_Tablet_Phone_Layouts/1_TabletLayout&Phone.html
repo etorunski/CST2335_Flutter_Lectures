@@ -66,7 +66,7 @@ DetailsPage is on the rigth side. There is an <b>Expanded( )</b> class that lets
 </p>
 
 <p>For showing the selected item in the DetailsPage, we'll create a variable to store which item in the list has been selected by the user. This should be nullable because it's possible that the user hasn't selected anything yet:
-    <pre>var selectedItem:ToDoItem ? = null</pre>
+    <pre>ToDoItem? selectedItem = null</pre>
 <p>Then when the user selects an item from the list, you set the variable to be the object represented at that row.
 
 <pre>Widget DetailsPage() {
