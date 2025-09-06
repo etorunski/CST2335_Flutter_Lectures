@@ -58,14 +58,14 @@ it's null because that's impossible!</p>
 <hr>
 <h1 >Function declarations</h1>
 <p>Functions look the same as in Java:
-<pre>ReturnType  functionName( int a, char b, bool c){  }</pre>
+<pre>ReturnType  functionName( int a, bool b, String c){  }</pre>
 <p>If you want to call this function, you have to supply values for the
 3 parameters:</p>
-<p><pre>functionName( 44, 'a', false)</pre></p>
+<p><pre>functionName( 44, false, "a")</pre></p>
 <p>Dart introduces an idea of named parameters. Instead of relying on
 the position of the parameters, for instance: <b>int a</b> is the first parameter in the list, and the parameter
   a gets passed 44. With named parameters, you can instead link the parameter to values:</p>
-<p><pre>functionName( c:false, b:'a', a:44);</pre></p>
+<p><pre>functionName( b:false, c:"a", a:44);</pre></p>
 <p>This way, parameter c gets passed <b>false</b>, parameter b gets passed <b>'a'</b>,
   and 44 is for the parameter a.</p>
 <p>Why would you want this? First of all, because you can specify default values for
