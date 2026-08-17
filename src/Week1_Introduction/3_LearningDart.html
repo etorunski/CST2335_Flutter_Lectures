@@ -52,7 +52,8 @@ null:</p>
 <p><pre>if(name != null) return name.length();</pre></p>
 <p>can be shortened to</p>
 <p><pre>return name?.length;</pre></p>
-
+<p>Dart has a "null else" operator, which gets run if the object happens to be null:
+<pre>name?.length ?? 0   // the ?? gets returned if name is null</pre></p>
 <p>Another way to explain it is that if an object is not nullable, then you never have to check that
 it's null because that's impossible!</p>
 <hr>
@@ -68,10 +69,10 @@ the position of the parameters, for instance: <b>int a</b> is the first paramete
 <p><pre>functionName( b:false, c:"a", a:44);</pre></p>
 <p>This way, parameter c gets passed <b>false</b>, parameter b gets passed <b>'a'</b>,
   and 44 is for the parameter a.</p>
-<p>Why would you want this? First of all, because you can specify default values for
+<p>Why would you want this? First of all, you can specify default values for
 the parameters of the function:</p>
 <pre>functionName( int a = 0, bool b = false, String name = "")</pre>
-<p>but you wrap the parameter list in braces: { }  to make them optional. That means that if you don't
+<p>and then you wrap the parameter list in braces: { }  to make them optional. That means that if you don't
 specify one of the parameters, then it will take the default values.</p>
 <pre>functionName( {int a = 0, bool b = false, String name = ""})</pre>
 <p>Now you can call the function but only pass in parameters that you

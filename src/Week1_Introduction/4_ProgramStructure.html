@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="../main.css">
+  <title>Program Structure</title>
+</head>
+<body>
+<h1 id="other-widgets">Updating the screen</h1>
+  <p>Let's look at the default code that was provided by Android Studio. Let's try adding a Slider after the two <b>Text() </b> widgets :
+    <img src="images/sliderFunction.png">
+    If you right-click on the Slider constructor and go to the declaration,  we see that Slider has several required parameters. The <b>required</b> keyword means
+  that the parameter can be in any order, but there is no default value. The user is required to give a value for that parameter.
+  <ol>
+  <li><b>value: </b> followed by a variable that holds its current value. This should be a double</li>
+  <li><b>onChanged: </b> followed by the name of a function that handles a new double value when the slider is changed. You should
+  create a function that takes a double, and assigns your value variable to be the parameter passed in.</li>
+</ol>
+
+<p>Let's practice writing a function above the other _incrementCounter function:
+  <pre>
+  void setNewValue(double value)
+  {
+    _counter = value;
+  }
+  </pre>
+<p>
+  You will get a error that int can't be set to double, so go and change the declaration of <b>_counter</b>
+  from <b>int</b> to <b>double</b>:
+  <pre>   double _counter = 0; </pre><p>
+  Then set the onChanged: parameter to the name of the function <b>setNewValue</b>. If you try running this, changing the slider won't change the text the way the button would do.
+  This brings us to one of the main new concepts of Mobile Graphical Programming.
+</p>
+  <hr>
+<h1>Redraw on variable update </h1>
+<p>
+  In modern user interface programming, the screen will only redraw when a variable has changed. If none of the variables have changed, then there is no need to redraw the screen.
+  In order to indicate that we are changing a variable and we want the screen to update, we use the <b>setState()</b> function.
+  <b><pre>
+    void setNewValue(double value)
+    {
+      setState(() {
+        _counter = value;
+      });
+    }
+  </pre></b>
+  <p> Here, we are updating the <b>_counter</b> variable to a new value. By doing this, Flutter will optimize the redraw so that it only updates widgets that actually use the <b>_counter</b>
+variable. Any widget that uses numClicks will get updated.</p>
+<p> If you try to click the + button, you will get a crash: <img src="images/crash.png" >
+If you read the message, it says that value is not between minimum 0 and maximum 1. Of course, because the _incrementCounter function has: _counter++.</p>
+<p>Let's set the minimum and maximum values of the slider to be 0 and 100:
+<pre> Slider(value:_counter, max:100.0, onChanged: setNewValue, min:0.0 )</pre> <p> Remember, the parameters can be in any order as long as you put the name in front of the value. If you want to see
+what parameters are in the function, just hover your mouse over the function name: <img src="images/popupHelp.png">
+Remember, the code is hot-swapping so we don't need to recompile. Now try using the slider, and clicking the + button. When you click the + button, you should see the slider move. That's because the <b>_incrementCounter</b>
+function uses <b> setState()</b> to modify the variable <b>_counter</b>. Any widget that uses <b>_counter</b> will be redrawn. <br> Let's now just make sure that the app doesn't crash when we try to increment
+past the maximum value of 100. Modify the <b>_incrementCounter()</b> function so that it only increments if _counter is less than 99.
+<img src="images/incrementCounterFix.png"> </p>
+<hr>
+<h1>Summary</h1>
+<p>You can declare variables to hold values. To modify these variables, you can use Widgets that let the user click or drag to update these values. The Widgets normally have a
+  parameter that specifies which function to call when the user clicks or changes the widget. This function can update the variables however it must be done within <b>setState() </b> if you want the Widgets
+to react with the new updated values.</p><br><br><br><br>
+<!--
+More here: https://docs.flutter.dev/reference/widgets</li>
+<p>More here: https://docs.flutter.dev/ui/layout</p -->
+</body>
+</html>
