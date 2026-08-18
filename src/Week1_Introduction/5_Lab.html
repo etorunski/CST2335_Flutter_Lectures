@@ -13,8 +13,10 @@ declare a function, and add Text and Slider Widgets to the screen.
   of how the code works, but you should do all of your work in your own project. For week 1, demonstrate your understanding of the following items (4 marks)  :
 <ol>
 
-  <li>Change how the <b>_counter</b> variable is declared so that it uses <b>var</b> instead of <b>double</b>. Basically
-  initialize the variable to 0.0 instead of 0. </li>
+  <li>Declare a private class called _MyStudentInfo, which extends StatelessWidget (since your name, student number, and course code will not change).
+  You will have to write the <b>build()</b> function which will render how this class looks. This function should return a Column( ),
+  whose <b>children:[ ]</b> are Text( ) widgets: [ Your name & student number, The course code, The assignement number.].
+  You can look at the Column( ) and Text( ) widgets that are already in the code as an example of what to do.</li>
   <li>Show that you can launch the program on the Android emulator, and a web browser (Edge or Chrome). For Android, you'll have to first install the Command-Line tools in the SDK</li>
   <li>Declare another variable called <b>myFontSize</b> and have it initialized to 30.0. Change both the Text() widgets so that they
   use a TextStyle() object that are both set to that size. That way, whenever you change the 30 to something else, both
