@@ -16,37 +16,29 @@
 returns a MaterialApp( ) object, which is like an HTML page, with a Title, Body, and Theme:
 <img src="images/MaterialAppImage.png" width="900"></p>
 <p>
-  As you see, the Body is set to MyHomePage, which is below that in the file.
+  As you see, the Body is set to <b>MyHomePage</b>, which is below that in the file. The parent class is StatelessWidget means it's
+  a Widget (something drawn on screen) that is Stateless (doesn't change). The home: parameter is a MyHomePage() class which
+  is a subclass of StatefulWidget. It's a Widget that has State (it has values that can change).
 </p>
+<p>If you look at the class, there is a <b>_counter</b> variable, which keeps track of the number of times the user presses the plus (+) button.
+The underscore letter at the start of the name makes it a private variable, function, or even private class.
+Notice that <b>_MyHomePageState</b> begins with underscore, so it's a <b>private</b> class</p>
   <hr>
-<h1>Redraw on variable update </h1>
-<p>
-  In modern user interface programming, the screen will only redraw when a variable has changed. If none of the variables have changed, then there is no need to redraw the screen.
-  In order to indicate that we are changing a variable and we want the screen to update, we use the <b>setState()</b> function.
-  <b><pre>
-    void setNewValue(double value)
-    {
-      setState(() {
-        _counter = value;
-      });
-    }
-  </pre></b>
-  <p> Here, we are updating the <b>_counter</b> variable to a new value. By doing this, Flutter will optimize the redraw so that it only updates widgets that actually use the <b>_counter</b>
-variable. Any widget that uses numClicks will get updated.</p>
-<p> If you try to click the + button, you will get a crash: <img src="images/crash.png" >
-If you read the message, it says that value is not between minimum 0 and maximum 1. Of course, because the _incrementCounter function has: _counter++.</p>
-<p>Let's set the minimum and maximum values of the slider to be 0 and 100:
-<pre> Slider(value:_counter, max:100.0, onChanged: setNewValue, min:0.0 )</pre> <p> Remember, the parameters can be in any order as long as you put the name in front of the value. If you want to see
-what parameters are in the function, just hover your mouse over the function name: <img src="images/popupHelp.png">
-Remember, the code is hot-swapping so we don't need to recompile. Now try using the slider, and clicking the + button. When you click the + button, you should see the slider move. That's because the <b>_incrementCounter</b>
-function uses <b> setState()</b> to modify the variable <b>_counter</b>. Any widget that uses <b>_counter</b> will be redrawn. <br> Let's now just make sure that the app doesn't crash when we try to increment
-past the maximum value of 100. Modify the <b>_incrementCounter()</b> function so that it only increments if _counter is less than 99.
-<img src="images/incrementCounterFix.png"> </p>
+<h1>Comments</h1>
+<p>Dart uses DartDoc comments for commenting the code. It follows the JavaDoc format, meaning that you can write a single line comment
+by writing /// at the start of the comment. Multi-line comments begin by <b>/**</b> and end with <b>*/</b>. You should
+  write descriptive comments above every Class declaration, every class variable declaration (variables that are not in a function),
+  and every function declaration that does not have @override. Functions that do have @override as part of their declaration inherit
+  the comments from the parent class.
+</p>
 <hr>
-<h1>Summary</h1>
-<p>You can declare variables to hold values. To modify these variables, you can use Widgets that let the user click or drag to update these values. The Widgets normally have a
-  parameter that specifies which function to call when the user clicks or changes the widget. This function can update the variables however it must be done within <b>setState() </b> if you want the Widgets
-to react with the new updated values.</p><br><br><br><br>
+<h1>In-class exercise</h1>
+<p>Let's review now by declaring a variable. In the _MyHomePageState class, declare a string which will store your name and student number.
+  Second, declare a string that will hold the course code and lab number: "CST2335 - Assignment 1".
+  Then in the <b>build()</b> function, add your name and the course code to the array of children in the Column( ) constructor near the bottom.
+  As you can see, a Column( ) object simply lays out Widget objects vertically in the order that they are listed in the Column.
+</p>
+<br><br><br><br>
 <!--
 More here: https://docs.flutter.dev/reference/widgets</li>
 <p>More here: https://docs.flutter.dev/ui/layout</p -->
