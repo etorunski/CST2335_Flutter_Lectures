@@ -7,28 +7,28 @@
 <body>
 <h1>Lab 1</h1>
   <p>This week, you have had a quick introduction to Flutter, and started programming in Dart. You have learned how to declare variables,
-declare a function, and add Text and Slider Widgets to the screen.
+declare a function, and how a program starts and runs.
 
-<p>For the labs in this course, you should have a second project called "my_CST2335_labs". You can use the in-class code as an example
-  of how the code works, but you should do all of your work in your own project. For week 1, demonstrate your understanding of the following items (4 marks)  :
+<p>For the labs in this course, you should have a second Flutter project called "my_CST2335_labs". You will do all of your work this semester in this one project.
+  You can use the in-class code as an example
+  of how the code works, but you should do all of your work in your my_CST2335_labs project. Once you create your new project, use AI to remove all the default comments that are generated.</p>
+  <p>For week 1, demonstrate your understanding of the following items (6 marks)  :
 <ol>
 
   <li>Declare a private class called _MyStudentInfo, which extends StatelessWidget (since your name, student number, and course code will not change).
   You will have to write the <b>build()</b> function which will render how this class looks. This function should return a Column( ),
-  whose <b>children:[ ]</b> are Text( ) widgets: [ Your name & student number, The course code, The assignement number.].
+  whose <b>children:[ ]</b> are Text( ) widgets: [ Your name & student number, The course code, The lab assignement number.].
   You can look at the Column( ) and Text( ) widgets that are already in the code as an example of what to do.</li>
+  <li>Declare another variable called <b>myFontSize</b> and have it initialized to 30.0. Modify your Text widgets so that you also pass in a <b>style:</b> parameter set to your variable.</li>
   <li>Show that you can launch the program on the Android emulator, and a web browser (Edge or Chrome). For Android, you'll have to first install the Command-Line tools in the SDK</li>
-  <li>Declare another variable called <b>myFontSize</b> and have it initialized to 30.0. Change both the Text() widgets so that they
-  use a TextStyle() object that are both set to that size. That way, whenever you change the 30 to something else, both
-  lines of Text should change size to the new size with Hot Swapping. You will have to remove the <b>const</b> keyword in
-    front of the Text()</li>
-  <li>Add a <b>Slider</b> widget where the <b>onChanged</b> is set to the setNewValue() function and that it also sets your new myFontSize variable equal to the new value passed in. This means
-  that whenever you change the slider, your font size of the two lines of Text should change to the new size.</li>
+  <li>When you run your program, change what the myFontSize variable to 60 and save the file. You should see the program "hot-swap" the code to the new font size</li>
+ <li>Add DartDoc comments above all the classes and the functions describing in your own words what the functions do, and whether the class is a StatelessWidget (never changes or updates),
+   or a StatefulWidget (and say which variable changes) <b>2 marks</b></li>
 </ol>
 <img src="images/finished_window.png" alt="Finished Window">
 <p>
 In order to get marks for the lab, you should show these items are completed and working to the lab professor during your normal lab period. You don't need to submit anything for now
-  but you will keep working on your code in next week's lab.
+  but you will keep working on your code in next week's lab. Also, complete Quiz 1 under the Activities -> Quizzes menu.
 </p>
 <!--
 More here: https://docs.flutter.dev/reference/widgets</li>
