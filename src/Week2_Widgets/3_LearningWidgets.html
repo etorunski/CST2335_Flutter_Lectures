@@ -20,7 +20,8 @@
 <p>Images can be any of the normal image formats: JPG, PNG, GIF, BMP. Let's start by downloading an image from the internet onto our computer:
     <a href="http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg" target="_blank">http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg</a>
 
-<br>Rename the file to <b>algonquin.jpg</b> to make things simple. Next in your Flutter project, create a directory called "images" in the root project folder. Then copy your algonquin.jpg file into the images folder.</p>
+<br>Rename the file to <b>algonquin.jpg</b> to make things simple. Next in your Flutter project, find a directory called "assets" in the root project folder where
+    the AI placed the i18n folder with the language files. Then copy your algonquin.jpg file into the assets folder.</p>
 <h2>Git Tracking</h2>
 <p>Git uses a tracking list to know which files to watch for changes. When you create a new file in your project, it's not on the list.
 When you create a new file, or drag one over from another directory, AndroidStudio will offer to add the file to your tracking list:
@@ -34,19 +35,20 @@ the file isn't even on the Git tracking list. A colour or Green means that the f
     Open that file and look for the line: <b># To add assets to your application, add an assets section, like this:</b><br>
     Below that is where you should list the images you put in the images folder of your project: <pre># To add assets to your application, add an assets section, like this:
   assets:
-    - images/algonquin.jpg
+    - assets/i18n/
+    - assets/algonquin.jpg
 </pre>
 <p>
 
-    <b> Make sure that you use 2 spaces for indenting!</b>. There should be 2 spaces before <b>assets:</b>, and there should be 4 spaces before <b>"- images/algonquin.jpg"</b></p>
+    <b> Make sure that you use 2 spaces for indenting!</b>. There should be 2 spaces before <b>assets:</b>, and there should be 4 spaces before <b>"- assets/algonquin.jpg"</b></p>
 <p>Notice that when you make changes to a file that has been committed, the filename changes to blue.
     <img src="images/pubspecYaml.png">
 </p>
 <p>Next open the file main.dart from last week. Below the Text() widget saying "You have pushed the button this many times", add this:
-<pre>  Image.asset("images/algonquin.jpg")
+<pre>  Image.asset("assets/algonquin.jpg")
 </pre>
 <p>Then debug your application and you should see your picture there. The image might be quite large, but you can resize the image using <b>height:</b> and <b>width:</b> parameters:
-<pre>  Image.asset("images/algonquin.jpg", width: 200, height:200)</pre>
+<pre>  Image.asset("assets/algonquin.jpg", width: 200, height:200)</pre>
 <p>Go ahead and change the width and height parameters and you should see your program react immediately without recompiling. This
 is a great feature of modern programming languages called <b>"Hot swapping"</b>. It is basically changing the code of the program while it is still running.
 You don't need to recompile and restart your program.</p>
@@ -62,13 +64,27 @@ You don't need to recompile and restart your program.</p>
 
 <hr>
 <h2>Text</h2>
-<p> We have already looked at <b>Text</b> last week, but the Text widget normally shows a String. You can also change the size of the string using the <b>fontSize</b> parameter.
+<p> We have already looked at <b>Text</b> last week, but the Text widget normally shows a String. You can also change the size and colour of the string using
+    the <b>style</b> parameter.
+<pre>Text("Hello", style:TextStyle( size:30.0, color:Colors.Red )</pre>
+<p>You can change the size and colour to anything you want. However if you want to add translated text, you must replace the
+string "Hello" with the function: <pre>translate('your_key')</pre>
+<p>Then in the language files in the assets/i18n, you must add an entry in the JSON for 'your_key' : 'translated word'</p>
+<pre>
+  //in en.json:
+    "your_key" : "Hello world"
 
+  //in fr.json:
+    "your_key" : "Bonjour a tous"
+
+  //in de.json :
+    "your_key" : "Guten Tag!"</pre>
+<p> You must put the your new text key in each language file, followed by what to replace it with in that language.</p>
     <h2>Button</h2><p>
 A button is just an area on the screen that you can click on. The area can have either a Text or Image widget in it. Let's have a look:
-<pre> ElevatedButton( onPressed: buttonClicked, child:  Text("Click me")  ) </pre><p>
-
-This shows a button with the text "Click Me", but we have to write a function <b>buttonClicked</b> which will get called whenever the user clicks on the button:
+<pre> ElevatedButton( onPressed: buttonClicked, child:  Text("Click me")  )
+</pre>
+<p>This shows a button with the text "Click Me", but we have to write a function <b>buttonClicked</b> which will get called whenever the user clicks on the button:
 <pre> void buttonClicked(){
 
   }

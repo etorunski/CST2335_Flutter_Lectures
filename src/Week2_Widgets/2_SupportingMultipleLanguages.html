@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Learning Widgets</title>
+</head>
+<body>
+
+<h1>Supporting multiple langauges</h1>
+<p>When you write an application, it is better to write the code once and then just change
+the words that show on the screen when changing languages. There are several libraries that support this,
+but we will use a library called <b>flutter_easy_translate</b></p>
+<p>There is a website called <a href="https://pub.dev/">https://pub.dev/</a> that is the official
+repository for Flutter libraries that are not supplied by Google. Other developers can write extra software and then
+give it to https://pub.dev for distribution and maintenance.</p>
+<p>Go to https://pub.dev and search for flutter_easy_translate in the search bar:
+    <img src="images/pub_dev.png" width="900">
+    If you select the matching result, you should see this page:
+    <img src="images/flutter_translate_dev.png" width="900">
+Notice at the top of the page, it lists which platforms support this library (Android, IOS, Linux, MacOS, Web, Windows)
+    Click on the tab for "installing":
+    <img src="images/install_pub_command.png" width="900">
+    If you open a command terminal in Android Studio and run the command:
+    <pre> flutter pub add flutter_easy_translate </pre>
+<img src="images/terminal_add_translate.png" width="900"><p>
+It should add a line to the file <b>pubspec.yaml</b> where it lists the library name and the version to use.
+</p>
+<p>Looking at the pub.dev website, it lists the Github repository of this library as:
+    <a href="https://github.com/belabiedredouane/flutter_easy_translate">https://github.com/belabiedredouane/flutter_easy_translate</a>.
+If you visit that page, there are manual instructions on how to install and use the library.
+Alternatively, if you want to start using the library quickly, you can use the Gemini AI Agent that is built-in
+to AndroidStudio to set it up for you. The prompt you should as for is:
+<pre>Add support for the package flutter_easy_translate from pub.dev to support English, French, German, Italian, ...</pre>
+<p>Gemini will think for a while and ask for permission to search for certain files from pub.dev, and to modify files in your project.
+    You can keep clicking "Allow" until it finishes and provides a summary of the changes. <B>You must read what has changed
+    and make sure it made the correct changes!</B>.
+<img src="images/changes_implemented.png" height="900">
+  <p>  Make sure it makes the following changes:
+    <ol>
+    <li>Add language files in the folder called <b>assets/i18n</b> for the languages you asked.</li>
+    <li>Modify pubspec.yaml so that the translations are bundled with the app.</li>
+    <li>Application Logic - modified Main.dart to wrap the MyApp() class with LocalizedApp( )</li>
+    <li>Language Switcher - added a Popup Menu Button to change the languages.</li>
+</ol><p>
+You can select "Keep All", or "Revert All" if the AI is doing something different than those choices.
+</p>
+
+<h2>Image</h2>
+<p>Images can be any of the normal image formats: JPG, PNG, GIF, BMP. Let's start by downloading an image from the internet onto our computer:
+    <a href="http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg" target="_blank">http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg</a>
+
+<br>Rename the file to <b>algonquin.jpg</b> to make things simple. Next in your Flutter project, create a directory called "images" in the root project folder. Then copy your algonquin.jpg file into the images folder.</p>
+<h2>Git Tracking</h2>
+<p>Git uses a tracking list to know which files to watch for changes. When you create a new file in your project, it's not on the list.
+When you create a new file, or drag one over from another directory, AndroidStudio will offer to add the file to your tracking list:
+<img src="images/addGitTracking.png"><p>Normally you would click "Add", but I want you to see what happens if you don't use the buttons.
+<p>You can also add files to the tracking list by right-clicking your mouse on the file, then selecting "Git", then "add":
+<img src="images/addFileToGit.png"><p>Notice that the file changes from a Red colour to a Green colour. A colour of Red means that
+the file isn't even on the Git tracking list. A colour or Green means that the file is on the list, but has never been committed (saved) before.</p>
+
+<h2>Back to adding images</h2>
+<p>Next, you must list all the images your app uses so that they get packaged along with your code. Your project has an important file called <b>pubspec.yaml</b>.
+    Open that file and look for the line: <b># To add assets to your application, add an assets section, like this:</b><br>
+    Below that is where you should list the images you put in the images folder of your project: <pre># To add assets to your application, add an assets section, like this:
+  assets:
+    - images/algonquin.jpg
+</pre>
+<p>
+
+    <b> Make sure that you use 2 spaces for indenting!</b>. There should be 2 spaces before <b>assets:</b>, and there should be 4 spaces before <b>"- images/algonquin.jpg"</b></p>
+<p>Notice that when you make changes to a file that has been committed, the filename changes to blue.
+    <img src="images/pubspecYaml.png">
+</p>
+<p>Next open the file main.dart from last week. Below the Text() widget saying "You have pushed the button this many times", add this:
+<pre>  Image.asset("images/algonquin.jpg")
+</pre>
+<p>Then debug your application and you should see your picture there. The image might be quite large, but you can resize the image using <b>height:</b> and <b>width:</b> parameters:
+<pre>  Image.asset("images/algonquin.jpg", width: 200, height:200)</pre>
+<p>Go ahead and change the width and height parameters and you should see your program react immediately without recompiling. This
+is a great feature of modern programming languages called <b>"Hot swapping"</b>. It is basically changing the code of the program while it is still running.
+You don't need to recompile and restart your program.</p>
+
+
+<h2>Committing changes</h2>
+<p>To save the work from today, click on the "Master" git button on the top of AndroidStudio. From the list, click on "Commit":
+    <img src="images/commitButton.png">
+<p>The next window show the list of Updates to the project. These are the files that have changed since the last time you committed. You must
+    give an update message describing what has changed in these files.<img src="images/changesToProject.png">
+<p>Click on "Commit" to save the updates to your project. Notice that after the commit, all the filenames change to black color.</p>
+<!-- p>Then to upload those changes to your Github repository, click on the "Push" button to send your changes <img src="images/pushChanges.png"> </p-->
+
+<hr>
+<h2>Text</h2>
+<p> We have already looked at <b>Text</b> last week, but the Text widget normally shows a String. You can also change the size of the string using the <b>fontSize</b> parameter.
+
+    <h2>Button</h2><p>
+A button is just an area on the screen that you can click on. The area can have either a Text or Image widget in it. Let's have a look:
+<pre> ElevatedButton( onPressed: buttonClicked, child:  Text("Click me")  ) </pre><p>
+
+This shows a button with the text "Click Me", but we have to write a function <b>buttonClicked</b> which will get called whenever the user clicks on the button:
+<pre> void buttonClicked(){
+
+  }
+</pre>
+<p> An ElevatedButton can also show an Image instead of text, if you just change the <b>child:</b> parameter to be an Image instead.
+<pre>  ElevatedButton(
+    onPressed: buttonClicked,
+    child:Image.asset("images/algonquin.jpg", width: 200, height:200)
+    )
+</pre><p> Instead of declaring a function somewhere else in your code and then giving the function name as the onPressed: parameter, you can instead declare the function right in the parameter:
+<pre>
+    ElevatedButton(
+        onPressed: () {  }, //  &lt;--- Lambda function
+        child:Image.asset("images/algonquin.jpg", width: 200, height:200),
+    )</pre>
+
+<p> An ElevatedButton can take any Widget as its child: parameter so that you can put Text, Images, etc. and when you click on the Button's surface, it will call the <b>onPressed</b> function.</p>
+<p>Go ahead again and commit your work as you did above. This time, add the commit message: <b>"Added a button"</b>.</p>
+
+<hr>
+<h2>Padding:</h2>
+<p>The padding widget lets you set margins around the <b>child:</b> parameter. Have a look at this page:
+    <a href="https://api.flutter.dev/flutter/widgets/Padding-class.html" target="_blank">Padding class - widgets library - Dart API (flutter.dev)</a>&nbsp;</p>
+
+<hr>
+<h2>Screen Readers</h2>
+<p>For people who are visually impaired, you should put a label to describe the image, or a text field so that the screen reading software will describe what
+is on your GUI. For that, there is something called a <b>Semantics</b> widget. Have a look at this video: <a href="https://www.youtube.com/watch?v=NvtMt_DtFrQ">https://www.youtube.com/watch?v=NvtMt_DtFrQ</a>
+Basically, you just add a Semantics tag, and put a child widget that goes with your tag:
+    <pre>
+    Semantics( child:   ,
+            label:'This label describes the child')
+</pre>
+</p>
+
+
+
+<hr>
+<h2>Checkbox</h2>
+<p>A Checkbox takes a <b>value</b> parameter, which should be a boolean indicating whether the box is checked or not. There should also be a function which gets called whenever the user clicks on the checkbox.
+This function passes in a boolean indicating whether the box is now checked or not.  Let's declare an instance variable to store if this should be checked or not:
+<pre> var isChecked = false;</pre><p>Then set that variable to be the value of the checkbox:
+<pre>Checkbox(value: isChecked, onChanged: ),</pre>
+<p>Now fill in the <b>onChanged:</b> function for when the user clicks on the checkbox:
+<pre> Checkbox(value: isChecked, onChanged:<b><ul>(newValue) { setState( () { isChecked = newValue; } ); })</ul></b></pre>
+
+<p>There is a problem with this update function, since the callback function declares <b>newValue</b> as nullable, we can use a not-null assertion (!).
+    <pre>isChecked = newValue !;</pre>
+<p> This means that Flutter will check that newValue not null. If it is null, then the app will crash. You don't have to worry about this because if you are clicking on a checkbox, then the checkbox exists
+    and it has a true/false value. I'm not sure how it can be null in the first place.
+</p>
+<p>Go ahead again and commit your work as you did above. This time, add the commit message "Added a Checkbox".</p>
+<hr>
+<h2>Switch</h2>
+<p>A Switch works in the same way as a Checkbox. It can either be in an "On" state or "Off" state. In fact, just copy and paste the Checkbox line from above but change Checkbox to Switch. It will still have a
+<b>value:</b> parameter and an <b>onChanged: </b> callback function. Leave the callback function the same so that it will also change the value of <b>isChecked</b>. This just shows that when a variable gets updated using
+<b>setState()</b>, then any widget that uses that variable gets updated:<pre>Switch(value:isChecked, onChanged: (newValue) {  setState(() { isChecked = newValue!; });}),
+</pre></p>
+<p>Go ahead again and commit your work as you did above. This time, add the commit message "Added a switch".</p>
+<hr>
+<h2>TextField</h2>
+<p>
+    TextField allows a user to type in some text. This is used for login name, password, address, etc. In Flutter, you use a
+    <b>TextField()</b> widget. However this widgets needs a <b>
+    TextEditingController</b> object to read what the user has typed so go ahead and define an instance variable:
+    <pre>  late TextEditingController _controller; </pre>
+<p> The keyword <b>late</b> means that the object will be initialized later, but the variable is not nullable. This brings us to some of the lifecycle functions of Flutter. A State
+    class inherits a <b>void initState()</b> function that always gets called first, sort of like a constructor.
+    There is also a <b> void dispose() </b> function that gets called when the widget is deleted. You must use these functions to create and then dispose of the TextEditingController:
+    <pre>  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+</pre>
+<p>If you put a breakpoint on the initState() function, you will see that the debugger will pause when the program runs the initState() function:
+<img src="images/setBreakpoint.png"><p>
+    When the program hits the breakpoint, the program is paused so you can see what all the variables are set to at that point in time.
+
+    The program will not continue until you press on the resume button.
+    <img src="images/resumeDebugger1.png">
+</p>
+<p>Now you can create a TextField object below the Image from before:
+    <pre> TextField(controller: _controller),</pre>
+<p>Then when you want to know what is currently typed in the TextField, use:
+    <pre> _controller.value.text </pre><p>This returns a String that is currently what is in the TextField.
+    If you want to overwrite what is there with a new string, use:
+    <pre>_controller.text = "The new text";</pre>
+<p> The TextField widget is pretty plain looking and there are many options to add to make it look nicer. There is a <b>decoration:</b> parameter where you can give an <b>InputDecoration</b> object.
+<ul><li>
+    <b>hintText:</b> This is a string that appears in the field but disappears as soon as you start entering text. This usually explains what to write in this field.
+</li>
+<li><b>labelText:</b> This is a string the appears above the field normally saying which field this is, such as "First Name", "Last Name", "login name", etc.</li>
+    <li><b>border:</b> This can give the field a nice outline around the field. </li>
+</ul>
+<pre> TextField(controller: _controller,
+    decoration: InputDecoration(
+        hintText:"Type here",
+        border: OutlineInputBorder(),
+        labelText: "First name"
+    )),</pre>
+</p>
+<p>Go ahead again and commit your work as you did above. This time, add the commit message "Added a TextField".</p>
+<p>Now let's go on to the Lab assignment to practice your knowledge of the material.</p>
+<br><br><br><br><br><br>
+</body>
+</html>
