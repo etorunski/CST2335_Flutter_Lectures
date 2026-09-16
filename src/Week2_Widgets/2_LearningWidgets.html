@@ -12,13 +12,13 @@
 <p> Instead of you writing code and trying to follow along with the notes, just copy the project that the professor is using. Open
     Android Studio, and select the "File" menu, then "New" -> "Project from Version Control". Next, it will ask you to put in the
     URL of the project you want to copy. Put this address in the URL field:
-    <pre>https://github.com/etorunski/CST2335_Fall24.git</pre>
+    <pre>https://github.com/etorunski/CST2335_Fall26.git</pre>
 <p>Then click "Clone". Your Android Studio will copy all the files that are located in that repository to your computer. You should
     then open the project in a new window.
 </p>
 <h2>Image</h2>
 <p>Images can be any of the normal image formats: JPG, PNG, GIF, BMP. Let's start by downloading an image from the internet onto our computer:
-    <a href="http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg" target="_blank">http://www.algonquincollege.com/campusservices/files/2020/04/AC-Pembroke-ZoomBackground-01-.jpg</a>
+    <a href="https://educationontario.com/app/uploads/2022/04/HiRes_20190612-IMG_04520-476-scaled.jpg" target="_blank">https://educationontario.com/app/uploads/2022/04/HiRes_20190612-IMG_04520-476-scaled.jpg</a>
 
 <br>Rename the file to <b>algonquin.jpg</b> to make things simple. Next in your Flutter project, create a directory called "images" in the root project folder. Then copy your algonquin.jpg file into the images folder.</p>
 <h2>Git Tracking</h2>
@@ -50,8 +50,10 @@ the file isn't even on the Git tracking list. A colour or Green means that the f
 <p>Go ahead and change the width and height parameters and you should see your program react immediately without recompiling. This
 is a great feature of modern programming languages called <b>"Hot swapping"</b>. It is basically changing the code of the program while it is still running.
 You don't need to recompile and restart your program.</p>
-
-
+<h2>Using AI to add Images</h2>
+<p>Write a prompt for the AI agent:
+<pre>Add this image to the page so that it's locally stored in the assets folder  (then drag the image over into the prompt window)</pre>
+</p>
 <h2>Committing changes</h2>
 <p>To save the work from today, click on the "Master" git button on the top of AndroidStudio. From the list, click on "Commit":
     <img src="images/commitButton.png">
@@ -63,7 +65,13 @@ You don't need to recompile and restart your program.</p>
 <hr>
 <h2>Text</h2>
 <p> We have already looked at <b>Text</b> last week, but the Text widget normally shows a String. You can also change the size of the string using the <b>fontSize</b> parameter.
-
+<h2>Using AI</h2>
+<p>To add a Text Widget using AI, write a prompt to specify the information:
+<pre> Add a Text widget that says __________,
+    with a font size of ______ .dp
+    and a colour of _________</pre>
+</p>
+<hr>
     <h2>Button</h2><p>
 A button is just an area on the screen that you can click on. The area can have either a Text or Image widget in it. Let's have a look:
 <pre> ElevatedButton( onPressed: buttonClicked, child:  Text("Click me")  ) </pre><p>
@@ -86,6 +94,12 @@ This shows a button with the text "Click Me", but we have to write a function <b
     )</pre>
 
 <p> An ElevatedButton can take any Widget as its child: parameter so that you can put Text, Images, etc. and when you click on the Button's surface, it will call the <b>onPressed</b> function.</p>
+<h2>Using AI</h2>
+<p>You can write a prompt to tell the AI:
+<pre> Add a ElevatedButton with a child of XXXXXXXX  and when the user presses it, it does YYYYYYYY</pre>
+<p>Just tell the AI what you want it to do when the user presses it. It will fill in the lambda function for you.
+</p>
+
 <p>Go ahead again and commit your work as you did above. This time, add the commit message: <b>"Added a button"</b>.</p>
 
 <hr>
@@ -117,8 +131,14 @@ This function passes in a boolean indicating whether the box is now checked or n
 
 <p>There is a problem with this update function, since the callback function declares <b>newValue</b> as nullable, we can use a not-null assertion (!).
     <pre>isChecked = newValue !;</pre>
-<p> This means that Flutter will check that newValue not null. If it is null, then the app will crash. You don't have to worry about this because if you are clicking on a checkbox, then the checkbox exists
+<p> This means that Flutter will check that newValue not null. If it is null, then the app will crash.
+
+    You don't have to worry about this because if you are clicking on a checkbox, then the checkbox exists
     and it has a true/false value. I'm not sure how it can be null in the first place.
+
+    <h2>Using AI</h2>
+<p>You can write a prompt for the AI agent to add a Checkbox / Switch :
+    <pre> Add a Switch / Textbox whose value is XXXXXXXX and when the user changes it, it does YYYYYYYYYYYYYY</pre>
 </p>
 <p>Go ahead again and commit your work as you did above. This time, add the commit message "Added a Checkbox".</p>
 <hr>
