@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Multilingual support</title>
+</head>
+<body>
+
+<h1>Multilingual support</h1><p>As a programmer, there are many extra libraries you can download to add to your project. The website https://www.pub.dev
+has many extra features you can add that were created by other developers. One of them is called <b>Flutter Easy Translate</b>
+    <a href="https://pub.dev/packages/flutter_easy_translate">https://pub.dev/packages/flutter_easy_translate</a></p>
+
+<p>The website has instructions on how to install and use the libraries however the AI agents can do this for us as well. Write a prompt like this:
+
+<pre>add support for English, French, German, ...etc using the Flutter_Easy_Translate package found here: https://pub.dev/packages/flutter_easy_translate</pre></p>
+
+
+<p>You must make sure that it:
+<ol><li>Adds the flutter_easy_translate library to the pubspec.yaml file.</li>
+<li>Adds JSON files of translated strings in the <b>assets\translations</b> folder</li>
+<li>modifies main.dart to add Locales for each of your languages</li></ol></p>
+
+<p>You should run "flutter pub get" in the command line so that AndroidStudio then downloads the libraries that were added to pubspec.yaml. You might
+see that the AI adds a row of buttons to change the current language.<br>
+Have a look at the JSON language files that were added. They have Key / Value pairs for words to show on the screen. The library has a <b>translate( key )</b> function
+    which then looks in the JSON files for that word passed in, and displays the word next to that KEY. Also, Google has magically translated your text into
+    the languages you have asked for. Make sure to check the translations so that they use the words that you wanted.
+
+</p>
+
+<br><br><br><br><br><br>
+</body>
+</html>
