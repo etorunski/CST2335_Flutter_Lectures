@@ -21,7 +21,7 @@ for those who already know it. Google has further developed the language as the 
 <hr>
 <h1 >Variable declaration</h1>
 <p>Like with Java, you first write the variable type <b>(int, long, double, boolean) </b> followed by the variable name:
-  <pre>  int age;
+  <pre>  int age = 0;
   bool done = false; // In Dart, boolean is called bool
   double pi = 3.14;
 </pre>
@@ -69,12 +69,10 @@ the position of the parameters, for instance: <b>int a</b> is the first paramete
 <p><pre>functionName( b:false, c:"a", a:44);</pre></p>
 <p>This way, parameter c gets passed <b>false</b>, parameter b gets passed <b>'a'</b>,
   and 44 is for the parameter a.</p>
-<p>Why would you want this? First of all, you can specify default values for
-the parameters of the function:</p>
-<pre>functionName( int a = 0, bool b = false, String name = "")</pre>
-<p>and then you wrap the parameter list in braces: { }  to make them optional. That means that if you don't
+<p>To do this, you wrap the parameter list in braces: { }  to make them optional and then supply default values
+  in case the parameter is left out. That means that if you don't
 specify one of the parameters, then it will take the default values.</p>
-<pre>functionName( {int a = 0, bool b = false, String name = ""})</pre>
+<pre>functionName(<b>{</b>int a = 0, bool b = false, String name = ""<b>}</b>)</pre>
 <p>Now you can call the function but only pass in parameters that you
 want to change other than the default values. If you only want to change the parameter
 <strong>name</strong>, then just pass in the new value</p>
