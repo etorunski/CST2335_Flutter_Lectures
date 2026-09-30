@@ -53,26 +53,26 @@ class DataRepository{
     Then to download that library from the online repository, you need to click the "pub get" button in the pubspec.yaml editor:
     <img src="images/pub_get.png"> </p>
 <p>This <b>url_launcher</b> library lets you launch URLs. For instance, you can run:
-<pre>launch("https://www.algonquincollege.com")</pre>
+<pre>launchUrl("https://www.algonquincollege.com")</pre>
 <p>however you need to import the library into your code. If you look at the web page for the package, it gives you the import
     statement:
     <img src="images/pub_install.png">
 <p>If you add <b>import 'package:url_launcher/url_launcher.dart';</b> then you can use the function
     and it should launch a web browser</p>
 <p>You can use the same function to dial a phone number, you just use <b>"tel:"</b> protocol instead of <b>"http://"</b>.
-    For example:<pre>launch("tel:888 123 4567")</pre>
+    For example:<pre>launchUrl(Uri.parse("tel:888 123 4567"))</pre>
 <p>However, your app might be running on a desktop computer that doesn't support making phone calls.
     To check if your app supports the URL that you are giving it, there is a function called <b>canLaunch( )</b> that will return true if your device can do whatever the URL is
     wanting to launch. However, canLaunch() is <b> asynchronous</b>, meaning that the function will run on another thread.
 
     To handle asynchronous returns, we add a <b>.then(  )</b> to the function call.
 <pre>
-        canLaunch("tel: 888 123 4567").then(
+        canLaunchUrl(Uri.parse("tel: 888 123 4567")).then(
             (itCan) {
 
                 if(itCan)
                 {
-                    launch("tel:888 123 4567");
+                    launchUrl(Uri.parse("tel:888 123 4567"));
                 }
                 else
                 {
