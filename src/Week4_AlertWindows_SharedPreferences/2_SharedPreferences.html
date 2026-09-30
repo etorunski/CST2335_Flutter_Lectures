@@ -13,8 +13,10 @@ program.
     However, the SharedPreferences library is not normally part of flutter. You must use the
     "shared_preferences" package to your project. You can do this by opening a command terminal in the same folder as your project,
     and running the command <b> flutter pub add shared_preferences</b>. This should change your
-    pubspec.yaml file to add the latest version of the shared_preferences package.
-    To retrieve the object, we call:
+    pubspec.yaml file to add the latest version of the shared_preferences package.<br>
+    To manually retrieve the packages from http://pub.dev, run the command:
+    <pre>flutter pub get</pre><p>
+    To load the <b>SharedPreferences</b> object, we call:
 <pre>
     // Load and obtain the shared preferences for this app.
     void functionName() <b>async</b> {
