@@ -34,6 +34,11 @@ class DataRepository{
     as data that gets saved and loaded from a database or from a network connection. The data repository is responsible
     only for the application's data and nothing else.
 </p>
+<p>You should then implement a function for saving the variables using EncryptedSharedPreferences, and then another function for loading the variables. That way,
+you can implement public setter and getter functions, and declare the static variables as private, where the name begins with underscore ( _ ).</p>
+<h2>Using AI to help you</h2>
+<p>You can use an AI prompt to implement getter and setter functions for your repository, and functions to save the variables to EncryptedSharedPreferences
+when the setter functions are called, and to load the variables when the application starts.</p>
 <hr>
 <h1>Starting other apps on the device</h1>
 <p>If your device supports sending emails, sending text messages or making phone calls then you can launch those apps from within your program.
