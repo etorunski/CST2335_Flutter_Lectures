@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>SQL Database</Title>
+</head>
+<body>
+<h1>SQLite</h1>
+<p>Flutter is loosely based on Android, so it inherits SQLite from how Android implements it. However, SQLite uses a lot
+ of common code (called boilerplate) to set up a database and queries. There are newer libraries that now
+generate the database code for you so it is easier to manage. In Android, there is the ROOM database library, and there
+is a similar library for Flutter called Drift library:
+<a href="https://pub.dev/packages/drift" target="_blank">https://pub.dev/packages/drift</a>
+    <br> The Drift library can be used for all platforms, including Web Applications. To get started, have a look at this tutorial:
+    <a href="https://r1n1os.medium.com/drift-local-database-for-flutter-part-1-intro-setup-and-migration-09a64d44f6df" target="_blank">https://r1n1os.medium.com/drift-local-database-for-flutter-part-1-intro-setup-and-migration-09a64d44f6df</a>
+</p>
+
+<p>Follow the instructions from the website Pub.dev for installing the required library in pubspec.yaml.
+Then open a new file to write the SQL create table statment for the table you will create to store your items.
+    The file must have end with <b>.drift</b></p>
+<p>Within the .drift file, write your table creation statement in SQL:
+<pre>CREATE TABLE User (
+    id INT NOT NULL PRIMARY KEY,
+    username TEXT NOT NULL,
+    music_style TEXT NOT NULL,
+    favorite_song INT NOT NULL
+) As UserTable;</pre>
+
+<p>Also, write your insert, delete, and query functions as stored procedures in a separate queries.drift file:
+<pre>
+saveUser: INSERT INTO Users (id, name) VALUES (:id, :name);
+getAllUsers: SELECT * FROM Users;
+</pre>
+
+</p>
+
+<p>Next, create a dart file to create a Database class for your project:
+<pre>
+    import 'dart:io';
+
+import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
+
+part 'appDatabase.g.dart';   //<< This tells flutter where to put the generated code later.
+
+@DriftDatabase(
+  include: {'tables.drift'},   // << This is your .drift file you wrote
+)
+class AppDatabase extends _$AppDatabase {
+
+  static AppDatabase instance() => AppDatabase();
+
+  AppDatabase() : super(_openConnection());
+
+  @override
+  int get schemaVersion => 1;
+}
+
+LazyDatabase _openConnection() {
+  return LazyDatabase(() async {
+    final dbFolder = await getApplicationDocumentsDirectory();
+    final file = File(p.join(dbFolder.path, 'db.sqlite'));
+    return NativeDatabase.createInBackground(file);
+  });
+}
+
+</pre>
+<p>Lastly, create a Data Access Object (DAO) class in dart. This will provide an object to perform the functions on the database
+in dart for you:
+<pre>
+    // auth_queries.dart
+import 'package:drift/drift.dart';
+import 'AppDatabase.dart';
+
+part 'auth_queries.g.dart';
+
+@DriftAccessor(
+    include: { 'tables.drift' }
+)
+class UsersDao extends DatabaseAccessor&lt;LocalDatabase> with _$UsersDaoMixin {
+    //write the constructor just to call the superclass:
+  UsersDao(AppDatabase db) : super(db);
+
+}
+</pre>
+
+</p>
+
+<p>Once you have finished this file, you must generate the table creation code in dart by translating your .drift SQL statements into dart code.
+    run the command:
+    <pre>dart run build_runner build</pre>
+<p>This will put the generated code in the file listed by the part command.
+</p>
+<p>If ever you modify the SQL table creation statement, to add or remove a column, or change the data type of a column,
+    you must handle the data migration path. You could have some apps already installed on some customers phones so you
+    need a way for their data to be migrated to the new database schema.
+<pre>
+    ethod in your database class
+
+  @override
+  int get schemaVersion => 1;
+
+ @override
+  MigrationStrategy get migration {
+    return MigrationStrategy(
+      onCreate: (Migrator m) async {
+        await m.createAll();
+      },
+      onUpgrade: (Migrator m, int from, int to) async {
+         if (from < 2) {}
+      },
+      beforeOpen: (details) async {
+         if (kDebugMode) {
+          await validateDatabaseSchema();
+        };
+      },
+    );
+  }
+</pre>
+<p>The important function is the onUpgrade() function. It will get called whenever the app's database version is larger
+    than the database file on the device. Here you can decide what data to put in the new column.
+</p>
+
+
+
+
+
+
+
+
+
+
+
+dev_dependencies:
+  floor_generator: ^1.4.0
+  build_runner: ^2.1.2</pre></li>
+<li>Create an Entity by adding the annotations <b>@entity</b> above the class that will go in the database, and then add  <pre>@primaryKey
+  final int id;</pre> to the class to store the database id.<br>
+    You should also create a static int to allocate the IDs for your class:
+    <pre>static int ID = 1; </pre>
+</li>
+<li>Create a DAO class:<pre>@dao
+abstract class PersonDao {
+    //this performs a SQL query and returns a List of your <b>@entity</b> class
+  @Query('SELECT * FROM Person')
+  Future&lt;List&lt;Person&gt;&gt; findAllPersons();
+
+
+    //This performs a SQL delete operation where the <b>p.id</b> matches that in the database
+  @delete
+  Future&lt;void&gt; delete(Person p);
+
+    //This performs a SQL insert operation, but you must create a unique id variable
+  @insert
+  Future&lt;void&gt; insertPerson(Person person);
+}</pre>The @insert annotation will generate the necessary SQL code to insert the Person object into the database. It will map the class' variables automatically to database columns.
+    Likewise, the @Query annotation will create the SQL query code to find all Person objects in the database. It will return a List object with all the objects it found.
+    <br>All the functions return Future objects meaning that these queries are all asynchronous. You either have to use <b>await</b> when calling these functions, or follow the function
+    calls with <b>.then( obj {  } ) </b> to get the data back.</li>
+    <li>Create the database:<pre>
+
+        // If your file is called: database.dart
+
+// required package imports
+    import 'dart:async';
+    import 'package:floor/floor.dart';
+    import 'package:sqflite/sqflite.dart' as sqflite;
+
+    //import your classes you wrote
+    import 'person_dao.dart';
+    import 'person.dart';
+
+        //This must match the filename of this file you are writing
+part 'database.g.dart'; // the generated code will be there
+
+@Database(version: 1, entities: [Person])
+abstract class AppDatabase extends FloorDatabase {
+  PersonDao get personDao;
+}
+</pre>  Make sure to change the <b>entities:</b> from Person to whatever @entity class you are using in your project. You will have to run the code generator after to build
+    the code from the annotations.</li>
+
+    <li>Run the code generator tool to generate all the SQL code from your annotations: <pre>flutter packages pub run build_runner build</pre></li>
+    <li>Use the generated code but instead of <b>FloorAppDatabase</b>, use <b>Floor</b> followed by your database class created above:
+
+
+        <pre>final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();</pre><p>
+        You can change the filename that it uses for your database by replacing the string <b>'app_database.db'.</b>
+Then open the database in the initState() function: <pre>
+        final personDao = database.personDao;
+        personDao.getAllRows().then(
+            (list) {
+                setState((){myList = list;
+                    } );
+            });
+            </pre>
+        Then to insert a new object, you increment the counter:
+        <pre>
+    final person = Person( Person.ID++, 'Frank');
+    personDao.insertPerson( person );</pre>
+</pre>
+    <p> However, here the Floor library might load items from the file that have an ID already assigned that is higher than the current ID. For example,
+        if an object in the database has an ID that is 100 for example, then your ID variable should be higher than that.
+         In the Person constructor:
+        <pre>Person(int id, String name)
+{
+    if(id >= ID)
+        ID = id + 1;
+
+    ...
+}</pre>
+    <p>Lastly, when you are using databases in your application, you normally load all the data as a first step.
+        When you are creating your List&lt; &gt; object, you would then also run your query to load items into that
+        list from the database. A good place to do this is in the <b>initState()</b> function since you are indeed initializing the
+        state of your application.
+    </p>
+</ol>
+<p>Please explore more of the documentation in the tutorial. Let's now go over the steps in an example by modifying the ListView example from last week. Whenever you
+    add something to the List&lt; &gt;, you should also insert into the database. Whenever you remove something from the List&lt; &gt;, you should also delete from the database.
+    Whenever you start the application, you should initialize the List&lt; &gt; by running a query. This will run asynchronously so when the results return from the database,
+    you can call <b>setState() </b> to cause your GUI to redraw.
+</p>
+</body></html>
