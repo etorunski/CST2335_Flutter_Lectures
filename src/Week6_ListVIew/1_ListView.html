@@ -112,21 +112,28 @@ The code should look like this:
         });
     }</pre>
 <p>Now when you click on the Add Item button, your test will show up in the ListView. How about deleting items from the ListView?
-    Flutter has a Widget called <b>GestureDetector( child: )</b>. This object has many different gesture listener functions, some of which are:
+    Flutter has a Widget called <b>ListTile( child: )</b>. This object has two different event listener functions, some of which are:
     <ul>
     <li>onTap:</li>
-    <li>onDoubleTap: - for detecting double-tap / double-click</li>
     <li>onLongPress: - for holding your finger / mouse for a long time</li>
-    <li>onHorizontalDragUpdate: - for left-to-right swiping</li>
 </ul>
-<p>You can implement several of these gesture detectors for each Row( ) widget:
+<p>The ListTile also has a <b>Title</b> parameter, and a <b>subtitle</b> parameter. These are Widgets so you can use a
+whole Row layout.
 
 
     <pre>
-    GestureDetector(child: Row(    ....), onTap: () {  }  )
+    ListTile(Title: Row(    ....), onTap: () {  }  )
 </pre><p>
     When any of these gestures are detected,
     you can then remove an item from the List. Just be sure that removing from the List is surrounded by
     <b>setState( () {  } )</b> so that the UI will redraw.
 </p>
+<hr>
+<h2>Using other than String</h2>
+<p>You should create a separate Model class that will store the information for whatever you are wanting to put in your List, like TextMessage,
+Email, Address, Call Info, etc. Then modify the ArrayList to store those kinds of objects instead of Strings. You must modify
+the TextFields so that you can input all the information needed for the object. Then when you submit the information, just call
+the constructor of that class with the information from the user. Lastly, you need to modify the ListBuilder function so that it
+returns a layout to represent the information of one of the elements that are in the List</p>
+<br><br><br><br><br><br>
 </body></html>
